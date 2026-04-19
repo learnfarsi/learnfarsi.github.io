@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>فارسی — Learn Persian</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0e0b07;
+  --bg2:#181410;
+  --bg3:#221e18;
+  --card:#2a2520;
+  --border:#3d372e;
+  --accent:#c8703a;
+  --accent2:#e8a86a;
+  --gold:#d4a843;
+  --blue:#5b9bd5;
+  --green:#6baa7a;
+  --purple:#9b7fc8;
+  --text:#f0ebe3;
+  --text2:#a89880;
+  --text3:#6b5e4e;
+  --red:#d05555;
+}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+
+/* SIDEBAR */
+.sidebar{position:fixed;left:0;top:0;width:260px;height:100vh;background:var(--bg2);border-right:1px solid var(--border);overflow-y:auto;z-index:100;display:flex;flex-direction:column}
+.sidebar-header{padding:1.5rem 1.25rem 1rem;border-bottom:1px solid var(--border)}
+.logo-fa{font-family:'Playfair Display',serif;font-size:32px;color:var(--accent);letter-spacing:6px;display:block;text-align:center}
+.logo-en{font-size:11px;color:var(--text3);text-align:center;letter-spacing:3px;text-transform:uppercase;margin-top:4px}
+.sidebar-search{padding:.75rem 1rem;border-bottom:1px solid var(--border)}
+.sidebar-search input{width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:6px 10px;font-size:12px;color:var(--text);font-family:'DM Sans',sans-serif}
+.sidebar-search input:focus{outline:none;border-color:var(--accent)}
+.sidebar-search input::placeholder{color:var(--text3)}
+.section-group{padding:.5rem 0}
+.section-group-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text3);padding:.5rem 1.25rem;font-weight:500}
+.lesson-link{display:flex;align-items:center;gap:10px;padding:.5rem 1.25rem;cursor:pointer;transition:all .2s;font-size:13px;color:var(--text2);border-left:2px solid transparent}
+.lesson-link:hover{color:var(--text);background:var(--bg3);border-left-color:var(--border)}
+.lesson-link.active{color:var(--accent2);background:var(--bg3);border-left-color:var(--accent)}
+.lesson-link .tag{font-size:9px;padding:2px 6px;border-radius:3px;font-weight:500;margin-left:auto;flex-shrink:0}
+.tag-alpha{background:#2d1e0e;color:var(--accent)}
+.tag-conv{background:#0e1e2d;color:var(--blue)}
+.tag-cult{background:#1a1d0e;color:var(--green)}
+.tag-hist{background:#1d0e2d;color:var(--purple)}
+.lesson-link .num{width:20px;height:20px;border-radius:4px;background:var(--bg3);font-size:10px;display:flex;align-items:center;justify-content:center;color:var(--text3);flex-shrink:0}
+.lesson-link.active .num{background:var(--accent);color:#fff}
+
+/* MAIN */
+.main{margin-left:260px;min-height:100vh}
+.topbar{position:sticky;top:0;background:var(--bg2);border-bottom:1px solid var(--border);padding:.75rem 2rem;display:flex;align-items:center;gap:1rem;z-index:50}
+.topbar-title{font-family:'Playfair Display',serif;font-size:18px;color:var(--text)}
+.topbar-badge{font-size:11px;padding:3px 10px;border-radius:20px;font-weight:500}
+.content{padding:2rem;max-width:800px}
+
+/* TABS */
+.tabs{display:flex;gap:0;border-bottom:1px solid var(--border);margin-bottom:2rem}
+.tab{padding:.6rem 1.25rem;font-size:13px;cursor:pointer;color:var(--text3);border-bottom:2px solid transparent;margin-bottom:-1px;transition:all .2s}
+.tab:hover{color:var(--text2)}
+.tab.active{color:var(--accent2);border-bottom-color:var(--accent)}
+
+.section{display:none}
+.section.active{display:block}
+
+/* CARDS */
+.intro-card{background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:1.5rem;margin-bottom:2rem;border-left:3px solid var(--accent)}
+.intro-card h2{font-family:'Playfair Display',serif;font-size:22px;margin-bottom:.5rem;color:var(--accent2)}
+.intro-card p{font-size:14px;color:var(--text2);line-height:1.7}
+
+/* CHAR GRID */
+.char-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:2rem}
+.char-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1rem;text-align:center;transition:border-color .2s}
+.char-card:hover{border-color:var(--accent)}
+.c-main{font-size:46px;line-height:1.2;margin-bottom:4px}
+.c-name{font-size:11px;font-weight:500;margin-bottom:2px}
+.c-roman{font-size:10px;color:var(--text3)}
+.c-nc{font-size:9px;color:var(--accent);margin-top:3px}
+.c-desc{font-size:10px;color:var(--text3);margin-top:6px;line-height:1.4}
+
+/* FORMS TABLE */
+.forms-wrap{overflow-x:auto;margin-bottom:2rem}
+table.forms{width:100%;border-collapse:collapse;font-size:13px}
+table.forms th{text-align:left;padding:8px 12px;color:var(--text3);font-size:11px;font-weight:500;border-bottom:1px solid var(--border);white-space:nowrap}
+table.forms td{padding:10px 12px;border-bottom:1px solid var(--border)}
+table.forms td:first-child{color:var(--text2);font-size:12px}
+.f-form{font-size:24px;line-height:1}
+.nc-badge{font-size:9px;background:#2d1e0e;color:var(--accent);padding:2px 5px;border-radius:3px;display:inline-block}
+.tip-row td{background:#1a1200;color:var(--gold);font-size:11px;padding:4px 12px 8px}
+
+/* VOWELS BOX */
+.vowel-box{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:1rem 1.25rem;margin-bottom:2rem;font-size:13px;color:var(--text2);line-height:1.7}
+.vowel-box strong{color:var(--gold)}
+
+/* VOCAB */
+.vocab-list{display:flex;flex-direction:column;gap:8px;margin-bottom:2rem}
+.vocab-item{display:flex;align-items:center;gap:12px;padding:10px 14px;background:var(--card);border:1px solid var(--border);border-radius:8px}
+.v-farsi{font-size:22px;min-width:90px;text-align:right;direction:rtl;color:var(--accent2)}
+.v-roman{font-size:13px;color:var(--blue);font-weight:500}
+.v-meaning{font-size:13px;color:var(--text2)}
+
+/* SENTENCES */
+.sent-list{display:flex;flex-direction:column;gap:10px;margin-bottom:2rem}
+.sent-item{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:12px 14px}
+.s-fa{font-size:20px;direction:rtl;text-align:right;color:var(--text);margin-bottom:4px}
+.s-ro{font-size:13px;color:var(--blue);margin-bottom:2px}
+.s-en{font-size:13px;color:var(--text3)}
+
+/* DIALOGUE */
+.dialogue{background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:1.5rem;margin-bottom:2rem}
+.dialogue h3{font-size:14px;color:var(--text3);margin-bottom:1rem;font-weight:400}
+.dlg-line{display:flex;gap:12px;margin-bottom:1rem;align-items:flex-start}
+.dlg-line.right{flex-direction:row-reverse}
+.dlg-name{font-size:11px;font-weight:500;white-space:nowrap;margin-top:4px;min-width:50px}
+.dlg-name.a{color:var(--accent)}
+.dlg-name.b{color:var(--blue);text-align:right}
+.dlg-bubble{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:10px 14px;max-width:440px}
+.dlg-line.right .dlg-bubble{background:#1a1e2a;border-color:#2a3040}
+.dlg-fa{font-size:17px;direction:rtl;text-align:right;color:var(--text);margin-bottom:3px}
+.dlg-ro{font-size:12px;color:var(--blue);margin-bottom:2px;font-style:italic}
+.dlg-en{font-size:12px;color:var(--text3)}
+
+/* CULTURE */
+.culture-card{background:var(--bg3);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:1.5rem}
+.culture-header{padding:1rem 1.25rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;background:var(--card)}
+.culture-header .icon{font-size:18px}
+.culture-header h3{font-size:15px;font-weight:500}
+.culture-body{padding:1.25rem}
+.cult-fa{font-size:22px;direction:rtl;text-align:right;color:var(--gold);margin-bottom:5px;line-height:1.5}
+.cult-ro{font-size:13px;color:var(--text3);font-style:italic;margin-bottom:5px}
+.cult-en{font-size:14px;font-weight:500;margin-bottom:10px;color:var(--text2)}
+.cult-body{font-size:13px;color:var(--text2);line-height:1.7}
+
+/* CITY CARDS */
+.city-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:2rem}
+.city-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.25rem}
+.city-card h3{font-size:15px;font-weight:500;margin-bottom:3px;color:var(--accent2)}
+.city-card .city-fa{font-size:20px;direction:rtl;color:var(--gold);margin-bottom:8px}
+.city-card p{font-size:12px;color:var(--text2);line-height:1.6}
+.city-card .sights{margin-top:8px;font-size:11px;color:var(--text3)}
+
+/* INFO BOXES */
+.info-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:1.5rem}
+.info-box{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:1rem}
+.info-box h4{font-size:12px;font-weight:500;color:var(--text3);margin-bottom:6px;text-transform:uppercase;letter-spacing:.05em}
+.info-box p{font-size:13px;color:var(--text2);line-height:1.6}
+
+/* TIMELINE */
+.timeline{position:relative;padding-left:24px;margin-bottom:2rem}
+.timeline::before{content:'';position:absolute;left:6px;top:0;bottom:0;width:1px;background:var(--border)}
+.tl-item{position:relative;margin-bottom:1.5rem}
+.tl-item::before{content:'';position:absolute;left:-20px;top:4px;width:8px;height:8px;border-radius:50%;background:var(--accent);border:2px solid var(--bg3)}
+.tl-year{font-size:11px;font-weight:500;color:var(--accent);margin-bottom:3px}
+.tl-title{font-size:14px;font-weight:500;margin-bottom:3px}
+.tl-body{font-size:13px;color:var(--text2);line-height:1.6}
+.tl-fa{font-size:16px;direction:rtl;color:var(--gold);margin-top:4px}
+
+/* QUIZ */
+.quiz-progress{display:flex;gap:5px;margin-bottom:1.5rem}
+.qp-dot{width:7px;height:7px;border-radius:50%;background:var(--border);transition:all .3s}
+.qp-dot.done{background:var(--green)}
+.qp-dot.cur{background:var(--accent)}
+
+.quiz-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.5rem;margin-bottom:1rem}
+.q-label{font-size:12px;color:var(--text3);margin-bottom:.75rem}
+.q-text{font-size:15px;font-weight:500;margin-bottom:.75rem;color:var(--text)}
+.q-char{font-size:56px;text-align:center;padding:1rem 0;line-height:1;color:var(--accent2)}
+.q-opts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:1rem}
+.q-opt{padding:10px 14px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;font-size:13px;cursor:pointer;color:var(--text2);text-align:center;transition:all .2s;font-family:'DM Sans',sans-serif}
+.q-opt:hover{border-color:var(--accent);color:var(--text)}
+.q-opt.ok{background:#0e2010;border-color:var(--green);color:var(--green)}
+.q-opt.no{background:#2d0e0e;border-color:var(--red);color:var(--red)}
+.q-feedback{padding:10px 14px;border-radius:8px;font-size:13px;margin-top:.75rem;display:none}
+.q-feedback.show{display:block}
+.q-feedback.ok{background:#0e2010;color:var(--green)}
+.q-feedback.no{background:#2d0e0e;color:var(--red)}
+.q-next{margin-top:1rem;text-align:right}
+
+.btn{padding:8px 20px;border-radius:20px;font-size:13px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;border:none}
+.btn-acc{background:var(--accent);color:#fff}
+.btn-acc:hover{background:#a85c2a}
+.btn-sec{background:transparent;border:1px solid var(--border);color:var(--text2)}
+.btn-sec:hover{border-color:var(--accent);color:var(--accent)}
+
+.score-board{text-align:center;padding:3rem 1rem}
+.sc-big{font-size:56px;font-weight:300;color:var(--accent);font-family:'Playfair Display',serif}
+.sc-label{font-size:14px;color:var(--text3);margin-bottom:1rem}
+.sc-msg{font-size:14px;color:var(--text2);line-height:1.7;max-width:400px;margin:0 auto 2rem}
+
+.label{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);font-weight:500;margin-bottom:.75rem}
+
+/* WEATHER */
+.weather-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:2rem}
+.wth-card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:.75rem;text-align:center}
+.wth-card .season{font-size:11px;color:var(--text3);margin-bottom:4px}
+.wth-card .temp{font-size:18px;font-weight:500;color:var(--accent2)}
+.wth-card .desc{font-size:11px;color:var(--text2);margin-top:3px}
+.wth-card .icon{font-size:20px;margin-bottom:4px}
+
+/* PHRASE TABLE */
+.phrase-list{display:flex;flex-direction:column;gap:6px;margin-bottom:2rem}
+.phrase-item{display:grid;grid-template-columns:1fr 1fr 1.2fr;gap:10px;padding:8px 12px;background:var(--card);border:1px solid var(--border);border-radius:6px;align-items:center;font-size:13px}
+.phrase-fa{direction:rtl;text-align:right;font-size:17px;color:var(--accent2)}
+.phrase-ro{color:var(--blue)}
+.phrase-en{color:var(--text3)}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+
+/* MOBILE */
+@media(max-width:700px){
+  .sidebar{width:100%;height:auto;position:relative;border-right:none;border-bottom:1px solid var(--border)}
+  .main{margin-left:0}
+  .char-grid{grid-template-columns:repeat(3,1fr)}
+  .city-grid,.info-grid,.weather-grid{grid-template-columns:1fr}
+  .q-opts{grid-template-columns:1fr}
+  .phrase-item{grid-template-columns:1fr 1fr}
+  .phrase-en{display:none}
+}
+</style>
+</head>
+<body>
+
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <span class="logo-fa">فارسی</span>
+    <div class="logo-en">Learn Persian</div>
+  </div>
+  <div class="sidebar-search">
+    <input type="text" id="searchInput" placeholder="Search lessons..." oninput="filterLessons(this.value)">
+  </div>
+  <div id="sidebarContent"></div>
+</div>
+
+<div class="main">
+  <div class="topbar">
+    <div class="topbar-title" id="topbarTitle">فارسی</div>
+    <div class="topbar-badge" id="topbarBadge"></div>
+  </div>
+  <div class="content">
+    <div class="tabs">
+      <div class="tab active" data-tab="learn" onclick="switchTab('learn')">Learn</div>
+      <div class="tab" data-tab="vocab" onclick="switchTab('vocab')">Vocabulary</div>
+      <div class="tab" data-tab="culture" onclick="switchTab('culture')">Culture</div>
+      <div class="tab" data-tab="quiz" onclick="switchTab('quiz')">Quiz</div>
+    </div>
+    <div class="section active" id="sec-learn"></div>
+    <div class="section" id="sec-vocab"></div>
+    <div class="section" id="sec-culture"></div>
+    <div class="section" id="sec-quiz"></div>
+  </div>
+</div>
+
+<script>
+const COLORS=['#c8703a','#5b9bd5','#6baa7a','#9b7fc8','#d4a843'];
+
+const LESSONS = [
+
+// ==================== ALPHABET ====================
+{id:'a1',type:'alpha',num:'A1',title:'Alef · Be · Pe · Te · Se',fa:'ا ب پ ت ث',
+intro:'Welcome to Persian! We start with the first five letters. Persian reads right to left, and most letters connect to each other like cursive.',
+chars:[
+  {l:'ا',n:'Alef',r:'ā / a',d:'Like "a" in father. Alef is a vowel carrier and does NOT connect to the next letter.',nc:true},
+  {l:'ب',n:'Be',r:'b',d:'Like "b" in book. One dot below the baseline.'},
+  {l:'پ',n:'Pe',r:'p',d:'Like "p" in pen. Three dots below — Persian\'s own letter, not in Arabic!'},
+  {l:'ت',n:'Te',r:'t',d:'Like "t" in ten. Two dots above.'},
+  {l:'ث',n:'Se',r:'s',d:'Like "s" in sun. Three dots above. Rare in modern Farsi words.'},
+],
+forms:[
+  {c:'ا',n:'Alef',s:'ا',i:'اَ',m:'ـا',f:'ـا',nc:true,tip:'Alef NEVER connects to the letter on its left.'},
+  {c:'ب',n:'Be',s:'ب',i:'بـ',m:'ـبـ',f:'ـب'},
+  {c:'پ',n:'Pe',s:'پ',i:'پـ',m:'ـپـ',f:'ـپ'},
+  {c:'ت',n:'Te',s:'ت',i:'تـ',m:'ـتـ',f:'ـت'},
+  {c:'ث',n:'Se',s:'ث',i:'ثـ',m:'ـثـ',f:'ـث'},
+],
+vocab:[
+  {fa:'آب',ro:'āb',en:'water'},{fa:'بابا',ro:'bābā',en:'dad/father'},{fa:'تاب',ro:'tāb',en:'swing/light'},
+  {fa:'پِدَر',ro:'pedar',en:'father (formal)'},{fa:'باب',ro:'bāb',en:'door/chapter'},
+],
+sentences:[
+  {fa:'بابا آب داد.',ro:'Bābā āb dād.',en:'Dad gave water. (The classic Persian primer sentence!)'},
+  {fa:'آب تاب دارد.',ro:'Āb tāb dārad.',en:'The water shines.'},
+],
+culture:{icon:'📜',tag:'Primer',title:'The Sentence Every Iranian Child Reads First',
+fa:'بابا آب داد.',ro:'Bābā āb dād.',en:'"Dad gave water."',
+body:'For over a century, this three-word sentence has opened every Persian literacy primer. Simple letters, deep tenderness. Water (آب) holds sacred status in Persian culture — it means generosity, life, purity. Rivers, fountains, and reflecting pools run through Persian gardens, poetry, and architecture.'},
+quiz:[
+  {q:'Name this letter:',c:'ب',opts:['Alef','Be','Pe','Te'],a:1},
+  {q:'Which letter does NOT connect leftward?',c:'',opts:['ب Be','پ Pe','ا Alef','ت Te'],a:2},
+  {q:'آب means:',c:'آب',opts:['Fire','Water','Earth','Wind'],a:1},
+  {q:'Pe (پ) has how many dots?',c:'پ',opts:['One below','Two above','Three below','None'],a:2},
+  {q:'پِدَر means:',c:'پِدَر',opts:['Mother','Brother','Father','Child'],a:2},
+]},
+
+{id:'a2',type:'alpha',num:'A2',title:'Jim · Che · He · Khe · Dal',fa:'ج چ ح خ د',
+intro:'Five more letters. Notice how ج چ ح خ all share the same body — only their dots differ! And Dal is another non-connector.',
+chars:[
+  {l:'ج',n:'Jim',r:'j',d:'Like "j" in jar. Dot below the curve.'},
+  {l:'چ',n:'Che',r:'ch',d:'Like "ch" in chair. Three dots below. Persian\'s own!'},
+  {l:'ح',n:'He (Jimi)',r:'h',d:'Breathy "h". Same shape as Jim/Che but NO dots.'},
+  {l:'خ',n:'Khe',r:'kh',d:'Guttural like Scottish "loch". One dot above.'},
+  {l:'د',n:'Dal',r:'d',d:'Like "d" in door. Does NOT connect to next letter.',nc:true},
+],
+forms:[
+  {c:'ج',n:'Jim',s:'ج',i:'جـ',m:'ـجـ',f:'ـج'},
+  {c:'چ',n:'Che',s:'چ',i:'چـ',m:'ـچـ',f:'ـچ'},
+  {c:'ح',n:'He',s:'ح',i:'حـ',m:'ـحـ',f:'ـح'},
+  {c:'خ',n:'Khe',s:'خ',i:'خـ',m:'ـخـ',f:'ـخ'},
+  {c:'د',n:'Dal',s:'د',i:'دـ',m:'ـد',f:'ـد',nc:true,tip:'Dal does NOT connect to the next letter.'},
+],
+vocab:[
+  {fa:'جان',ro:'jān',en:'soul / dear one'},{fa:'چای',ro:'chāy',en:'tea'},{fa:'دَر',ro:'dar',en:'door / in'},
+  {fa:'خانه',ro:'khāne',en:'house / home'},{fa:'باد',ro:'bād',en:'wind'},
+],
+sentences:[
+  {fa:'چای داری؟',ro:'Chāy dāri?',en:'Do you have (any) tea?'},
+  {fa:'خانه‌ام جادار است.',ro:'Khāne-am jādār ast.',en:'My house is spacious.'},
+],
+culture:{icon:'🍵',tag:'Culture',title:'چای — Tea & Persian Hospitality',
+fa:'چای نخوردی؟',ro:'Chāy nakhordī?',en:'"Haven\'t you had tea yet?"',
+body:'Offering tea (چای) is the first act of Persian hospitality. A host who hasn\'t offered tea has not truly welcomed you. Persian tea is brewed strong in a small glass (استکان estekān), often taken with rock sugar (نبات nabāt) held between the teeth while sipping. Refusing tea can feel like refusing friendship itself.'},
+quiz:[
+  {q:'چ sounds like:',c:'چ',opts:['"j" in jar','"ch" in chair','"kh" in loch','"h" breathy'],a:1},
+  {q:'Which does NOT connect leftward?',c:'',opts:['ج Jim','چ Che','ح He','د Dal'],a:3},
+  {q:'خانه means:',c:'خانه',opts:['Tea','Door','Home','Soul'],a:2},
+  {q:'چای means:',c:'چای',opts:['Coffee','Water','Tea','Milk'],a:2},
+  {q:'Khe (خ) sounds like:',c:'خ',opts:['"k" in key','"ch" in chair','Scottish "ch" in loch','"h" in hat'],a:2},
+]},
+
+{id:'a3',type:'alpha',num:'A3',title:'Zal · Re · Ze · Zhe · Sin',fa:'ذ ر ز ژ س',
+intro:'Four non-connectors in one lesson! The Re family all sit below the line and sweep right. Sin has three distinctive "teeth" on top.',
+chars:[
+  {l:'ذ',n:'Zal',r:'z',d:'Like "z" in zone. Does NOT connect left.',nc:true},
+  {l:'ر',n:'Re',r:'r',d:'A flapped/rolled "r". Does NOT connect left.',nc:true},
+  {l:'ز',n:'Ze',r:'z',d:'Like "z" in zone. Does NOT connect left.',nc:true},
+  {l:'ژ',n:'Zhe',r:'zh',d:'Like "s" in measure or French "j". Does NOT connect left.',nc:true},
+  {l:'س',n:'Sin',r:'s',d:'Like "s" in sea. Three teeth on top. Connects.'},
+],
+forms:[
+  {c:'ذ',n:'Zal',s:'ذ',i:'ذ',m:'ـذ',f:'ـذ',nc:true,tip:'Does NOT connect left.'},
+  {c:'ر',n:'Re',s:'ر',i:'ر',m:'ـر',f:'ـر',nc:true,tip:'Does NOT connect left.'},
+  {c:'ز',n:'Ze',s:'ز',i:'ز',m:'ـز',f:'ـز',nc:true,tip:'Does NOT connect left.'},
+  {c:'ژ',n:'Zhe',s:'ژ',i:'ژ',m:'ـژ',f:'ـژ',nc:true,tip:'Does NOT connect left.'},
+  {c:'س',n:'Sin',s:'س',i:'سـ',m:'ـسـ',f:'ـس'},
+],
+vocab:[
+  {fa:'سَر',ro:'sar',en:'head'},{fa:'زَر',ro:'zar',en:'gold'},{fa:'سَرد',ro:'sard',en:'cold'},
+  {fa:'رَز',ro:'raz',en:'grapevine / secret'},{fa:'دَرس',ro:'dars',en:'lesson'},
+],
+sentences:[
+  {fa:'هوا سرد است.',ro:'Havā sard ast.',en:'The weather is cold.'},
+  {fa:'دَرس یاد می‌گیرم.',ro:'Dars yād migiram.',en:'I am learning a lesson.'},
+],
+culture:{icon:'🌹',tag:'Poetry',title:'Rumi — Master of Persian Verse',
+fa:'بشنو این نی چون شکایت می‌کند.',ro:'Beshno in ney chon shekāyat mikonad.',en:'"Listen to the reed, how it tells a tale of separation."',
+body:'These are the opening words of the Masnavi by Rūmī (1207–1273), one of the most widely read poets in history. The ney (نی) is a reed flute — a metaphor for the soul separated from its source, longing to return. Notice how the rolling Re (ر) flows through this verse like water. Rumi wrote in Persian even while living in what is now Turkey.'},
+quiz:[
+  {q:'How many non-connectors are in this lesson?',c:'',opts:['2','3','4','5'],a:2},
+  {q:'ژ (Zhe) sounds like:',c:'ژ',opts:['"z" in zone','"s" in measure','"ch" in chair','"r" in run'],a:1},
+  {q:'سَرد means:',c:'سَرد',opts:['Hot','Cold','Rain','Wind'],a:1},
+  {q:'Sin (س) has how many teeth?',c:'س',opts:['One','Two','Three','Four'],a:2},
+  {q:'زَر means:',c:'زَر',opts:['Silver','Gold','Copper','Iron'],a:1},
+]},
+
+{id:'a4',type:'alpha',num:'A4',title:'Shin · Sad · Zad · Ta · Za',fa:'ش ص ض ط ظ',
+intro:'Shin is Sin with three dots above. Sad, Zad, Ta, Za are "emphatic" letters — they sound heavier, coming from deeper in the mouth.',
+chars:[
+  {l:'ش',n:'Shin',r:'sh',d:'Like "sh" in shoe. Three dots above Sin\'s body.'},
+  {l:'ص',n:'Sad',r:'s (emphatic)',d:'Heavier "s" — a loop with a small tooth. From Arabic script.'},
+  {l:'ض',n:'Zad',r:'z (emphatic)',d:'Heavier "z". One dot above Sad\'s shape.'},
+  {l:'ط',n:'Ta (Tarsim)',r:'t (emphatic)',d:'Heavier "t". A tall vertical stroke on a loop.'},
+  {l:'ظ',n:'Za (Moajame)',r:'z (emphatic)',d:'Heavier "z". One dot above Ta.'},
+],
+forms:[
+  {c:'ش',n:'Shin',s:'ش',i:'شـ',m:'ـشـ',f:'ـش'},
+  {c:'ص',n:'Sad',s:'ص',i:'صـ',m:'ـصـ',f:'ـص'},
+  {c:'ض',n:'Zad',s:'ض',i:'ضـ',m:'ـضـ',f:'ـض'},
+  {c:'ط',n:'Ta',s:'ط',i:'طـ',m:'ـطـ',f:'ـط'},
+  {c:'ظ',n:'Za',s:'ظ',i:'ظـ',m:'ـظـ',f:'ـظ'},
+],
+vocab:[
+  {fa:'شَب',ro:'shab',en:'night'},{fa:'شادی',ro:'shādi',en:'happiness'},{fa:'صَبا',ro:'sabā',en:'morning breeze'},
+  {fa:'طَبیب',ro:'tabib',en:'doctor'},{fa:'شب بخیر',ro:'shab bekheyr',en:'good night'},
+],
+sentences:[
+  {fa:'شب بخیر.',ro:'Shab bekheyr.',en:'Good night.'},
+  {fa:'شادی بخش باد.',ro:'Shādi bakhsh bād.',en:'May it bring joy.'},
+],
+culture:{icon:'🎨',tag:'Art',title:'Persian Miniature Painting',
+fa:'نگارگری ایرانی',ro:'Negārgari-ye Irāni',en:'"Persian Painting"',
+body:'Persian miniature painting (نگارگری) developed from the 13th century. These jewel-like works illustrate epic poetry — especially the Shahnameh (Book of Kings) by Ferdowsi. Artists used lapis lazuli blues, gold leaf, and impossible detail to portray gardens, battles, and romance. Safavid court painters of Isfahan (16th–17th c.) were the masters. Night scenes — شَب (shab) — gardens under moonlight — are a recurring, beloved theme.'},
+quiz:[
+  {q:'Shin (ش) differs from Sin (س) by:',c:'ش',opts:['One dot below','Two dots','Three dots above','A loop'],a:2},
+  {q:'شَب means:',c:'شَب',opts:['Morning','Noon','Evening','Night'],a:3},
+  {q:'شب بخیر means:',c:'شب بخیر',opts:['Good morning','Good night','Hello','Goodbye'],a:1},
+  {q:'Which has a dot above the Ta shape?',c:'',opts:['ش Shin','ص Sad','ط Ta','ظ Za'],a:3},
+  {q:'شادی means:',c:'شادی',opts:['Sadness','Anger','Happiness','Fear'],a:2},
+]},
+
+{id:'a5',type:'alpha',num:'A5',title:'Ain · Ghain · Fe · Qaf · Kaf',fa:'ع غ ف ق ک',
+intro:'Ain is the most distinctive sound in Persian — a voiced pharyngeal with no English equivalent. Ghain is Ain with a dot. Fe, Qaf, Kaf are more familiar.',
+chars:[
+  {l:'ع',n:'Ain',r:"'",d:"A unique guttural from the throat. No English equivalent — a constriction in the pharynx."},
+  {l:'غ',n:'Ghain',r:'gh',d:'A gargling sound, like a French "r". One dot above Ain.'},
+  {l:'ف',n:'Fe',r:'f',d:'Like "f" in fun. One dot above a curved body.'},
+  {l:'ق',n:'Qaf',r:'q',d:'A deep "k" from the back of the throat. Two dots above.'},
+  {l:'ک',n:'Kaf',r:'k',d:'Like "k" in key. Distinctive diagonal stroke inside.'},
+],
+forms:[
+  {c:'ع',n:'Ain',s:'ع',i:'عـ',m:'ـعـ',f:'ـع'},
+  {c:'غ',n:'Ghain',s:'غ',i:'غـ',m:'ـغـ',f:'ـغ'},
+  {c:'ف',n:'Fe',s:'ف',i:'فـ',m:'ـفـ',f:'ـف'},
+  {c:'ق',n:'Qaf',s:'ق',i:'قـ',m:'ـقـ',f:'ـق'},
+  {c:'ک',n:'Kaf',s:'ک',i:'کـ',m:'ـکـ',f:'ـک'},
+],
+vocab:[
+  {fa:'عَشق',ro:"'eshq",en:'love / passion'},{fa:'کِتاب',ro:'ketāb',en:'book'},{fa:'غَم',ro:'gham',en:'sorrow'},
+  {fa:'فارسی',ro:'Fārsi',en:'the Persian language'},{fa:'عکس',ro:"'aks",en:'photo / image'},
+],
+sentences:[
+  {fa:'کِتاب دارم.',ro:'Ketāb dāram.',en:'I have a book.'},
+  {fa:'عشق زندگی است.',ro:"'Eshq zendegi ast.",en:'Love is life.'},
+],
+culture:{icon:'💫',tag:'Proverb',title:'Drop by Drop — A Persian Proverb',
+fa:'قطره قطره دریا می‌شود.',ro:'Qatre qatre daryā mishavad.',en:'"Drop by drop, it becomes a sea."',
+body:'This beloved proverb encourages perseverance. Every vocabulary word you memorize, every letter you practise — slowly becomes an ocean of knowledge. قطره (qatre) = drop · دریا (daryā) = sea. The Caspian Sea bordering northern Iran is called دریای خزر (Daryā-ye Khazar). This proverb is perfect for your journey learning فارسی!'},
+quiz:[
+  {q:'عَشق means:',c:'عَشق',opts:['Sorrow','Joy','Love','Anger'],a:2},
+  {q:'Ghain (غ) is Ain (ع) plus:',c:'غ',opts:['No dots','One dot above','Two dots','Three dots'],a:1},
+  {q:'کِتاب means:',c:'کِتاب',opts:['Pen','Paper','Notebook','Book'],a:3},
+  {q:'Fe (ف) sounds like:',c:'ف',opts:['"v" in van','"f" in fun','"p" in pen','"b" in bat'],a:1},
+  {q:'فارسی means:',c:'فارسی',opts:['Iran','Arabic','The Persian language','A city'],a:2},
+]},
+
+{id:'a6',type:'alpha',num:'A6',title:'Gaf · Lam · Mim · Nun · Vav',fa:'گ ل م ن و',
+intro:'Gaf is the Persian "g" — not found in Arabic. Lam, Mim, Nun are very common. Vav serves as both a consonant and a long vowel.',
+chars:[
+  {l:'گ',n:'Gaf',r:'g',d:'Like "g" in go. Persian\'s own letter — not in Arabic! Two diagonal strokes on Kaf\'s body.'},
+  {l:'ل',n:'Lam',r:'l',d:'Like "l" in love. A tall upward stroke that curves to connect.'},
+  {l:'م',n:'Mim',r:'m',d:'Like "m" in moon. A small circle with a tail.'},
+  {l:'ن',n:'Nun',r:'n',d:'Like "n" in now. A bowl shape with one dot above.'},
+  {l:'و',n:'Vav',r:'v / ow / u',d:'Like "v" in vine OR long "o"/"u". Does NOT connect left.',nc:true},
+],
+forms:[
+  {c:'گ',n:'Gaf',s:'گ',i:'گـ',m:'ـگـ',f:'ـگ'},
+  {c:'ل',n:'Lam',s:'ل',i:'لـ',m:'ـلـ',f:'ـل'},
+  {c:'م',n:'Mim',s:'م',i:'مـ',m:'ـمـ',f:'ـم'},
+  {c:'ن',n:'Nun',s:'ن',i:'نـ',m:'ـنـ',f:'ـن'},
+  {c:'و',n:'Vav',s:'و',i:'و',m:'ـو',f:'ـو',nc:true,tip:'Vav does NOT connect to the next letter.'},
+],
+vocab:[
+  {fa:'مادر',ro:'mādar',en:'mother'},{fa:'نان',ro:'nān',en:'bread'},{fa:'گل',ro:'gol',en:'flower / rose'},
+  {fa:'نام',ro:'nām',en:'name'},{fa:'لال',ro:'lāl',en:'silent / mute'},{fa:'من',ro:'man',en:'I / me'},
+],
+sentences:[
+  {fa:'نام من لیلاست.',ro:'Nām-e man Laylāst.',en:'My name is Layla.'},
+  {fa:'گل زیباست.',ro:'Gol zibāst.',en:'The flower is beautiful.'},
+],
+culture:{icon:'🌺',tag:'Symbol',title:'گل — The Rose in Persian Culture',
+fa:'گل بی‌خار نمی‌شود.',ro:'Gol bi-khār nemishavad.',en:'"A rose does not grow without thorns."',
+body:'The rose (گل) and the nightingale (بلبل bulbul) are the two great symbols of Persian poetry. The rose represents beauty, the beloved, and divine love. The nightingale weeps for the rose — representing the lover longing for the unattainable beloved. This pairing appears in Hafez, Rumi, and hundreds of classical poets. When you give flowers in Iran, odd numbers only — even numbers are for funerals.'},
+quiz:[
+  {q:'Gaf (گ) differs from Kaf (ک) by:',c:'گ',opts:['One dot below','Two diagonal strokes added','Three dots above','A loop'],a:1},
+  {q:'Vav (و) is a non-connector?',c:'و',opts:['True','False'],a:0},
+  {q:'مادر means:',c:'مادر',opts:['Father','Sister','Mother','Brother'],a:2},
+  {q:'نان means:',c:'نان',opts:['Water','Tea','Bread','Rice'],a:2},
+  {q:'من means:',c:'من',opts:['You','He/She','I / me','We'],a:2},
+]},
+
+{id:'a7',type:'alpha',num:'A7',title:'He · Ye — Final Letters!',fa:'ه ی',
+intro:'The last two letters of the Persian alphabet! He is tricky — it changes shape a lot. Ye is the long "ee" vowel and also the "y" consonant. You now know all 32 letters!',
+chars:[
+  {l:'ه',n:'He (Havvaz)',r:'h',d:'Like "h" in hat. Changes shape a lot: standalone ه, initial هـ, medial ـهـ, final ـه or ـ‌ه.'},
+  {l:'ی',n:'Ye',r:'y / i',d:'Like "y" in yes OR long "ee". Very common — also an ezāfe connector.'},
+],
+forms:[
+  {c:'ه',n:'He',s:'ه',i:'هـ',m:'ـهـ',f:'ـه / ه‌',nc:false},
+  {c:'ی',n:'Ye',s:'ی',i:'یـ',m:'ـیـ',f:'ـی'},
+],
+vocab:[
+  {fa:'هَر',ro:'har',en:'every / each'},{fa:'یاد',ro:'yād',en:'memory / learning'},{fa:'هوا',ro:'havā',en:'weather / air'},
+  {fa:'ایران',ro:'Irān',en:'Iran'},{fa:'زیبا',ro:'zibā',en:'beautiful'},{fa:'خوب',ro:'khub',en:'good'},
+],
+sentences:[
+  {fa:'ایران زیباست.',ro:'Irān zibāst.',en:'Iran is beautiful.'},
+  {fa:'هوا خوب است.',ro:'Havā khub ast.',en:'The weather is good.'},
+  {fa:'یاد بگیر!',ro:'Yād begir!',en:'Learn! (Take it to memory!)'},
+],
+culture:{icon:'🎉',tag:'Milestone',title:'شما الفبا را یاد گرفتید! — You Learned the Alphabet!',
+fa:'مبارک باشد!',ro:'Mobārak bāshad!',en:'"Congratulations!"',
+body:'You now know all 32 letters of the Persian alphabet (الفبا, alefbā). The name comes from the first two letters: الف (Alef) + ب (Be). Persian uses the Arabic script but has 4 extra letters: پ چ ژ گ. Now you can sound out any Persian word, even if you don\'t know its meaning yet. This is a huge milestone! As Iranians say: قدم به قدم — qadam be qadam — step by step.'},
+quiz:[
+  {q:'How many letters does the Persian alphabet have?',c:'',opts:['26','28','32','36'],a:2},
+  {q:'Which 4 letters exist in Persian but NOT Arabic?',c:'',opts:['ب پ ت ث','پ چ ژ گ','ج چ ح خ','ک گ ل م'],a:1},
+  {q:'هوا means:',c:'هوا',opts:['Water','Air/Weather','Earth','Fire'],a:1},
+  {q:'مبارک باشد means:',c:'مبارک باشد',opts:['Good night','Thank you','Congratulations','Welcome'],a:2},
+  {q:'Ye (ی) can be:',c:'ی',opts:['Only consonant "y"','Only vowel "ee"','Both consonant and long vowel','Neither'],a:2},
+]},
+
+// ==================== CONVERSATIONAL ====================
+{id:'c1',type:'conv',num:'C1',title:'Greetings & Introductions',fa:'سلام و آشنایی',
+intro:'A1 level. Learn to say hello, introduce yourself, ask names, and use basic courtesy phrases. Iranians greet warmly — expect handshakes, sometimes cheek kisses among close friends.',
+phrases:[
+  {fa:'سلام',ro:'Salām',en:'Hello'},
+  {fa:'خوبی؟',ro:'Khuby?',en:'Are you well? (informal)'},
+  {fa:'خوبم، ممنون.',ro:'Khubam, mamnun.',en:'I\'m well, thank you.'},
+  {fa:'اسمت چیه؟',ro:'Esmat chiye?',en:'What\'s your name? (informal)'},
+  {fa:'اسمم ... است.',ro:'Esmam ... ast.',en:'My name is ...'},
+  {fa:'از آشنایی‌تون خوشحالم.',ro:'Az āshnāyi-tun khushhālam.',en:'Pleased to meet you.'},
+  {fa:'خداحافظ.',ro:'Khodāhāfez.',en:'Goodbye (formal)'},
+  {fa:'بعداً می‌بینمت.',ro:'Ba\'dan mibinamat.',en:'See you later.'},
+],
+dialogue:{title:'First meeting at a café in Tehran',
+lines:[
+  {who:'A',name:'سارا Sara',fa:'سلام! اسمم ساراست. اسم تو چیه؟',ro:'Salām! Esmam Sārāst. Esm-e to chiye?',en:'Hi! My name is Sara. What\'s your name?'},
+  {who:'B',name:'رضا Rezā',fa:'سلام سارا! منم رضام. خوشوقتم.',ro:'Salām Sārā! Manam Rezām. Khoshvagtam.',en:'Hi Sara! I\'m Reza too. Nice to meet you.'},
+  {who:'A',name:'سارا Sara',fa:'از کجایی، رضا؟',ro:'Az kojāyi, Rezā?',en:'Where are you from, Reza?'},
+  {who:'B',name:'رضا Rezā',fa:'از تهرانم. تو چی؟',ro:'Az Tehrānam. To chi?',en:'I\'m from Tehran. And you?'},
+  {who:'A',name:'سارا Sara',fa:'منم از تهرانم! چه جالب!',ro:'Manam az Tehrānam! Che jāleb!',en:'I\'m from Tehran too! How interesting!'},
+]},
+culture:{icon:'🤝',tag:'Etiquette',title:'Ta\'arof — The Art of Persian Politeness',
+fa:'بفرمایید!',ro:'Befarmayyid!',en:'"Please, go ahead / help yourself!"',
+body:'Ta\'arof (تعارف) is a cornerstone of Iranian social life — a ritual politeness where people offer more than they intend and refuse more than they want. If you admire something in someone\'s home, they will likely offer it to you ("it\'s yours" — مال شماست). You must refuse politely at least twice before accepting. When entering a door, both people will insist the other goes first — "بفرمایید!" (after you!). Understanding ta\'arof helps you navigate Iranian hospitality gracefully.'},
+quiz:[
+  {q:'سلام means:',c:'سلام',opts:['Goodbye','Hello','Thank you','Please'],a:1},
+  {q:'خوبم ممنون means:',c:'',opts:['Nice to meet you','Good morning','I\'m well, thank you','See you later'],a:2},
+  {q:'اسمت چیه means:',c:'',opts:['How are you?','Where are you from?','What is your name?','How old are you?'],a:2},
+  {q:'خداحافظ means:',c:'خداحافظ',opts:['Hello','Goodbye','Welcome','Sorry'],a:1},
+  {q:'Ta\'arof is:',c:'',opts:['A Persian dish','A type of music','Ritual politeness','A greeting'],a:2},
+]},
+
+{id:'c2',type:'conv',num:'C2',title:'Numbers, Age & Time',fa:'اعداد، سن و زمان',
+intro:'A1–A2 level. Persian numbers, telling time, asking ages. Persian uses its own numeral shapes (٠١٢٣...) but Western numerals (0123...) are common too.',
+phrases:[
+  {fa:'چند سالته؟',ro:'Chand sālate?',en:'How old are you? (informal)'},
+  {fa:'بیست و سه سالمه.',ro:'Bist-o-se sālame.',en:'I am 23 years old.'},
+  {fa:'ساعت چنده؟',ro:'Sā\'at chande?',en:'What time is it?'},
+  {fa:'ساعت سه است.',ro:'Sā\'at se ast.',en:'It is 3 o\'clock.'},
+  {fa:'الان چه روزیه؟',ro:'Alān che ruzi-ye?',en:'What day is it today?'},
+  {fa:'امروز دوشنبه‌ست.',ro:'Emruz doshanbe-st.',en:'Today is Monday.'},
+  {fa:'دیر شد!',ro:'Dir shod!',en:'We\'re late!'},
+],
+numbers:[
+  {n:'یک',r:'yek',v:1},{n:'دو',r:'do',v:2},{n:'سه',r:'se',v:3},{n:'چهار',r:'chahār',v:4},
+  {n:'پنج',r:'panj',v:5},{n:'شش',r:'shesh',v:6},{n:'هفت',r:'haft',v:7},{n:'هشت',r:'hasht',v:8},
+  {n:'نه',r:'noh',v:9},{n:'ده',r:'dah',v:10},{n:'بیست',r:'bist',v:20},{n:'صد',r:'sad',v:100},
+],
+dialogue:{title:'Friends making plans',
+lines:[
+  {who:'A',name:'نیلوفر Nilufar',fa:'ساعت چنده؟ دیرم میشه!',ro:'Sā\'at chande? Diram mishe!',en:'What time is it? I\'m going to be late!'},
+  {who:'B',name:'امیر Amir',fa:'ساعت هشت و نیمه. کجا میری؟',ro:'Sā\'at hasht-o-nime. Kojā miri?',en:'It\'s half past eight. Where are you going?'},
+  {who:'A',name:'نیلوفر Nilufar',fa:'کلاس فارسی دارم ساعت نه.',ro:'Kelās-e Fārsi dāram sā\'at noh.',en:'I have a Persian class at nine.'},
+  {who:'B',name:'امیر Amir',fa:'هنوز بیست دقیقه مونده. نگران نباش!',ro:'Hanuz bist daqiqe munde. Nagarān nabāsh!',en:'There\'s still twenty minutes left. Don\'t worry!'},
+]},
+culture:{icon:'📅',tag:'Calendar',title:'The Persian Solar Calendar — شمسی',
+fa:'نوروز مبارک!',ro:'Nowruz Mobārak!',en:'"Happy New Year!"',
+body:'Iran uses the Solar Hijri calendar (تقویم شمسی). The Persian New Year, Nowruz (نوروز — "New Day"), falls on the Spring Equinox, around March 20–21. The year 2025 CE = 1404 in the Persian calendar. Nowruz is celebrated for 13 days with the Haft-Seen table (هفت‌سین) — seven items starting with the letter "s" (sin): sprouted wheat, apples, garlic, sumac, vinegar, coins, and hyacinth. It is the biggest celebration in Iranian culture.'},
+quiz:[
+  {q:'ساعت چنده means:',c:'',opts:['What day is it?','What time is it?','How old are you?','Where are you?'],a:1},
+  {q:'بیست means:',c:'بیست',opts:['10','15','20','25'],a:2},
+  {q:'Nowruz falls on:',c:'',opts:['December 21','January 1','The Spring Equinox','The Autumn Equinox'],a:2},
+  {q:'دیر شد means:',c:'دیر شد',opts:['It\'s early','We\'re late','Time to go','Let\'s wait'],a:1},
+  {q:'The Persian year 1404 corresponds roughly to:',c:'',opts:['2003','2015','2025','2030'],a:2},
+]},
+
+{id:'c3',type:'conv',num:'C3',title:'Food, Cafés & Restaurants',fa:'غذا و رستوران',
+intro:'A2 level. Order food, talk about likes and dislikes, navigate a Persian restaurant. Iranian cuisine is one of the world\'s great food traditions.',
+phrases:[
+  {fa:'یه چای لطفاً.',ro:'Ye chāy lotfan.',en:'One tea please.'},
+  {fa:'منوی غذا دارید؟',ro:'Meno-ye ghazā dārid?',en:'Do you have a food menu?'},
+  {fa:'غذای ایرانی دوست دارم.',ro:'Ghazā-ye Irāni dust dāram.',en:'I love Iranian food.'},
+  {fa:'چی پیشنهاد می‌دید؟',ro:'Chi pishnahād midid?',en:'What do you recommend?'},
+  {fa:'حساب لطفاً.',ro:'Hesāb lotfan.',en:'The bill please.'},
+  {fa:'خیلی خوشمزه بود!',ro:'Kheyly khoshmaze bud!',en:'It was very delicious!'},
+  {fa:'گیاهخوارم.',ro:'Giyāhkhāram.',en:'I am vegetarian.'},
+],
+food:[
+  {fa:'چلو کباب',ro:'chelo kabāb',en:'Rice with grilled meat — Iran\'s national dish'},
+  {fa:'خورش قرمه سبزی',ro:'khoresh-e ghorme sabzi',en:'Herb & bean stew — most beloved stew'},
+  {fa:'آش رشته',ro:'āsh-e reshte',en:'Noodle soup — eaten at Nowruz'},
+  {fa:'دوغ',ro:'dugh',en:'Yogurt drink — salty, refreshing'},
+  {fa:'سمنو',ro:'samanu',en:'Sweet wheat pudding — Nowruz tradition'},
+],
+dialogue:{title:'At a traditional restaurant in Isfahan',
+lines:[
+  {who:'A',name:'گارسون Waiter',fa:'بفرمایید! چی میل دارید؟',ro:'Befarmayyid! Chi meyl dārid?',en:'Welcome! What would you like?'},
+  {who:'B',name:'مهمان Guest',fa:'یه چلو کباب و یه دوغ لطفاً.',ro:'Ye chelo kabāb o ye dugh lotfan.',en:'One chelo kabab and one dough please.'},
+  {who:'A',name:'گارسون Waiter',fa:'کباب کوبیده می‌خواید یا جوجه؟',ro:'Kabāb-e kubide mikhāyid yā juje?',en:'Do you want ground meat kabab or chicken?'},
+  {who:'B',name:'مهمان Guest',fa:'کوبیده، ممنون. و آیا سوپ دارید؟',ro:'Kubide, mamnun. Va āyā sup dārid?',en:'Ground meat, thank you. And do you have soup?'},
+  {who:'A',name:'گارسون Waiter',fa:'بله، آش رشته داریم.',ro:'Bale, āsh-e reshte dārim.',en:'Yes, we have noodle soup.'},
+  {who:'B',name:'مهمان Guest',fa:'عالیه! حتماً امتحان می‌کنم.',ro:'\'Āliye! Hatman emtahān mikonam.',en:'Wonderful! I\'ll definitely try it.'},
+]},
+culture:{icon:'🍽️',tag:'Food',title:'Persian Cuisine — A Living Poetry',
+fa:'نوش جان!',ro:'Nushe jān!',en:'"May it nourish your soul!" (Bon appétit)',
+body:'Persian food is built on aromatic herbs, dried fruits, nuts, and saffron (زعفران za\'farān) — the world\'s most expensive spice, grown in Khorasan. Every Iranian household has its own recipe for ghorme sabzi (herb stew), considered the most loved dish. Bread (نان nān) comes in many forms: lavash (thin flatbread), sangak (baked on river stones), barbari (thick oblong loaf). Tea after meals is non-negotiable.'},
+quiz:[
+  {q:'نوش جان means:',c:'',opts:['Welcome','Goodbye','Bon appétit','Good night'],a:2},
+  {q:'چلو کباب is:',c:'',opts:['A soup','Rice with grilled meat','A dessert','A drink'],a:1},
+  {q:'حساب لطفاً means:',c:'',opts:['The menu please','One more please','The bill please','Thank you'],a:2},
+  {q:'What is دوغ?',c:'دوغ',opts:['Sweet tea','Yogurt drink','Fruit juice','Sparkling water'],a:1},
+  {q:'خیلی خوشمزه means:',c:'',opts:['Very expensive','Very spicy','Very delicious','Very small'],a:2},
+]},
+
+{id:'c4',type:'conv',num:'C4',title:'Shopping & Bargaining',fa:'خرید و چانه‌زنی',
+intro:'A2 level. Persian markets (bazaars) are legendary. Learn to ask prices, bargain politely, and shop. The Grand Bazaar of Tehran is one of the largest covered markets on Earth.',
+phrases:[
+  {fa:'این چند تومنه؟',ro:'In chand tumāne?',en:'How much is this? (in Tomans)'},
+  {fa:'گرونه! تخفیف میدید؟',ro:'Girone! Takhfif midid?',en:'It\'s expensive! Can you give a discount?'},
+  {fa:'این رو می‌خوام.',ro:'Ino mikhām.',en:'I want this one.'},
+  {fa:'یه کم ارزون‌تر نمیشه؟',ro:'Ye kam arzuntar nemishe?',en:'Can\'t it be a little cheaper?'},
+  {fa:'باشه، می‌خرم.',ro:'Bāshe, mikharam.',en:'OK, I\'ll buy it.'},
+  {fa:'کجا می‌تونم ... پیدا کنم؟',ro:'Kojā mitoonam ... peydā konam?',en:'Where can I find ...?'},
+  {fa:'فقط نگاه می‌کنم.',ro:'Faqat negāh mikonam.',en:'I\'m just looking.'},
+],
+dialogue:{title:'In the bazaar, buying a carpet',
+lines:[
+  {who:'A',name:'مشتری Customer',fa:'سلام. این فرش چند تومنه؟',ro:'Salām. In farsh chand tumāne?',en:'Hello. How much is this carpet?'},
+  {who:'B',name:'فروشنده Seller',fa:'سلام! این دست‌بافته. سه میلیونه.',ro:'Salām! In dast-bāfte. Se milyone.',en:'Hello! This is handwoven. It\'s three million (Tomans).'},
+  {who:'A',name:'مشتری Customer',fa:'گرونه! دو میلیون چطوره؟',ro:'Girone! Do milyon chetore?',en:'That\'s expensive! How about two million?'},
+  {who:'B',name:'فروشنده Seller',fa:'نمیشه آقا. دو و نیم، آخرین قیمته.',ro:'Nemishe āghā. Do-o-nim, ākharin ghimate.',en:'Can\'t do it, sir. Two and a half — final price.'},
+  {who:'A',name:'مشتری Customer',fa:'باشه. قبوله. بسته‌بندی می‌کنید؟',ro:'Bāshe. Qabule. Baste-bandi mikonid?',en:'OK. Deal. Can you pack it?'},
+]},
+culture:{icon:'🏺',tag:'Bazaar',title:'The Persian Bazaar — بازار',
+fa:'بازار',ro:'Bāzār',en:'"Market / Bazaar"',
+body:'The word "bazaar" comes directly from Persian (بازار). Persian bazaars are ancient commercial hubs — the Grand Bazaar of Tehran (بازار بزرگ تهران) covers 10km² and employs over 100,000 people. Shopping here is a social ritual: tea is offered, conversation flows, and bargaining is expected. Never accept the first price. The bazaar traditionally sat at the heart of the city next to the mosque — commerce and faith intertwined. Persian carpets (فرش) are among the world\'s greatest art forms, with knot counts exceeding 1,000 per square inch.'},
+quiz:[
+  {q:'این چند تومنه means:',c:'',opts:['What is this?','How much is this?','I want this','Too expensive'],a:1},
+  {q:'تخفیف means:',c:'تخفیف',opts:['Price','Discount','Expensive','Change'],a:1},
+  {q:'فقط نگاه می‌کنم means:',c:'',opts:['I\'ll buy it','How much?','Just looking','Very nice'],a:2},
+  {q:'"Bazaar" is a word from:',c:'',opts:['Arabic','Turkish','Persian','French'],a:2},
+  {q:'باشه means:',c:'باشه',opts:['No','Maybe','OK / alright','Never'],a:2},
+]},
+
+{id:'c5',type:'conv',num:'C5',title:'Family & Friends',fa:'خانواده و دوستان',
+intro:'A2–B1 level. Talk about your family, describe relationships, and discuss friends. Family is central to Iranian culture — often multigenerational homes.',
+phrases:[
+  {fa:'خانواده‌ام بزرگه.',ro:'Khānevāde-am bozorge.',en:'My family is large.'},
+  {fa:'چند تا برادر خواهر داری؟',ro:'Chand tā barādar khāhar dāri?',en:'How many siblings do you have?'},
+  {fa:'یه برادر و دو خواهر دارم.',ro:'Ye barādar o do khāhar dāram.',en:'I have one brother and two sisters.'},
+  {fa:'ازدواج کردی؟',ro:'Ezdevāj kardi?',en:'Are you married?'},
+  {fa:'نه، هنوز مجردم.',ro:'Na, hanuz mojradam.',en:'No, I\'m still single.'},
+  {fa:'دوست صمیمی‌ام رضاست.',ro:'Dust-e samimi-am Rezāst.',en:'My close friend is Reza.'},
+  {fa:'با هم بزرگ شدیم.',ro:'Bā ham bozorg shodim.',en:'We grew up together.'},
+],
+family:[
+  {fa:'پدر',ro:'pedar',en:'father'},{fa:'مادر',ro:'mādar',en:'mother'},{fa:'برادر',ro:'barādar',en:'brother'},
+  {fa:'خواهر',ro:'khāhar',en:'sister'},{fa:'پسر',ro:'pesar',en:'son/boy'},{fa:'دختر',ro:'dokhtar',en:'daughter/girl'},
+  {fa:'پدربزرگ',ro:'pedar-bozorg',en:'grandfather'},{fa:'مادربزرگ',ro:'mādar-bozorg',en:'grandmother'},
+],
+dialogue:{title:'Catching up with an old friend',
+lines:[
+  {who:'A',name:'شیرین Shirin',fa:'شیرین! چقدر وقته ندیدمت!',ro:'Shirin! Cheghadr vaghte nadidamat!',en:'Shirin! It\'s been so long since I saw you!'},
+  {who:'B',name:'پریسا Parisa',fa:'پریسا جون! حالت چطوره؟ خانواده‌ات خوبن؟',ro:'Parisā jun! Hālat chetore? Khānevāde-at khuban?',en:'Parisa dear! How are you? Is your family well?'},
+  {who:'A',name:'شیرین Shirin',fa:'همه خوبن، ممنون. بابام بازنشسته شد.',ro:'Hame khuban, mamnun. Bābām bāz-nashaste shod.',en:'Everyone is well, thank you. My dad just retired.'},
+  {who:'B',name:'پریسا Parisa',fa:'آره؟ ماشاالله! و تو؟ هنوز مجردی؟',ro:'Āre? Māshāllāh! Va to? Hanuz mojradi?',en:'Really? Mashallah! And you? Still single?'},
+  {who:'A',name:'شیرین Shirin',fa:'نه، نامزد کردم! ماه دیگه عروسیمه.',ro:'Na, nāmzad kardam! Māh-e dige arusimeh.',en:'No, I got engaged! My wedding is next month!'},
+  {who:'B',name:'پریسا Parisa',fa:'مبارک باشه! خوشبخت بشید!',ro:'Mobārak bāshe! Khoshbakht beshid!',en:'Congratulations! May you be happy!'},
+]},
+culture:{icon:'👨‍👩‍👧',tag:'Family',title:'Family Values in Iranian Culture',
+fa:'خانواده',ro:'Khānevāde',en:'"Family"',
+body:'Family (خانواده) is the foundation of Iranian society. Multigenerational living is common — grandparents, parents, and children often under one roof. The concept of family honour (آبروی خانوادگی ābruy-e khānevādegi) carries great weight. Friday (جمعه, jome) is family day — the day off in Iran — when extended family gathers for a large lunch. Addressing elders respectfully (using plural "you" — شما shomā instead of تو to) is essential etiquette.'},
+quiz:[
+  {q:'مادر means:',c:'مادر',opts:['Father','Sister','Mother','Grandmother'],a:2},
+  {q:'مبارک باشه means:',c:'',opts:['Good night','Welcome','Congratulations','Thank you'],a:2},
+  {q:'مجرد means:',c:'مجرد',opts:['Married','Divorced','Single','Engaged'],a:2},
+  {q:'Friday is significant in Iran because:',c:'',opts:['It\'s a market day','It\'s the day off and family day','It\'s a national holiday','It\'s a religious fast'],a:1},
+  {q:'Using شما instead of تو shows:',c:'',opts:['Anger','Intimacy','Respect/formality','Confusion'],a:2},
+]},
+
+{id:'c6',type:'conv',num:'C6',title:'Work & Daily Life',fa:'کار و زندگی روزمره',
+intro:'B1 level. Talk about jobs, daily routines, and work life in Iran. Iran has a young, educated, and tech-savvy population.',
+phrases:[
+  {fa:'چیکاره‌ای؟',ro:'Chikāre-i?',en:'What do you do? (informal)'},
+  {fa:'مهندسم.',ro:'Mohandesam.',en:'I\'m an engineer.'},
+  {fa:'کجا کار می‌کنی؟',ro:'Kojā kār mikoni?',en:'Where do you work?'},
+  {fa:'تو یه شرکت خصوصی کار می‌کنم.',ro:'Tu ye sherkat-e khosousi kār mikonam.',en:'I work in a private company.'},
+  {fa:'حقوقت خوبه؟',ro:'Hoghughat khube?',en:'Is your salary good?'},
+  {fa:'کار پیدا کردن سخته.',ro:'Kār peydā kardan sakhte.',en:'Finding work is hard.'},
+  {fa:'دورکاری می‌کنم.',ro:'Durkāri mikonam.',en:'I work remotely.'},
+],
+jobs:[
+  {fa:'دکتر',ro:'doktor',en:'doctor'},{fa:'معلم',ro:'mo\'allem',en:'teacher'},{fa:'مهندس',ro:'mohandes',en:'engineer'},
+  {fa:'برنامه‌نویس',ro:'barnāme-nevis',en:'programmer'},{fa:'هنرمند',ro:'honarmand',en:'artist'},
+  {fa:'کارمند',ro:'kārmand',en:'employee/clerk'},{fa:'دانشجو',ro:'dāneshjoo',en:'university student'},
+],
+dialogue:{title:'Meeting at a work conference in Tehran',
+lines:[
+  {who:'A',name:'کاوه Kāveh',fa:'سلام، کاوه‌ام. شما تو این شرکت کار می‌کنید؟',ro:'Salām, Kāveham. Shomā tu in sherkat kār mikonid?',en:'Hi, I\'m Kaveh. Do you work at this company?'},
+  {who:'B',name:'نازنین Nāznin',fa:'نه، از یه استارتاپ دیگه اومدم. نازنینم.',ro:'Na, az ye startāp-e dige umadam. Nāzninam.',en:'No, I came from a different startup. I\'m Nazanin.'},
+  {who:'A',name:'کاوه Kāveh',fa:'چه کاری می‌کنید؟',ro:'Che kāri mikonid?',en:'What kind of work do you do?'},
+  {who:'B',name:'نازنین Nāznin',fa:'برنامه‌نویسم. روی هوش مصنوعی کار می‌کنم.',ro:'Barnāme-nevisam. Ruy-e hushe masnu\'i kār mikonam.',en:'I\'m a programmer. I work on artificial intelligence.'},
+  {who:'A',name:'کاوه Kāveh',fa:'جالبه! منم تو حوزه فناوری کار می‌کنم.',ro:'Jālebe! Manam tu howze-ye fanāvari kār mikonam.',en:'Interesting! I also work in the tech field.'},
+]},
+culture:{icon:'💼',tag:'Economy',title:'Iran\'s Young, Tech-Driven Workforce',
+fa:'ایران در حال تغییر است.',ro:'Irān dar hāl-e taghyir ast.',en:'"Iran is changing."',
+body:'Iran has one of the Middle East\'s highest rates of university graduates, with over 50% of students being women. Tehran has a vibrant startup scene — Iranian engineers, programmers, and entrepreneurs are prominent across the global tech industry. Despite economic pressures, Iranian youth are highly educated, multilingual, and resourceful. The city of Tehran alone has a population of 15+ million people, making it one of the world\'s megacities.'},
+quiz:[
+  {q:'چیکاره‌ای means:',c:'',opts:['How are you?','What do you do?','Where are you?','When did you come?'],a:1},
+  {q:'مهندس means:',c:'مهندس',opts:['Doctor','Teacher','Engineer','Manager'],a:2},
+  {q:'دانشجو means:',c:'دانشجو',opts:['Professor','University student','School child','Graduate'],a:1},
+  {q:'دورکاری means:',c:'دورکاری',opts:['Overtime','Remote work','Part-time','Commuting'],a:1},
+  {q:'What percentage of Iranian university students are women?',c:'',opts:['About 20%','About 35%','Over 50%','About 45%'],a:2},
+]},
+
+// ==================== CULTURE/TRAVEL ====================
+{id:'t1',type:'cult',num:'T1',title:'Persian History — Ancient Roots',fa:'تاریخ ایران',
+intro:'Iran is one of the world\'s oldest continuous civilizations. From Cyrus the Great to the Safavid Empire, Persian history spans 3,000+ recorded years.',
+timeline:[
+  {year:'c. 550 BCE',title:'Achaemenid Empire — هخامنشیان',body:'Cyrus the Great (کوروش بزرگ) founded the first Persian Empire — the largest empire the world had seen. His Cyrus Cylinder is considered the world\'s first human rights declaration. The empire stretched from Greece to India.',fa:'کوروش بزرگ'},
+  {year:'330 BCE',title:'Alexander\'s Conquest — اسکندر',body:'Alexander the Great conquered Persia and burned Persepolis (تخت جمشید). Yet Persian culture absorbed and transformed its conquerors — as it would do repeatedly throughout history.',fa:'تخت جمشید'},
+  {year:'224–651 CE',title:'Sassanid Empire — ساسانیان',body:'The second great Persian empire. Zoroastrianism (زرتشت) was the state religion. Persian became a sophisticated literary language. The empire fell to the Arab Islamic conquest in 651 CE.',fa:'زرتشت'},
+  {year:'9th–11th c.',title:'Islamic Golden Age — رنسانس ایرانی',body:'Persian scholars led the world in mathematics, astronomy, medicine, and philosophy. Ibn Sina (ابن سینا — Avicenna) wrote the Canon of Medicine, used in European universities for 600 years.',fa:'ابن سینا'},
+  {year:'1501–1736',title:'Safavid Empire — صفویان',body:'Shah Ismail I established Shia Islam as the state religion. Isfahan (اصفهان) became one of the world\'s most beautiful cities. Persian art, architecture, and poetry reached their zenith.',fa:'اصفهان'},
+  {year:'1979',title:'Islamic Revolution — انقلاب اسلامی',body:'The Shah was overthrown and the Islamic Republic was established under Ayatollah Khomeini. Iran remains the Islamic Republic today, though society is complex, diverse, and constantly evolving.',fa:'انقلاب'},
+],
+culture:{icon:'🏛️',tag:'Heritage',title:'Persepolis — تخت جمشید',
+fa:'تخت جمشید، تخت شاهان جهان.',ro:'Takht-e Jamshid, takht-e shāhān-e jahān.',en:'"Persepolis, throne of the kings of the world."',
+body:'Persepolis (تخت جمشید — "Throne of Jamshid") in Fars Province was the ceremonial capital of the Achaemenid Empire, built around 518 BCE. Its carved reliefs show delegations from 23 nations bringing tribute — a vision of a multicultural empire. Burned by Alexander in 330 BCE, its ruins survive and are a UNESCO World Heritage Site. Every Iranian knows Persepolis as a symbol of civilizational pride.'},
+quiz:[
+  {q:'Cyrus the Great founded:',c:'',opts:['The Sassanid Empire','The Achaemenid Empire','The Safavid Empire','The Parthian Empire'],a:1},
+  {q:'تخت جمشید is:',c:'تخت جمشید',opts:['A city in Tehran','Persepolis — ancient ceremonial capital','A famous mosque','A mountain peak'],a:1},
+  {q:'The Safavid Empire established which religion as state religion?',c:'',opts:['Sunni Islam','Zoroastrianism','Shia Islam','Christianity'],a:2},
+  {q:'Ibn Sina (Avicenna) was famous for:',c:'',opts:['Poetry','Mathematics only','Medicine and philosophy','Architecture'],a:2},
+  {q:'The Islamic Revolution in Iran was in:',c:'',opts:['1953','1963','1979','1989'],a:2},
+]},
+
+{id:'t2',type:'cult',num:'T2',title:'Famous Cities — Tehran & Isfahan',fa:'تهران و اصفهان',
+intro:'Iran\'s two most iconic cities: Tehran, the vast modern capital, and Isfahan, the jewel of Safavid architecture. Each has its own soul.',
+cities:[
+  {name:'Tehran',fa:'تهران',desc:'Capital and megacity of 15+ million. The Alborz mountains frame its northern skyline with ski slopes. A city of traffic, culture, incredible food, and palpable energy.',sights:'Milad Tower · Golestan Palace · Grand Bazaar · Darband hiking trail · Tehran Museum of Contemporary Art'},
+  {name:'Isfahan',fa:'اصفهان',desc:'"Isfahan is half the world" (اصفهان نصف جهان). The Safavid capital features the world\'s most beautiful central square — Naqsh-e Jahan, UNESCO-listed.',sights:'Naqsh-e Jahan Square · Sheikh Lotfallah Mosque · Khaju Bridge · Vank Cathedral · Si-o-Se Pol bridge'},
+],
+phrases:[
+  {fa:'کجا هستیم؟',ro:'Kojā hastim?',en:'Where are we?'},
+  {fa:'این بنا مال کِی‌ه؟',ro:'In banā māl-e kihe?',en:'What era is this building from?'},
+  {fa:'بلیط چند تومنه؟',ro:'Belit chand tumāne?',en:'How much is the ticket?'},
+  {fa:'راهنما می‌خوام.',ro:'Rāhnamā mikhām.',en:'I want a guide.'},
+  {fa:'این مسجد واقعاً باشکوهه.',ro:'In masjed vāqe\'an bāshokohe.',en:'This mosque is truly magnificent.'},
+],
+culture:{icon:'🕌',tag:'Architecture',title:'Naqsh-e Jahan Square — نقش جهان',
+fa:'اصفهان نصف جهان است.',ro:'Esfahān nesf-e jahān ast.',en:'"Isfahan is half the world."',
+body:'Naqsh-e Jahan ("Image of the World") Square in Isfahan was built by Shah Abbas I around 1602. At 512m × 163m, it is one of the largest public squares on Earth, surrounded by the Imam Mosque, Sheikh Lotfallah Mosque, Ali Qapu Palace, and the Grand Bazaar. The tilework uses a mathematical mosaic system predating Western computer graphics. Polo was played here — the goalposts still stand. UNESCO declared it a World Heritage Site in 1979.'},
+quiz:[
+  {q:'اصفهان نصف جهان means:',c:'',opts:['Isfahan is the capital','Isfahan is half the world','Isfahan is ancient','Isfahan is beautiful'],a:1},
+  {q:'Tehran is home to approximately:',c:'',opts:['3 million','8 million','15+ million','25 million'],a:2},
+  {q:'Naqsh-e Jahan Square was built by:',c:'',opts:['Cyrus the Great','Shah Abbas I','Rumi','Hafez'],a:1},
+  {q:'Si-o-Se Pol means:',c:'سی‌وسه‌پل',opts:['Bridge of Kings','Bridge of 33 Arches','The Great Bridge','Stone Bridge'],a:1},
+  {q:'Which sport was historically played at Naqsh-e Jahan?',c:'',opts:['Wrestling','Archery','Polo','Football'],a:2},
+]},
+
+{id:'t3',type:'cult',num:'T3',title:'Famous Cities — Shiraz & Persepolis',fa:'شیراز و تخت جمشید',
+intro:'Shiraz is the city of poets, wine, roses, and gardens. Nearby lies Persepolis — the greatest surviving monument of ancient Persia.',
+cities:[
+  {name:'Shiraz',fa:'شیراز',desc:'City of Hafez and Saadi — Iran\'s two greatest lyric poets. Famous for its roses, gardens, and historically for wine (شراز wine takes its name from Shiraz). Warm, laid-back, beautiful.',sights:'Tomb of Hafez · Tomb of Saadi · Nasir-ol-Molk (Pink) Mosque · Eram Garden · Vakil Bazaar'},
+  {name:'Persepolis',fa:'تخت جمشید',desc:'50km northeast of Shiraz. The Achaemenid ceremonial capital. Giant carved columns, bas-reliefs of subject nations, the Gate of All Nations. Built 518 BCE, burned 330 BCE.',sights:'Gate of All Nations · Apadana Palace · Hall of 100 Columns · Treasury · Royal Tombs at Naqsh-e Rostam'},
+],
+phrases:[
+  {fa:'مقبره حافظ کجاست؟',ro:'Maqbare-ye Hāfez kojāst?',en:'Where is the tomb of Hafez?'},
+  {fa:'چقدر باشکوهه!',ro:'Cheghadr bāshokohe!',en:'How magnificent it is!'},
+  {fa:'عکس بگیریم؟',ro:'Aks begirim?',en:'Shall we take a photo?'},
+  {fa:'تاریخ ایران خیلی غنیه.',ro:'Tārikh-e Irān kheyly ghanihe.',en:'Iranian history is very rich.'},
+],
+culture:{icon:'📖',tag:'Poetry',title:'Hafez — The Tongue of the Unseen',
+fa:'الا یا ایها الساقی ادر کأساً و ناولها.',ro:'Alā yā ayyohā as-sāqi adir ka\'san wa nāwilhā.',en:'"Come, O Cupbearer, pass the cup around..."',
+body:'Hafez (حافظ, 1315–1390) of Shiraz is considered Iran\'s greatest lyric poet. His Divan (دیوان) of ghazals (love poems) is found in virtually every Iranian home — used for فال حافظ (fāl-e Hāfez): opening randomly for spiritual guidance, like a sacred oracle. His tomb (آرامگاه حافظ) in Shiraz\'s Hafezieh garden is one of Iran\'s most visited sites. Millions come to read a ghazal and find meaning in its lines.'},
+quiz:[
+  {q:'Hafez was from:',c:'',opts:['Tehran','Isfahan','Shiraz','Tabriz'],a:2},
+  {q:'فال حافظ is:',c:'',opts:['A food dish','Opening the Divan for guidance','A music tradition','A dance'],a:1},
+  {q:'Persepolis was built approximately:',c:'',opts:['100 BCE','518 BCE','200 CE','1000 CE'],a:1},
+  {q:'چقدر باشکوهه means:',c:'',opts:['How old is it?','How far is it?','How magnificent!','How expensive!'],a:2},
+  {q:'The "Pink Mosque" is in:',c:'',opts:['Tehran','Isfahan','Shiraz','Tabriz'],a:2},
+]},
+
+{id:'t4',type:'cult',num:'T4',title:'Weather & Seasons in Iran',fa:'آب و هوای ایران',
+intro:'Iran is a vast country with dramatically different climates — from ski slopes north of Tehran in winter to beach resorts on the Persian Gulf.',
+seasons:[
+  {icon:'🌸',s:'Spring — بهار',r:'bahār',temp:'10–25°C',desc:'Best travel season. Nowruz (New Year) in March. Gardens bloom, waterfalls flow, the whole country travels.'},
+  {icon:'☀️',s:'Summer — تابستان',r:'tābestan',temp:'25–45°C',desc:'Very hot in most cities. Iranians escape to the Caspian coast or mountain villages. The north stays pleasant.'},
+  {icon:'🍂',s:'Autumn — پاییز',r:'pāyiz',temp:'8–22°C',desc:'Beautiful, mild. Pomegranates ripen. Second-best travel season — fewer crowds than spring.'},
+  {icon:'❄️',s:'Winter — زمستان',r:'zemestān',temp:'-5 to 15°C',desc:'Ski season! Dizin and Shemshak (near Tehran) have world-class slopes. Deserts stay mild and perfect for visiting.'},
+],
+weather_phrases:[
+  {fa:'هوا چطوره؟',ro:'Havā chetore?',en:'How\'s the weather?'},
+  {fa:'باران می‌آد.',ro:'Bārān miyād.',en:'It\'s raining.'},
+  {fa:'هوا ابریه.',ro:'Havā abrihe.',en:'It\'s cloudy.'},
+  {fa:'گرمای طاقت‌فرساست.',ro:'Garmā-ye tāqat-forsāst.',en:'It\'s unbearably hot.'},
+  {fa:'برف می‌آد.',ro:'Barf miyād.',en:'It\'s snowing.'},
+  {fa:'هوا عالیه!',ro:'Havā ālihe!',en:'The weather is perfect!'},
+],
+culture:{icon:'🌷',tag:'Season',title:'Nowruz — نوروز — The Persian New Year',
+fa:'بهار که آمد، دل شادمان شد.',ro:'Bahār ke āmad, del shādmān shod.',en:'"When spring came, the heart became joyful."',
+body:'Nowruz (نوروز — "New Day") is the Persian New Year, celebrated on the Spring Equinox (March 20–21). It is 3,000 years old, predating Islam. The Haft-Seen table (هفت‌سین) must have seven items starting with "س" (sin): سبزه (sabze, sprouts), سیب (sib, apple), سمنو (samanu, pudding), سرکه (serkeh, vinegar), سنجد (senjed, dried fruit), سکه (sekke, coins), سیر (sir, garlic). The 13th day, Sizdah-be-dar (سیزده به در), everyone must go outdoors — staying home is bad luck.'},
+quiz:[
+  {q:'بهار means:',c:'بهار',opts:['Summer','Spring','Autumn','Winter'],a:1},
+  {q:'Nowruz falls on:',c:'',opts:['January 1','The Winter Solstice','The Spring Equinox','March 1'],a:2},
+  {q:'برف می‌آد means:',c:'',opts:['It\'s raining','It\'s sunny','It\'s snowing','It\'s windy'],a:2},
+  {q:'The Haft-Seen table has items starting with the letter:',c:'',opts:['الف (A)','ب (B)','س (S)','م (M)'],a:2},
+  {q:'زمستان means:',c:'زمستان',opts:['Spring','Summer','Autumn','Winter'],a:3},
+]},
+
+{id:'t5',type:'cult',num:'T5',title:'Travel Tips & Practical Persian',fa:'راهنمای سفر',
+intro:'B1 level practical Persian for travelers. Get around, stay safe, and connect with locals. Iranians are famously warm to foreign visitors.',
+tips:[
+  {icon:'🛂',title:'Visa & Entry',body:'Most nationalities require a visa. Tourist visas are typically issued on arrival at major airports. Always check current requirements before traveling.'},
+  {icon:'💰',title:'Money',body:'Iran uses the Iranian Rial (ریال) officially, but people quote prices in Tomans (تومان) — one Toman = 10 Rials. International cards don\'t work — bring cash (Euros or USD are best).'},
+  {icon:'👗',title:'Dress Code',body:'Women must wear hijab (حجاب) in public — a headscarf plus loose clothing. Men should avoid shorts in formal/religious settings. Pack light, loose, natural fabrics.'},
+  {icon:'📱',title:'Communications',body:'VPN is widely used. SIM cards are cheap and available. WiFi is common in hotels and cafés.'},
+  {icon:'🚕',title:'Getting Around',body:'Tehran has a modern metro (مترو). Snapp (Iranian Uber) works in major cities. Intercity buses are comfortable. Trains are scenic and affordable.'},
+  {icon:'🏥',title:'Safety',body:'Iran is generally very safe for tourists. Pickpocketing is rare. Locals often go out of their way to help foreign visitors — expect invitations to tea and meals!'},
+],
+phrases:[
+  {fa:'کمکم کنید لطفاً.',ro:'Komakam konid lotfan.',en:'Please help me.'},
+  {fa:'گم شدم.',ro:'Gom shodam.',en:'I\'m lost.'},
+  {fa:'بیمارستان کجاست؟',ro:'Bimārestān kojāst?',en:'Where is the hospital?'},
+  {fa:'متشکرم.',ro:'Motashakkeram.',en:'Thank you (formal).'},
+  {fa:'ببخشید، فارسی بلد نیستم.',ro:'Bebakhshid, Fārsi balad nistam.',en:'Sorry, I don\'t know Persian.'},
+  {fa:'کمی فارسی بلدم.',ro:'Kami Fārsi balad-am.',en:'I know a little Persian.'},
+  {fa:'این رو به انگلیسی چی میگن؟',ro:'Ino be Engelisi chi migan?',en:'What is this called in English?'},
+],
+culture:{icon:'✈️',tag:'Traveler Tips',title:'Iranians & Foreign Visitors',
+fa:'خوش آمدید!',ro:'Khosh āmadid!',en:'"Welcome!"',
+body:'Iran consistently surprises first-time visitors with the warmth of its people. Strangers will invite you for tea, offer directions, insist on paying for your meal. The phrase خوش آمدید (Welcome!) is genuine and heartfelt. Learning even a few Persian words creates instant goodwill and delight. Iranians are deeply proud of their culture and will love sharing it with you. The most important phrase you can know: ایران خیلی زیباست — "Iran is very beautiful!"'},
+quiz:[
+  {q:'گم شدم means:',c:'گم شدم',opts:['I\'m tired','I\'m hungry','I\'m lost','I\'m late'],a:2},
+  {q:'In Iran, prices are typically quoted in:',c:'',opts:['Rials','Dollars','Tomans','Euros'],a:2},
+  {q:'Women travelers in Iran must wear:',c:'',opts:['Full niqab','Hijab (headscarf + loose clothing)','Nothing specific','A chador only'],a:1},
+  {q:'خوش آمدید means:',c:'',opts:['Goodbye','Thank you','Welcome','Good morning'],a:2},
+  {q:'متشکرم is:',c:'متشکرم',opts:['Informal thank you','Formal thank you','Please','Sorry'],a:1},
+]},
+
+];
+
+let curLesson = 0;
+let curTab = 'learn';
+let qz = {q:0,score:0,answered:false,done:false};
+
+function getTagHTML(type){
+  if(type==='alpha') return '<span class="tag tag-alpha">Alphabet</span>';
+  if(type==='conv') return '<span class="tag tag-conv">Conversation</span>';
+  if(type==='cult') return '<span class="tag tag-cult">Travel & Culture</span>';
+  if(type==='hist') return '<span class="tag tag-hist">History</span>';
+  return '';
+}
+
+function buildSidebar(){
+  const groups = {alpha:'Alphabet Lessons',conv:'Conversational Lessons',cult:'Travel, Culture & History'};
+  const byType = {alpha:[],conv:[],cult:[]};
+  LESSONS.forEach((l,i)=>{const t=l.type==='hist'?'cult':l.type; byType[t].push({l,i})});
+  let html='';
+  Object.keys(groups).forEach(type=>{
+    if(!byType[type].length) return;
+    html+=`<div class="section-group"><div class="section-group-label">${groups[type]}</div>`;
+    byType[type].forEach(({l,i})=>{
+      html+=`<div class="lesson-link ${i===curLesson?'active':''}" id="link-${i}" onclick="go(${i})">
+        <div class="num">${l.num}</div>
+        <span style="flex:1">${l.title}</span>
+        ${getTagHTML(l.type)}
+      </div>`;
+    });
+    html+='</div>';
+  });
+  document.getElementById('sidebarContent').innerHTML=html;
+}
+
+function go(i){
+  curLesson=i;
+  qz={q:0,score:0,answered:false,done:false};
+  buildSidebar();
+  const l=LESSONS[i];
+  document.getElementById('topbarTitle').textContent=l.title;
+  document.getElementById('topbarBadge').innerHTML=getTagHTML(l.type);
+  document.getElementById('topbarBadge').className='topbar-badge';
+  switchTab(curTab);
+}
+
+function switchTab(t){
+  curTab=t;
+  document.querySelectorAll('.tab').forEach(el=>el.classList.toggle('active',el.dataset.tab===t));
+  document.querySelectorAll('.section').forEach(el=>el.classList.toggle('active',el.id==='sec-'+t));
+  if(t==='learn') renderLearn();
+  if(t==='vocab') renderVocab();
+  if(t==='culture') renderCulture();
+  if(t==='quiz') renderQuiz();
+}
+
+function renderLearn(){
+  const l=LESSONS[curLesson];
+  let h=`<div class="intro-card"><h2>${l.title}</h2><p>${l.intro}</p></div>`;
+
+  if(l.chars){
+    h+=`<div class="label">New Letters</div>
+    <div class="char-grid">`;
+    l.chars.forEach((c,i)=>{
+      const col=COLORS[i];
+      h+=`<div class="char-card">
+        <div class="c-main" style="color:${col}">${c.l}</div>
+        <div class="c-name" style="color:${col}">${c.n}</div>
+        <div class="c-roman">${c.r}</div>
+        ${c.nc?'<div class="c-nc">★ non-connector</div>':''}
+        <div class="c-desc">${c.d}</div>
+      </div>`;
+    });
+    h+=`</div>`;
+
+    h+=`<div class="label">Letter Forms in Words</div>
+    <div class="forms-wrap"><table class="forms">
+    <tr><th>Letter</th><th>Standalone</th><th>Initial (start)</th><th>Medial (middle)</th><th>Final (end)</th></tr>`;
+    l.forms.forEach((f,i)=>{
+      const col=COLORS[i];
+      h+=`<tr>
+        <td><span style="color:${col};font-size:18px">${f.c}</span> ${f.n} ${f.nc?'<span class="nc-badge">non-connector</span>':''}</td>
+        <td><span class="f-form" style="color:${col}">${f.s}</span></td>
+        <td><span class="f-form" style="color:${col}">${f.i}</span></td>
+        <td><span class="f-form" style="color:${col}">${f.m}</span></td>
+        <td><span class="f-form" style="color:${col}">${f.f}</span></td>
+      </tr>`;
+      if(f.tip) h+=`<tr class="tip-row"><td colspan="5">⚠ ${f.tip}</td></tr>`;
+    });
+    h+=`</table></div>
+    <div class="vowel-box"><strong>Short vowels (حرکت):</strong> Usually omitted in everyday text, but shown in learning materials:
+    <br><strong>َ</strong> = "a" (above) · <strong>ِ</strong> = "e" (below) · <strong>ُ</strong> = "o" (above) · Example: <span style="font-size:18px;color:var(--accent2)">پِدَر</span> (pedar = father)</div>`;
+  }
+
+  if(l.phrases){
+    h+=`<div class="label">Key Phrases</div><div class="phrase-list">
+    <div class="phrase-item" style="font-size:11px;color:var(--text3);font-weight:500"><span style="text-align:right">Persian</span><span>Pronunciation</span><span>Meaning</span></div>`;
+    l.phrases.forEach(p=>{
+      h+=`<div class="phrase-item"><span class="phrase-fa">${p.fa}</span><span class="phrase-ro">${p.ro}</span><span class="phrase-en">${p.en}</span></div>`;
+    });
+    h+=`</div>`;
+  }
+
+  if(l.numbers){
+    h+=`<div class="label">Numbers — اعداد</div>
+    <div class="char-grid" style="grid-template-columns:repeat(4,1fr)">`;
+    l.numbers.forEach((n,i)=>{
+      const col=COLORS[i%5];
+      h+=`<div class="char-card">
+        <div class="c-main" style="color:${col};font-size:28px">${n.n}</div>
+        <div class="c-name" style="color:${col}">${n.r}</div>
+        <div class="c-roman" style="font-size:16px;font-weight:500">${n.v}</div>
+      </div>`;
+    });
+    h+=`</div>`;
+  }
+
+  if(l.jobs){
+    h+=`<div class="label">Jobs & Professions</div><div class="phrase-list">`;
+    l.jobs.forEach(j=>{
+      h+=`<div class="phrase-item"><span class="phrase-fa">${j.fa}</span><span class="phrase-ro">${j.ro}</span><span class="phrase-en">${j.en}</span></div>`;
+    });
+    h+=`</div>`;
+  }
+
+  if(l.family){
+    h+=`<div class="label">Family Words — خانواده</div><div class="phrase-list">`;
+    l.family.forEach(f=>{
+      h+=`<div class="phrase-item"><span class="phrase-fa">${f.fa}</span><span class="phrase-ro">${f.ro}</span><span class="phrase-en">${f.en}</span></div>`;
+    });
+    h+=`</div>`;
+  }
+
+  if(l.food){
+    h+=`<div class="label">Persian Foods</div><div class="phrase-list">`;
+    l.food.forEach(f=>{
+      h+=`<div class="phrase-item"><span class="phrase-fa">${f.fa}</span><span class="phrase-ro">${f.ro}</span><span class="phrase-en">${f.en}</span></div>`;
+    });
+    h+=`</div>`;
+  }
+
+  if(l.weather_phrases){
+    h+=`<div class="label">Weather Phrases</div><div class="phrase-list">`;
+    l.weather_phrases.forEach(p=>{
+      h+=`<div class="phrase-item"><span class="phrase-fa">${p.fa}</span><span class="phrase-ro">${p.ro}</span><span class="phrase-en">${p.en}</span></div>`;
+    });
+    h+=`</div>`;
+  }
+
+  if(l.tips){
+    h+=`<div class="label">Travel Tips</div><div class="info-grid">`;
+    l.tips.forEach(t=>{
+      h+=`<div class="info-box"><h4>${t.icon} ${t.title}</h4><p>${t.body}</p></div>`;
+    });
+    h+=`</div>`;
+  }
+
+  if(l.timeline){
+    h+=`<div class="label">Timeline of Persian History</div>
+    <div class="timeline">`;
+    l.timeline.forEach(t=>{
+      h+=`<div class="tl-item">
+        <div class="tl-year">${t.year}</div>
+        <div class="tl-title">${t.title}</div>
+        <div class="tl-body">${t.body}</div>
+        <div class="tl-fa">${t.fa}</div>
+      </div>`;
+    });
+    h+=`</div>`;
+  }
+
+  if(l.seasons){
+    h+=`<div class="label">Seasons & Climate</div>
+    <div class="weather-grid">`;
+    l.seasons.forEach(s=>{
+      h+=`<div class="wth-card">
+        <div class="icon">${s.icon}</div>
+        <div class="season">${s.s}</div>
+        <div class="temp">${s.temp}</div>
+        <div class="desc" style="font-size:12px;font-style:italic;color:var(--blue)">${s.r}</div>
+        <div class="desc">${s.desc}</div>
+      </div>`;
+    });
+    h+=`</div>`;
+  }
+
+  if(l.cities){
+    h+=`<div class="label">Cities</div>
+    <div class="city-grid">`;
+    l.cities.forEach(c=>{
+      h+=`<div class="city-card">
+        <div class="city-fa">${c.fa}</div>
+        <h3>${c.name}</h3>
+        <p>${c.desc}</p>
+        <div class="sights">📍 ${c.sights}</div>
+      </div>`;
+    });
+    h+=`</div>`;
+    if(l.phrases){
+      h+=`<div class="label">Useful Phrases at Sights</div><div class="phrase-list">`;
+      l.phrases.forEach(p=>{
+        h+=`<div class="phrase-item"><span class="phrase-fa">${p.fa}</span><span class="phrase-ro">${p.ro}</span><span class="phrase-en">${p.en}</span></div>`;
+      });
+      h+=`</div>`;
+    }
+  }
+
+  if(l.dialogue){
+    h+=`<div class="label">Sample Conversation</div>
+    <div class="dialogue">
+    <div class="dialogue" style="font-size:13px;color:var(--text3);margin-bottom:12px;background:none;border:none;padding:0">${l.dialogue.title}</div>`;
+    l.dialogue.lines.forEach(line=>{
+      const right=line.who==='B';
+      h+=`<div class="dlg-line ${right?'right':''}">
+        <div class="dlg-name ${line.who==='A'?'a':'b'}">${line.name}</div>
+        <div class="dlg-bubble">
+          <div class="dlg-fa">${line.fa}</div>
+          <div class="dlg-ro">${line.ro}</div>
+          <div class="dlg-en">${line.en}</div>
+        </div>
+      </div>`;
+    });
+    h+=`</div>`;
+  }
+
+  document.getElementById('sec-learn').innerHTML=h;
+}
+
+function renderVocab(){
+  const l=LESSONS[curLesson];
+  let h='';
+
+  if(l.vocab){
+    h+=`<div class="label">Vocabulary</div><div class="vocab-list">`;
+    l.vocab.forEach((v,i)=>{
+      h+=`<div class="vocab-item">
+        <div class="v-farsi" style="color:${COLORS[i%5]}">${v.fa}</div>
+        <div style="flex:1">
+          <div class="v-roman">${v.ro}</div>
+          <div class="v-meaning">${v.en}</div>
+        </div>
+      </div>`;
+    });
+    h+=`</div>`;
+  }
+
+  if(l.sentences){
+    h+=`<div class="label">Sentences</div><div class="sent-list">`;
+    l.sentences.forEach(s=>{
+      h+=`<div class="sent-item">
+        <div class="s-fa">${s.fa}</div>
+        <div class="s-ro">${s.ro}</div>
+        <div class="s-en">${s.en}</div>
+      </div>`;
+    });
+    h+=`</div>`;
+  }
+
+  if(!l.vocab && !l.sentences){
+    h=`<div style="color:var(--text3);font-size:14px;padding:2rem 0">Vocabulary is integrated into the Learn tab for this lesson.</div>`;
+  }
+
+  document.getElementById('sec-vocab').innerHTML=h;
+}
+
+function renderCulture(){
+  const l=LESSONS[curLesson];
+  const c=l.culture;
+  let h=`<div class="culture-card">
+    <div class="culture-header"><span class="icon">${c.icon}</span>
+    <span style="font-size:11px;padding:2px 8px;border-radius:3px;background:var(--bg);color:var(--text3)">${c.tag}</span>
+    <h3>${c.title}</h3></div>
+    <div class="culture-body">
+      <div class="cult-fa">${c.fa}</div>
+      <div class="cult-ro">${c.ro}</div>
+      <div class="cult-en">${c.en}</div>
+      <div class="cult-body">${c.body}</div>
+    </div>
+  </div>`;
+  document.getElementById('sec-culture').innerHTML=h;
+}
+
+function renderQuiz(){
+  const l=LESSONS[curLesson];
+  const qs=l.quiz;
+  if(!qs||!qs.length){
+    document.getElementById('sec-quiz').innerHTML=`<div style="color:var(--text3);padding:2rem 0;font-size:14px">No quiz for this lesson yet.</div>`;
+    return;
+  }
+  if(qz.done){
+    const pct=Math.round((qz.score/qs.length)*100);
+    const msg=pct>=80?'آفرین! (Āfarin!) Excellent work. Ready for the next lesson!'
+      :pct>=60?'خوب! (Khub!) Good effort. Review what you missed and try again.'
+      :'ادامه بده! (Edāme bede!) Keep going! Practice makes perfect.';
+    document.getElementById('sec-quiz').innerHTML=`<div class="score-board">
+      <div class="sc-big">${qz.score}/${qs.length}</div>
+      <div class="sc-label">${pct}%</div>
+      <div style="font-size:36px;margin:1rem 0">${pct>=80?'🌟':pct>=60?'👍':'📖'}</div>
+      <div class="sc-msg">${msg}</div>
+      <div style="display:flex;gap:10px;justify-content:center">
+        <button class="btn btn-sec" onclick="resetQuiz()">Try Again</button>
+        ${curLesson<LESSONS.length-1?`<button class="btn btn-acc" onclick="go(${curLesson+1})">Next Lesson →</button>`:''}
+      </div>
+    </div>`;
+    return;
+  }
+  const q=qs[qz.q];
+  const dots=qs.map((_,i)=>`<div class="qp-dot ${i<qz.q?'done':i===qz.q?'cur':''}"></div>`).join('');
+  let h=`<div class="quiz-progress">${dots}</div>
+  <div class="quiz-card">
+    <div class="q-label">Question ${qz.q+1} of ${qs.length}</div>
+    <div class="q-text">${q.q}</div>
+    ${q.c?`<div class="q-char">${q.c}</div>`:''}
+    <div class="q-opts">
+      ${q.opts.map((o,i)=>`<button class="q-opt" id="qo${i}" onclick="answerQ(${i})">${o}</button>`).join('')}
+    </div>
+    <div class="q-feedback" id="qfb"></div>
+  </div>
+  <div class="q-next"><button class="btn btn-acc" id="qnext" onclick="nextQ()" style="display:none">Next →</button></div>`;
+  document.getElementById('sec-quiz').innerHTML=h;
+}
+
+function answerQ(chosen){
+  if(qz.answered)return;
+  qz.answered=true;
+  const q=LESSONS[curLesson].quiz[qz.q];
+  const ok=q.a===chosen;
+  if(ok)qz.score++;
+  document.querySelectorAll('.q-opt').forEach((b,i)=>{
+    b.disabled=true;
+    if(i===q.a)b.classList.add('ok');
+    else if(i===chosen&&!ok)b.classList.add('no');
+  });
+  const fb=document.getElementById('qfb');
+  fb.className='q-feedback show '+(ok?'ok':'no');
+  fb.textContent=ok?'✓ Correct! آفرین!':'✗ Correct answer: "'+q.opts[q.a]+'"';
+  document.getElementById('qnext').style.display='inline-block';
+}
+
+function nextQ(){
+  qz.q++;
+  qz.answered=false;
+  if(qz.q>=LESSONS[curLesson].quiz.length)qz.done=true;
+  renderQuiz();
+}
+
+function resetQuiz(){
+  qz={q:0,score:0,answered:false,done:false};
+  renderQuiz();
+}
+
+function filterLessons(val){
+  const v=val.toLowerCase();
+  document.querySelectorAll('.lesson-link').forEach((el,i)=>{
+    const l=LESSONS[i];
+    const match=!v||l.title.toLowerCase().includes(v)||l.fa.includes(v)||(l.num+'').toLowerCase().includes(v);
+    el.style.display=match?'flex':'none';
+  });
+}
+
+// Init
+go(0);
+document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>switchTab(t.dataset.tab)));
+</script>
+</body>
+</html>
