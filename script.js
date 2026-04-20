@@ -3,7 +3,7 @@ const COLORS = ['#c8703a','#5b9bd5','#6baa7a','#9b7fc8','#d4a843'];
 let curLesson = 0;
 let curTab = 'learn';
 let qz = {q:0, score:0, answered:false, done:false};
-let isLight = false;
+let isLight = true;
 
 // ============ THEME ============
 function toggleTheme() {
@@ -17,7 +17,17 @@ function toggleTheme() {
 }
 (function initTheme() {
   try {
-    if (localStorage.getItem('persian_theme') === 'light') {
+    const saved = localStorage.getItem('persian_theme');
+    // Default is light — only switch to dark if user chose dark
+    if (saved === 'dark') {
+      isLight = false;
+      document.body.classList.remove('light');
+      const icon  = document.getElementById('themeIcon');
+      const label = document.getElementById('themeLabel');
+      if (icon)  icon.textContent  = '🌙';
+      if (label) label.textContent = 'Dark';
+    } else {
+      // Default: light mode
       isLight = true;
       document.body.classList.add('light');
       const icon  = document.getElementById('themeIcon');
