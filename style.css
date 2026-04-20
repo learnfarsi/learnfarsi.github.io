@@ -255,4 +255,26 @@ body.light .q-fb.no{background:#fce8e8}
 .sc-msg{font-size:14px;color:var(--text2);line-height:1.7;max-width:400px;margin:0 auto 2rem}
 
 /* ===== BUTTONS ===== */
-.btn{padding:8px 20px;border-radius:20px;font-size:13px;cursor:pointer;
+.btn{padding:8px 20px;border-radius:20px;font-size:13px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;border:none}
+.btn-acc{background:var(--accent);color:#fff}
+.btn-acc:hover{background:#a85c2a}
+.btn-sec{background:transparent;border:1px solid var(--border);color:var(--text2)}
+.btn-sec:hover{border-color:var(--accent);color:var(--accent)}
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+
+/* ===== MOBILE ===== */
+@media(max-width:700px){
+  .sidebar{width:100%;height:auto;position:relative;border-right:none;border-bottom:1px solid var(--border)}
+  .main{margin-left:0}
+  .char-grid{grid-template-columns:repeat(3,1fr)}
+  .num-grid{grid-template-columns:repeat(3,1fr)}
+  .city-grid,.info-grid,.weather-grid{grid-template-columns:1fr}
+  .conj-grid{grid-template-columns:1fr}
+  .q-opts{grid-template-columns:1fr}
+  .phrase-item{grid-template-columns:1fr 1fr}
+  .p-en{display:none}
+}
