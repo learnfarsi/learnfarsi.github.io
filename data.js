@@ -490,7 +490,7 @@ vocabSections:[
     {fa:'شب بخیر',ro:'shab bekheyr',en:'good night'},
     {fa:'خداحافظ',ro:'khodāhāfez',en:'goodbye (formal — lit. "God be your guardian")'},
     {fa:'بای',ro:'bāy',en:'bye (informal, from English)'},
-    {fa:'فعلاً',ro:'fe'lan',en:'for now / see you (very common informal farewell)'},
+    {fa:'فعلاً',ro:'felan',en:'for now / see you (very common informal farewell)'},
   ]},
   {title:'Politeness — ادب',items:[
     {fa:'ممنون',ro:'mamnun',en:'thank you (informal)'},
