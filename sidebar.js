@@ -125,6 +125,18 @@ function go(i) {
 
 function switchTab(t) {
   curTab = t;
+  
+  // Hide vocab tab for 'cult' type lessons
+  const vocabTab = document.querySelector('[data-tab="vocab"]');
+  const currentLesson = LESSONS[curLesson];
+  if (currentLesson.type === 'cult') {
+    vocabTab.style.display = 'none';
+    // If vocab tab was active, switch to learn
+    if (t === 'vocab') t = 'learn';
+  } else {
+    vocabTab.style.display = 'block';
+  }
+  
   document.querySelectorAll('.tab').forEach(el => el.classList.toggle('active', el.dataset.tab === t));
   document.querySelectorAll('.section').forEach(el => el.classList.toggle('active', el.id === 'sec-' + t));
   if (t === 'learn')   renderLearn();
