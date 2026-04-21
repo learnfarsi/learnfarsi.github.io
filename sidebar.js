@@ -6,7 +6,7 @@ function goPage(id) {
   qz = {q:0, score:0, answered:false, done:false};
 
   // Update topbar
-  document.getElementById('topbarTitle').textContent = id === 'welcome' ? 'فارسی — Learn Persian' : 'About';
+  document.getElementById('topbarTitle').textContent = id === 'welcome' ? 'Welcome' : 'About';
   const badge = document.getElementById('topbarBadge');
   if (badge) badge.innerHTML = '';
 
