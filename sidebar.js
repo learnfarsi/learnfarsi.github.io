@@ -119,7 +119,7 @@ function go(i) {
   document.getElementById('topbarTitle').textContent = l.title;
   const badge = document.getElementById('topbarBadge');
   if (badge) badge.innerHTML = getTagHTML(l.type);
-  switchTab(curTab);
+  switchTab('learn');
   window.scrollTo(0, 0);
 }
 
