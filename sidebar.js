@@ -48,7 +48,7 @@ function buildSidebar() {
 }
 
 // ============ NAVIGATION ============
-function go(i) {
+function go(i, targetTab= 'learn') {
   curLesson = i;
   qz = {q:0, score:0, answered:false, done:false};
   buildSidebar();
@@ -56,6 +56,7 @@ function go(i) {
   document.getElementById('topbarTitle').textContent = l.title;
   const badge = document.getElementById('topbarBadge');
   if (badge) badge.innerHTML = getTagHTML(l.type);
+  curTab = targetTab || 'learn';
   switchTab(curTab);
   window.scrollTo(0, 0);
 }

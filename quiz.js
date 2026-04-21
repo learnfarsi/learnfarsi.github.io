@@ -22,7 +22,7 @@ function renderQuiz() {
         <div class="sc-msg">${msg}</div>
         <div style="display:flex;gap:10px;justify-content:center">
           <button class="btn btn-sec" onclick="resetQuiz()">Try Again</button>
-          ${curLesson < LESSONS.length - 1 ? `<button class="btn btn-acc" onclick="go(${curLesson + 1})">Next Lesson →</button>` : ''}
+          ${curLesson < LESSONS.length - 1 ? `<button class="btn btn-acc" onclick="go(${curLesson + 1}, 'learn')">Next Lesson →</button>` : ''}
         </div>
       </div>`;
     return;
