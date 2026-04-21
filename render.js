@@ -27,7 +27,7 @@ function renderAbout() {
 
       <div class="pg-about-hero">
         <div class="pg-photo-placeholder">
-          <span class="pg-photo-hint">Your photo</span>
+          <img src="images/shiain.jpg" alt="shiain - Author" />
         </div>
         <div class="pg-about-intro">
           <h1 class="pg-about-name">Hi, I'm shiain</h1>
@@ -44,12 +44,12 @@ function renderAbout() {
           <div class="pg-about-card">
             <div class="pg-about-card-icon">📖</div>
             <div class="pg-about-card-title">The full alphabet</div>
-            <div class="pg-about-card-body">All 32 letters, every positional form, colour-coded and explained — so you can read real Persian, not just transliterations.</div>
+            <div class="pg-about-card-body">All 32 letters, every positional form, colour-coded and explained — so you can read real Farsi, not just transliterations.</div>
           </div>
           <div class="pg-about-card">
             <div class="pg-about-card-icon">💬</div>
             <div class="pg-about-card-title">Real conversations</div>
-            <div class="pg-about-card-body">Dialogues between real Iranian characters, covering greetings, food, shopping, family, and work. A1 to B1 level.</div>
+            <div class="pg-about-card-body">Dialogues between real personas, covering greetings, food, shopping, family, and work. A1 to B1 level.</div>
           </div>
           <div class="pg-about-card">
             <div class="pg-about-card-icon">📐</div>
@@ -66,7 +66,7 @@ function renderAbout() {
 
       <div class="pg-personal-note">
         <div class="pg-personal-note-quote">"</div>
-        <p>This is a passion project, built with love for a language and a civilisation that has given the world mathematics, poetry, gardens, and one of the most beautiful scripts ever written. I hope it makes Persian feel less daunting and more inviting — for anyone who has ever wanted to begin.</p>
+        <p>This is a passion project, built with love for a language and a civilisation that has shaped philosophy, mathematics, poetry, and astronomy. I hope it makes learning Persian feel less daunting and more inviting — for anyone who has ever wanted to begin.</p>
         <p style="margin-top:.75rem;color:var(--accent2)">— shiain</p>
       </div>
 
