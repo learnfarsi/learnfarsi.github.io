@@ -12,5 +12,5 @@ function filterLessons(val) {
 }
 
 // ============ INIT ============
-go(0);
+goPage('welcome');
 document.querySelectorAll('.tab').forEach(t => t.addEventListener('click', () => switchTab(t.dataset.tab)));

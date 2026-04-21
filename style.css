@@ -302,3 +302,60 @@ body.light .q-fb.no{background:#fce8e8}
   .phrase-item{grid-template-columns:1fr 1fr}
   .p-en{display:none}
 }
+
+/* ===== WELCOME & ABOUT PAGES ===== */
+
+.pg-sidebar-divider{height:1px;background:var(--border);margin:.25rem 0}
+
+/* Hero */
+.pg-hero{text-align:center;padding:4rem 1rem 3rem;border-bottom:1px solid var(--border);margin-bottom:3rem}
+.pg-calligraphy{font-family:'Playfair Display',serif;font-size:clamp(72px,12vw,120px);color:var(--accent);letter-spacing:12px;line-height:1;margin-bottom:1.5rem}
+.pg-tagline{font-family:'Playfair Display',serif;font-size:clamp(20px,3vw,28px);font-weight:400;color:var(--text);margin-bottom:.75rem;line-height:1.4}
+.pg-sub{font-size:15px;color:var(--text2);max-width:480px;margin:0 auto 2rem;line-height:1.7}
+.pg-start-btn{display:inline-block;background:var(--accent);color:#fff;border:none;border-radius:30px;padding:12px 32px;font-size:15px;font-family:'DM Sans',sans-serif;font-weight:500;cursor:pointer;letter-spacing:.02em;transition:background .2s,transform .15s}
+.pg-start-btn:hover{background:var(--accent2);transform:translateY(-1px)}
+.pg-start-btn:active{transform:translateY(0)}
+
+/* Proverb */
+.pg-proverb-wrap{max-width:580px;margin:0 auto 4rem;text-align:center;padding:2.5rem 2rem;border:1px solid var(--border);border-radius:16px;background:var(--bg3)}
+.pg-proverb-fa{font-family:'Playfair Display',serif;font-size:clamp(20px,4vw,28px);color:var(--gold);direction:rtl;line-height:1.6;margin-bottom:.75rem}
+.pg-proverb-ro{font-size:14px;color:var(--blue);font-style:italic;margin-bottom:.5rem}
+.pg-proverb-en{font-size:15px;font-weight:500;color:var(--text);margin-bottom:1rem}
+.pg-proverb-note{font-size:13px;color:var(--text3);line-height:1.6;border-top:1px solid var(--border);padding-top:.75rem;margin-top:.25rem}
+
+/* About hero */
+.pg-about{max-width:680px}
+.pg-about-hero{display:flex;gap:2rem;align-items:flex-start;margin-bottom:2.5rem}
+.pg-photo-placeholder{width:110px;height:110px;border-radius:50%;border:2px dashed var(--border);flex-shrink:0;display:flex;align-items:center;justify-content:center;background:var(--bg3)}
+.pg-photo-hint{font-size:11px;color:var(--text3);text-align:center;line-height:1.4}
+/* When you have a real photo, replace the placeholder div with:
+   <img src="photo.jpg" class="pg-photo-real" alt="Serene"> */
+.pg-photo-real{width:110px;height:110px;border-radius:50%;object-fit:cover;border:2px solid var(--border);flex-shrink:0}
+.pg-about-name{font-family:'Playfair Display',serif;font-size:26px;font-weight:400;color:var(--text);margin-bottom:4px}
+.pg-about-role{font-size:13px;color:var(--accent);margin-bottom:.75rem;letter-spacing:.03em}
+.pg-about-bio{font-size:14px;color:var(--text2);line-height:1.8}
+
+/* About divider */
+.pg-about-divider{height:1px;background:var(--border);margin-bottom:2.5rem}
+
+/* About section */
+.pg-about-h2{font-family:'Playfair Display',serif;font-size:20px;font-weight:400;color:var(--text);margin-bottom:1.25rem}
+.pg-about-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:2.5rem}
+.pg-about-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.25rem;transition:border-color .2s}
+.pg-about-card:hover{border-color:var(--accent)}
+.pg-about-card-icon{font-size:22px;margin-bottom:.5rem}
+.pg-about-card-title{font-size:14px;font-weight:500;color:var(--text);margin-bottom:.4rem}
+.pg-about-card-body{font-size:13px;color:var(--text2);line-height:1.6}
+
+/* Personal note */
+.pg-personal-note{background:var(--bg3);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:0 12px 12px 0;padding:1.5rem 1.75rem;position:relative;margin-bottom:3rem}
+.pg-personal-note-quote{font-family:'Playfair Display',serif;font-size:64px;color:var(--accent);opacity:.2;line-height:1;position:absolute;top:.25rem;left:1rem}
+.pg-personal-note p{font-size:14px;color:var(--text2);line-height:1.8;position:relative}
+
+/* Mobile */
+@media(max-width:600px){
+  .pg-hero{padding:2.5rem 1rem 2rem}
+  .pg-calligraphy{letter-spacing:6px}
+  .pg-about-hero{flex-direction:column;align-items:center;text-align:center}
+  .pg-about-grid{grid-template-columns:1fr}
+}

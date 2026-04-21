@@ -1,3 +1,79 @@
+// ============ RENDER WELCOME ============
+function renderWelcome() {
+  document.getElementById('sec-learn').innerHTML = `
+
+    <div class="pg-hero">
+      <div class="pg-calligraphy">فارسی</div>
+      <h1 class="pg-tagline">Learn to read, write and speak Persian</h1>
+      <p class="pg-sub">From the alphabet to real conversations — structured lessons, beautiful script, and the culture woven through every word.</p>
+      <button class="pg-start-btn" onclick="go(0)">Start Learning →</button>
+    </div>
+
+    <div class="pg-proverb-wrap">
+      <div class="pg-proverb-fa">هر زبانی که بدانی، یک انسان دیگری هستی.</div>
+      <div class="pg-proverb-ro">Har zabāni ke bedāni, yek ensān-e digari hasti.</div>
+      <div class="pg-proverb-en">"For every language you know, you are a different person."</div>
+      <div class="pg-proverb-note">A beloved Persian proverb — every new tongue opens a new world, a new way of seeing. The perfect reason to begin.</div>
+    </div>
+
+  `;
+}
+
+// ============ RENDER ABOUT ============
+function renderAbout() {
+  document.getElementById('sec-learn').innerHTML = `
+
+    <div class="pg-about">
+
+      <div class="pg-about-hero">
+        <div class="pg-photo-placeholder">
+          <span class="pg-photo-hint">Your photo</span>
+        </div>
+        <div class="pg-about-intro">
+          <h1 class="pg-about-name">Hi, I'm shiain</h1>
+          <p class="pg-about-role">I love art, languages, and culture.</p>
+          <p class="pg-about-bio">I built this because I wanted to learn Persian properly — not just phrases, but the real script, real grammar, and the culture woven through the language. I couldn't find a single resource that taught all of that together, so I made one.</p>
+        </div>
+      </div>
+
+      <div class="pg-about-divider"></div>
+
+      <div class="pg-about-section">
+        <h2 class="pg-about-h2">What this site is</h2>
+        <div class="pg-about-grid">
+          <div class="pg-about-card">
+            <div class="pg-about-card-icon">📖</div>
+            <div class="pg-about-card-title">The full alphabet</div>
+            <div class="pg-about-card-body">All 32 letters, every positional form, colour-coded and explained — so you can read real Persian, not just transliterations.</div>
+          </div>
+          <div class="pg-about-card">
+            <div class="pg-about-card-icon">💬</div>
+            <div class="pg-about-card-title">Real conversations</div>
+            <div class="pg-about-card-body">Dialogues between real Iranian characters, covering greetings, food, shopping, family, and work. A1 to B1 level.</div>
+          </div>
+          <div class="pg-about-card">
+            <div class="pg-about-card-icon">📐</div>
+            <div class="pg-about-card-title">Actual grammar</div>
+            <div class="pg-about-card-body">Verb conjugation tables, stem explanations, spoken vs written forms — the structure that makes everything else make sense.</div>
+          </div>
+          <div class="pg-about-card">
+            <div class="pg-about-card-icon">🌍</div>
+            <div class="pg-about-card-title">Culture & history</div>
+            <div class="pg-about-card-body">Persian poetry, famous cities, Nowruz, the bazaar, travel tips — because language only comes alive in its culture.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pg-personal-note">
+        <div class="pg-personal-note-quote">"</div>
+        <p>This is a passion project, built with love for a language and a civilisation that has given the world mathematics, poetry, gardens, and one of the most beautiful scripts ever written. I hope it makes Persian feel less daunting and more inviting — for anyone who has ever wanted to begin.</p>
+        <p style="margin-top:.75rem;color:var(--accent2)">— shiain</p>
+      </div>
+
+    </div>
+  `;
+}
+
 // ============ RENDER LEARN ============
 function renderLearn() {
   const l = LESSONS[curLesson];

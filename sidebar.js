@@ -1,3 +1,28 @@
+// ============ PAGES ============
+let curPage = 'welcome'; // 'welcome' | 'about' | null (lesson active)
+
+function goPage(id) {
+  curPage = id;
+  qz = {q:0, score:0, answered:false, done:false};
+
+  // Update topbar
+  document.getElementById('topbarTitle').textContent = id === 'welcome' ? 'فارسی — Learn Persian' : 'About';
+  const badge = document.getElementById('topbarBadge');
+  if (badge) badge.innerHTML = '';
+
+  // Hide tabs, show only sec-learn
+  document.querySelector('.tabs').style.display = 'none';
+  document.querySelectorAll('.section').forEach(el => el.classList.remove('active'));
+  document.getElementById('sec-learn').classList.add('active');
+
+  buildSidebar();
+
+  if (id === 'welcome') renderWelcome();
+  if (id === 'about')   renderAbout();
+
+  window.scrollTo(0, 0);
+}
+
 // ============ SIDEBAR TAGS ============
 function getTagHTML(type) {
   const map = {
@@ -84,14 +109,29 @@ function buildSidebar() {
     if (byType[t]) byType[t].push({l, i});
   });
 
-  let html = buildLevelNav();
+  // Page links at top
+  let html = `<div class="section-group pg-link-group">
+    <div class="lesson-link${curPage === 'welcome' ? ' active' : ''}" onclick="goPage('welcome')">
+      <div class="lnum">🏠</div>
+      <span style="flex:1;line-height:1.3">Welcome</span>
+    </div>
+    <div class="lesson-link${curPage === 'about' ? ' active' : ''}" onclick="goPage('about')">
+      <div class="lnum">👤</div>
+      <span style="flex:1;line-height:1.3">About</span>
+    </div>
+  </div>
+  <div class="pg-sidebar-divider"></div>`;
+
+  html += buildLevelNav();
+
   let hasLessons = false;
   order.forEach(type => {
     if (!byType[type] || !byType[type].length) return;
     hasLessons = true;
     html += `<div class="section-group"><div class="section-group-label">${getGroupLabel(type)}</div>`;
     byType[type].forEach(({l, i}) => {
-      html += `<div class="lesson-link${i === curLesson ? ' active' : ''}" id="link-${i}" onclick="go(${i})">
+      const isActive = curPage === null && i === curLesson;
+      html += `<div class="lesson-link${isActive ? ' active' : ''}" id="link-${i}" onclick="go(${i})">
         <div class="lnum">${l.num}</div>
         <span style="flex:1;line-height:1.3">${l.title}</span>
         ${getTagHTML(l.type)}
@@ -112,6 +152,7 @@ function buildSidebar() {
 
 // ============ NAVIGATION ============
 function go(i) {
+  curPage = null; // leaving a page, entering a lesson
   curLesson = i;
   qz = {q:0, score:0, answered:false, done:false};
   buildSidebar();
@@ -119,6 +160,8 @@ function go(i) {
   document.getElementById('topbarTitle').textContent = l.title;
   const badge = document.getElementById('topbarBadge');
   if (badge) badge.innerHTML = getTagHTML(l.type);
+  // restore tabs
+  document.querySelector('.tabs').style.display = 'flex';
   switchTab('learn');
   window.scrollTo(0, 0);
 }
