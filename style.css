@@ -126,8 +126,6 @@ table.forms td{padding:10px 12px;border-bottom:1px solid var(--border)}
 table.forms td:first-child{color:var(--text2);font-size:12px}
 .f-form{font-size:24px;line-height:1}
 .nc-badge{font-size:9px;background:#2d1e0e;color:var(--accent);padding:2px 5px;border-radius:3px;display:inline-block}
-.tip-row td{background:#1a1200;color:var(--gold);font-size:11px;padding:4px 12px 8px}
-body.light .tip-row td{background:#fff8e0}
 body.light .nc-badge{background:#ffe0cc}
 
 /* vowels box */

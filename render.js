@@ -30,7 +30,6 @@ function renderLearn() {
         <td><span class="f-form" style="color:${col}">${f.m}</span></td>
         <td><span class="f-form" style="color:${col}">${f.f}</span></td>
       </tr>`;
-      if (f.tip) h += `<tr class="tip-row"><td colspan="5">⚠ ${f.tip}</td></tr>`;
     });
     h += `</table></div>`;
     h += `<div class="vowel-box"><strong>Short vowels (حرکت):</strong> Usually omitted in everyday writing, but shown in learning materials:

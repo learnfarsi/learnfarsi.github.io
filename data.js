@@ -13,7 +13,7 @@ chars:[
   {l:'ث',n:'Se',r:'s',d:'Like "s" in sun. Three dots above. Rare in everyday Persian.'},
 ],
 forms:[
-  {c:'ا',n:'Alef',s:'ا',i:'اَ',m:'ـا',f:'ـا',nc:true,tip:'Alef NEVER connects to the letter on its left.'},
+  {c:'ا',n:'Alef',s:'ا',i:'اَ',m:'ـا',f:'ـا',nc:true},
   {c:'ب',n:'Be',s:'ب',i:'بـ',m:'ـبـ',f:'ـب'},
   {c:'پ',n:'Pe',s:'پ',i:'پـ',m:'ـپـ',f:'ـپ'},
   {c:'ت',n:'Te',s:'ت',i:'تـ',m:'ـتـ',f:'ـت'},
@@ -53,7 +53,7 @@ forms:[
   {c:'چ',n:'Che',s:'چ',i:'چـ',m:'ـچـ',f:'ـچ'},
   {c:'ح',n:'He',s:'ح',i:'حـ',m:'ـحـ',f:'ـح'},
   {c:'خ',n:'Khe',s:'خ',i:'خـ',m:'ـخـ',f:'ـخ'},
-  {c:'د',n:'Dal',s:'د',i:'دـ',m:'ـد',f:'ـد',nc:true,tip:'Dal does NOT connect to the next letter.'},
+  {c:'د',n:'Dal',s:'د',i:'دـ',m:'ـد',f:'ـد',nc:true},
 ],
 vocab:[
   {fa:'جان',ro:'jān',en:'soul / dear'},{fa:'چای',ro:'chāy',en:'tea'},
@@ -85,10 +85,10 @@ chars:[
   {l:'س',n:'Sin',r:'s',d:'Like "s" in sea. Three teeth on top. Connects normally.'},
 ],
 forms:[
-  {c:'ذ',n:'Zal',s:'ذ',i:'ذ',m:'ـذ',f:'ـذ',nc:true,tip:'Does NOT connect left.'},
-  {c:'ر',n:'Re',s:'ر',i:'ر',m:'ـر',f:'ـر',nc:true,tip:'Does NOT connect left.'},
-  {c:'ز',n:'Ze',s:'ز',i:'ز',m:'ـز',f:'ـز',nc:true,tip:'Does NOT connect left.'},
-  {c:'ژ',n:'Zhe',s:'ژ',i:'ژ',m:'ـژ',f:'ـژ',nc:true,tip:'Does NOT connect left.'},
+  {c:'ذ',n:'Zal',s:'ذ',i:'ذ',m:'ـذ',f:'ـذ',nc:true},
+  {c:'ر',n:'Re',s:'ر',i:'ر',m:'ـر',f:'ـر',nc:true},
+  {c:'ز',n:'Ze',s:'ز',i:'ز',m:'ـز',f:'ـز',nc:true},
+  {c:'ژ',n:'Zhe',s:'ژ',i:'ژ',m:'ـژ',f:'ـژ',nc:true},
   {c:'س',n:'Sin',s:'س',i:'سـ',m:'ـسـ',f:'ـس'},
 ],
 vocab:[
@@ -197,7 +197,7 @@ forms:[
   {c:'ل',n:'Lam',s:'ل',i:'لـ',m:'ـلـ',f:'ـل'},
   {c:'م',n:'Mim',s:'م',i:'مـ',m:'ـمـ',f:'ـم'},
   {c:'ن',n:'Nun',s:'ن',i:'نـ',m:'ـنـ',f:'ـن'},
-  {c:'و',n:'Vav',s:'و',i:'و',m:'ـو',f:'ـو',nc:true,tip:'Vav does NOT connect to the next letter.'},
+  {c:'و',n:'Vav',s:'و',i:'و',m:'ـو',f:'ـو',nc:true},
 ],
 vocab:[
   {fa:'مادر',ro:'mādar',en:'mother'},{fa:'نان',ro:'nān',en:'bread'},
@@ -226,7 +226,7 @@ chars:[
   {l:'ی',n:'Ye',r:'y / i',d:'Like "y" in yes, OR the long "ee" vowel. Very common — also the ezāfe connector suffix.'},
 ],
 forms:[
-  {c:'ه',n:'He',s:'ه',i:'هـ',m:'ـهـ',f:'ـه',nc:false,tip:'Final He: appears as ـه (attached) or ه (after a non-connector). Both are the same letter in final position — not a duplicate form, just two environments.'},
+  {c:'ه',n:'He',s:'ه',i:'هـ',m:'ـهـ',f:'ـه',nc:false},
   {c:'ی',n:'Ye',s:'ی',i:'یـ',m:'ـیـ',f:'ـی'},
 ],
 vocab:[
