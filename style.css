@@ -67,6 +67,20 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .tag-conv{background:#0e1e2d;color:var(--blue)}
 .tag-cult{background:#1a1d0e;color:var(--green)}
 
+/* Light mode tag overrides */
+body.light .tag-alpha{background:#f0e0d0;color:#a05020}
+body.light .tag-num{background:#fff8d0;color:#8a6a10}
+body.light .tag-gram{background:#f0e0f0;color:#5a3a8a}
+body.light .tag-conv{background:#e0f0ff;color:#1a4a8a}
+body.light .tag-cult{background:#e0f0e0;color:#2a5a2a}
+
+/* Light mode tag overrides */
+body.light .tag-alpha{background:#f0e0d0;color:#a05020}
+body.light .tag-num{background:#fff8d0;color:#8a6a10}
+body.light .tag-gram{background:#f0e0f0;color:#5a3a8a}
+body.light .tag-conv{background:#e0f0ff;color:#1a4a8a}
+body.light .tag-cult{background:#e0f0e0;color:#2a5a2a}
+
 /* ===== TOPBAR ===== */
 .main{margin-left:260px;min-height:100vh}
 .topbar{position:sticky;top:0;background:var(--bg2);border-bottom:1px solid var(--border);padding:.75rem 2rem;display:flex;align-items:center;gap:1rem;z-index:50}
