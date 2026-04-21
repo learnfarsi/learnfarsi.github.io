@@ -464,8 +464,8 @@ phrases:[
   {fa:'سلام',ro:'Salām',en:'Hello'},
   {fa:'خوبی؟',ro:'Khubi?',en:'Are you well? (informal)'},
   {fa:'خوبم، ممنون.',ro:'Khubam, mamnun.',en:"I'm well, thank you."},
-  {fa:'اسمت چیه؟',ro:'Esmat chiye?',en:"What's your name? (informal)"},
-  {fa:'اسمم ... است.',ro:'Esmam ... ast.',en:'My name is ...'},
+  {fa:'اسمت چیه؟',ro:'Esmet chiye?',en:"What's your name? (informal)"},
+  {fa:'اسمم ... است.',ro:'Esme-man ... ast.',en:'My name is ...'},
   {fa:'از آشنایی‌تون خوشحالم.',ro:'Az āshnāyi-tun khushhālam.',en:'Pleased to meet you.'},
   {fa:'خداحافظ.',ro:'Khodāhāfez.',en:'Goodbye (formal)'},
   {fa:'بعداً می‌بینمت.',ro:"Ba'dan mibinamat.",en:'See you later.'},
@@ -502,7 +502,7 @@ vocabSections:[
     {fa:'خوش آمدید',ro:'khosh āmadid',en:'welcome'},
   ]},
   {title:'Asking About People',items:[
-    {fa:'اسمت چیه؟',ro:'esmat chiye?',en:"what's your name? (informal)"},
+    {fa:'اسمت چیه؟',ro:'esmet chiye?',en:"what's your name? (informal)"},
     {fa:'اسم شما چیست؟',ro:'esm-e shomā chist?',en:"what's your name? (formal)"},
     {fa:'از کجایی؟',ro:'az kojāyi?',en:'where are you from?'},
     {fa:'کجا زندگی می‌کنی؟',ro:'kojā zendegi mikoni?',en:'where do you live?'},
@@ -511,7 +511,7 @@ vocabSections:[
   ]},
 ],
 culture:{icon:'🤝',tag:'Etiquette',title:"Ta'arof — The Art of Persian Politeness",
-fa:'بفرمایید!',ro:'Befarmayyid!',en:'"Please, go ahead / help yourself!"',
+fa:'بفرمایید!',ro:'Befarmayid!',en:'"Please, go ahead / help yourself!"',
 body:"Ta'arof (تعارف) is a cornerstone of Iranian social life — a ritual politeness where people offer more than they intend and decline more than they want. If you admire something in someone's home, they may offer it: \"مال شماست\" (it's yours). You must refuse at least twice. When entering a door, both people insist the other goes first — \"بفرمایید!\" Understanding ta'arof helps you navigate Iranian hospitality gracefully."},
 quiz:[
   {q:'سلام means:',c:'سلام',opts:['Goodbye','Hello','Thank you','Please'],a:1},
