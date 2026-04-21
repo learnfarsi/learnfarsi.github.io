@@ -66,7 +66,8 @@ function renderAbout() {
 
       <div class="pg-personal-note">
         <div class="pg-personal-note-quote">"</div>
-        <p>This is a passion project, built with love for a language and a civilisation that has shaped philosophy, mathematics, poetry, and astronomy. I hope it makes learning Persian feel less daunting and more inviting — for anyone who has ever wanted to begin.</p>
+        <p>This is a passion project, built with love for a language and a civilisation that has shaped centuries of art, 
+literature, and human expression. I hope it makes learning Persian feel less daunting and more inviting — for anyone who has ever wanted to begin.</p>
         <p style="margin-top:.75rem;color:var(--accent2)">— shiain</p>
       </div>
 
