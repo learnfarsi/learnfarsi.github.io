@@ -26,9 +26,7 @@ function renderAbout() {
     <div class="pg-about">
 
       <div class="pg-about-hero">
-        <div class="pg-photo-placeholder">
           <img src="images/shiain.jpg" class="pg-photo-real" alt="Shiain - Author" />
-        </div>
         <div class="pg-about-intro">
           <h1 class="pg-about-name">Hi, I'm shiain</h1>
           <p class="pg-about-role">I love art, languages, and culture.</p>
