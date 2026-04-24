@@ -97,19 +97,37 @@ function getGroupLabel(type) {
 
 // ============ SIDEBAR ============
 function buildSidebar() {
-  const order = ['alpha','num','gram','conv','cult'];
-  const byType = {};
-  order.forEach(t => byType[t] = []);
+  const theoreticalTypes = ['alpha','num','gram','cult'];
+  const practiceTypes    = ['conv'];
+  const order            = ['alpha','num','gram','cult'];
+
+  function buildGroup(type, lessons) {
+    if (!lessons.length) return '';
+    let h = `<div class="section-group"><div class="section-group-label">${getGroupLabel(type)}</div>`;
+    lessons.forEach(({l, i}) => {
+      const isActive = curPage === null && i === curLesson;
+      h += `<div class="lesson-link${isActive ? ' active' : ''}" id="link-${i}" onclick="go(${i})">
+        <div class="lnum">${l.num}</div>
+        <span style="flex:1;line-height:1.3">${l.title}</span>
+        ${getTagHTML(l.type)}
+      </div>`;
+    });
+    h += '</div>';
+    return h;
+  }
+
   const levelLessons = LESSONS
     .map((l, i) => ({l, i}))
     .filter(item => getLevel(item.l) === curLevel);
 
+  // Split by section
+  const byType = {};
+  [...theoreticalTypes, ...practiceTypes].forEach(t => byType[t] = []);
   levelLessons.forEach(({l, i}) => {
-    const t = l.type;
-    if (byType[t]) byType[t].push({l, i});
+    if (byType[l.type]) byType[l.type].push({l, i});
   });
 
-  // Page links at top
+  // Page links
   let html = `<div class="section-group pg-link-group">
     <div class="lesson-link${curPage === 'welcome' ? ' active' : ''}" onclick="goPage('welcome')">
       <div class="lnum">🏠</div>
@@ -124,23 +142,30 @@ function buildSidebar() {
 
   html += buildLevelNav();
 
-  let hasLessons = false;
-  order.forEach(type => {
-    if (!byType[type] || !byType[type].length) return;
-    hasLessons = true;
-    html += `<div class="section-group"><div class="section-group-label">${getGroupLabel(type)}</div>`;
-    byType[type].forEach(({l, i}) => {
-      const isActive = curPage === null && i === curLesson;
-      html += `<div class="lesson-link${isActive ? ' active' : ''}" id="link-${i}" onclick="go(${i})">
-        <div class="lnum">${l.num}</div>
-        <span style="flex:1;line-height:1.3">${l.title}</span>
-        ${getTagHTML(l.type)}
-      </div>`;
+  // — THEORETICAL LESSONS —
+  const hasTheory = theoreticalTypes.some(t => byType[t] && byType[t].length);
+  if (hasTheory) {
+    html += `<div class="sidebar-section-heading">
+      <span class="ssh-dot ssh-dot-theory"></span>Theoretical Lessons
+    </div>`;
+    order.forEach(type => {
+      if (byType[type] && byType[type].length) html += buildGroup(type, byType[type]);
     });
-    html += '</div>';
-  });
+  }
 
-  if (!hasLessons) {
+  // — REAL SITUATIONAL PRACTICE —
+  const hasPractice = practiceTypes.some(t => byType[t] && byType[t].length);
+  if (hasPractice) {
+    html += `<div class="pg-sidebar-divider" style="margin:.5rem 0"></div>
+    <div class="sidebar-section-heading">
+      <span class="ssh-dot ssh-dot-practice"></span>Real Situational Practice
+    </div>`;
+    practiceTypes.forEach(type => {
+      if (byType[type] && byType[type].length) html += buildGroup(type, byType[type]);
+    });
+  }
+
+  if (!hasTheory && !hasPractice) {
     html += `<div class="empty-level">
       <div class="empty-level-title">${getLevelLabel(curLevel)} Lessons</div>
       <p>There are no lessons for this level yet. Add lessons with <code>level: '${curLevel}'</code> in <code>data.js</code>.</p>
