@@ -3,7 +3,7 @@ const LESSONS = [
 
 // ==================== ALPHABET ====================
 
-{id:'a1',type:'alpha',num:'A1',title:'Alef · Be · Pe · Te · Se',fa:'ا ب پ ت ث',
+{id:'a1',type:'alpha',num:'A1',title:'Alef · Be · Pe · Te · Se',fa:'ا ب پ ت ث',level:'beginner',
 intro:'Welcome to Persian! We start with the first five letters. Persian reads right to left, and most letters connect like cursive. Notice Be, Pe, Te, Se all share the same body — only their dots differ!',
 chars:[
   {l:'ا',n:'Alef',r:'ā / a',d:'Like "a" in father. Alef is a vowel carrier and does NOT connect to the next letter.',nc:true},
@@ -39,7 +39,7 @@ quiz:[
   {q:'پِدَر means:',c:'پِدَر',opts:['Mother','Brother','Father','Child'],a:2},
 ]},
 
-{id:'a2',type:'alpha',num:'A2',title:'Jim · Che · He · Khe · Dal',fa:'ج چ ح خ د',
+{id:'a2',type:'alpha',num:'A2',title:'Jim · Che · He · Khe · Dal',fa:'ج چ ح خ د',level:'beginner',
 intro:'ج چ ح خ all share the same body — only dots differ! Dal is our second non-connector.',
 chars:[
   {l:'ج',n:'Jim',r:'j',d:'Like "j" in jar. One dot below the curve.'},
@@ -75,7 +75,7 @@ quiz:[
   {q:'Khe (خ) sounds like:',c:'خ',opts:['"k" in key','"ch" in chair','Scottish "ch" in loch','"h" in hat'],a:2},
 ]},
 
-{id:'a3',type:'alpha',num:'A3',title:'Zal · Re · Ze · Zhe · Sin',fa:'ذ ر ز ژ س',
+{id:'a3',type:'alpha',num:'A3',title:'Zal · Re · Ze · Zhe · Sin',fa:'ذ ر ز ژ س',level:'beginner',
 intro:'Four non-connectors in one lesson! The Re-family sit below the baseline and sweep right. Sin has three "teeth" on top and connects normally.',
 chars:[
   {l:'ذ',n:'Zal',r:'z',d:'Like "z" in zone. Does NOT connect left.',nc:true},
@@ -111,7 +111,7 @@ quiz:[
   {q:'زَر means:',c:'زَر',opts:['Silver','Gold','Copper','Iron'],a:1},
 ]},
 
-{id:'a4',type:'alpha',num:'A4',title:'Shin · Sad · Zad · Ta · Za',fa:'ش ص ض ط ظ',
+{id:'a4',type:'alpha',num:'A4',title:'Shin · Sad · Zad · Ta · Za',fa:'ش ص ض ط ظ',level:'beginner',
 intro:'Shin is Sin with three dots above. Sad, Zad, Ta, Za are "emphatic" letters — heavier sounds from deeper in the mouth. In spoken Persian the distinction is subtle but important for correct spelling.',
 chars:[
   {l:'ش',n:'Shin',r:'sh',d:'Like "sh" in shoe. Three dots above Sin\'s body.'},
@@ -147,7 +147,7 @@ quiz:[
   {q:'شادی means:',c:'شادی',opts:['Sadness','Anger','Happiness','Fear'],a:2},
 ]},
 
-{id:'a5',type:'alpha',num:'A5',title:'Ain · Ghain · Fe · Qaf · Kaf',fa:'ع غ ف ق ک',
+{id:'a5',type:'alpha',num:'A5',title:'Ain · Ghain · Fe · Qaf · Kaf',fa:'ع غ ف ق ک',level:'beginner',
 intro:'Ain is unique — a voiced pharyngeal with no English equivalent. Ghain is Ain with a dot. Fe, Qaf, Kaf are more approachable for English speakers.',
 chars:[
   {l:'ع',n:'Ain',r:"'",d:"A unique guttural from deep in the throat. No English equivalent — a pharyngeal constriction."},
@@ -183,7 +183,7 @@ quiz:[
   {q:'فارسی means:',c:'فارسی',opts:['Iran','Arabic','Persian language','A city'],a:2},
 ]},
 
-{id:'a6',type:'alpha',num:'A6',title:'Gaf · Lam · Mim · Nun · Vav',fa:'گ ل م ن و',
+{id:'a6',type:'alpha',num:'A6',title:'Gaf · Lam · Mim · Nun · Vav',fa:'گ ل م ن و',level:'beginner',
 intro:'Gaf is a purely Persian letter — not in Arabic. Lam, Mim, Nun are very common. Vav is both consonant "v" and long vowels "o"/"u".',
 chars:[
   {l:'گ',n:'Gaf',r:'g',d:'Like "g" in go. Persian-only — not in Arabic! Two diagonal strokes added to Kaf.'},
@@ -219,7 +219,7 @@ quiz:[
   {q:'من means:',c:'من',opts:['You','He/She','I / me','We'],a:2},
 ]},
 
-{id:'a7',type:'alpha',num:'A7',title:'He · Ye — Final Letters!',fa:'ه ی',
+{id:'a7',type:'alpha',num:'A7',title:'He · Ye — Final Letters!',fa:'ه ی',level:'beginner',
 intro:'The last two letters of the Persian alphabet! He changes shape more than any other letter. Ye is both the "y" consonant and the long "ee" vowel. You now know all 32 Persian letters!',
 chars:[
   {l:'ه',n:'He (Havvaz)',r:'h',d:'Like "h" in hat. Changes shape significantly by position. In final position after a non-connector it looks like the standalone form — but it is still a final He.'},
@@ -252,7 +252,7 @@ quiz:[
 
 // ==================== NUMBERS ====================
 
-{id:'n1',type:'num',num:'N1',title:'Numbers 1–10 · اعداد ۱ تا ۱۰',fa:'۱ ۲ ۳ ۴ ۵',
+{id:'n1',type:'num',num:'N1',title:'Numbers 1–10 · اعداد ۱ تا ۱۰',fa:'۱ ۲ ۳ ۴ ۵',level:'beginner',
 intro:'Persian has its own numeral shapes (Eastern Arabic numerals: ۰۱۲۳...) widely used alongside Western numerals. Note that ۴ ۵ ۶ look quite different from 4 5 6 — pay special attention to those three!',
 nums1to10:[
   {f:'یک',a:'۱',r:'yek',v:'1'},{f:'دو',a:'۲',r:'do',v:'2'},{f:'سه',a:'۳',r:'se',v:'3'},
@@ -279,10 +279,57 @@ quiz:[
   {q:'پنج means:',c:'پنج',opts:['Three','Four','Five','Six'],a:2},
   {q:'What does ده mean?',c:'ده',opts:['Seven','Eight','Nine','Ten'],a:3},
   {q:'The Persian numeral ۴ equals:',c:'۴',opts:['2','3','4','5'],a:2},
-  {q:'"Algorithm" comes from:',c:'',opts:['A Greek word','A Persian mathematician\'s name','A Latin term','An Arabic phrase'],a:1},
+{q:'"Algorithm" comes from:',c:'',opts:['A Greek word',"A Persian mathematician's name",'A Latin term','An Arabic phrase'],a:1},
 ]},
 
-{id:'n2',type:'num',num:'N2',title:'Numbers 11–100 · اعداد ۱۱ تا ۱۰۰',fa:'۱۱ ۲۰ ۵۰ ۱۰۰',
+{id:'q1',type:'gram',num:'Q1',title:'Question Words — کلمات پرسشی',fa:'چی · کجا · کِی · چرا · چند',level:'beginner',
+intro:'Question words are the skeleton of conversation — you can ask almost anything with just these. Persian question words are short, expressive, and essential from day one.',
+phrases:[
+  {fa:'چی؟ / چه؟',ro:'chi? / che?',en:'What?'},
+  {fa:'کجا؟',ro:'kojā?',en:'Where?'},
+  {fa:'کِی؟',ro:'key?',en:'When?'},
+  {fa:'کِی؟ / چه کسی؟',ro:'ki? / che kasi?',en:'Who?'},
+  {fa:'چرا؟',ro:'cherā?',en:'Why?'},
+  {fa:'چطور؟ / چگونه؟',ro:'chetour? / chegune?',en:'How?'},
+  {fa:'چند؟',ro:'chand?',en:'How many? / How much?'},
+  {fa:'کدوم؟ / کدام؟',ro:'kodum? / kodām?',en:'Which?'},
+  {fa:'چقدر؟',ro:'cheghadr?',en:'How much? (quantity/price)'},
+  {fa:'از کجا؟',ro:'az kojā?',en:'From where?'},
+],
+vocab:[
+  {fa:'چی',ro:'chi',en:'what (informal)'},
+  {fa:'چه',ro:'che',en:'what (formal)'},
+  {fa:'کجا',ro:'kojā',en:'where'},
+  {fa:'کِی',ro:'key',en:'when'},
+  {fa:'کِی / چه کسی',ro:'ki / che kasi',en:'who'},
+  {fa:'چرا',ro:'cherā',en:'why'},
+  {fa:'چطور',ro:'chetour',en:'how (informal)'},
+  {fa:'چگونه',ro:'chegune',en:'how (formal)'},
+  {fa:'چند',ro:'chand',en:'how many'},
+  {fa:'چقدر',ro:'cheghadr',en:'how much'},
+  {fa:'کدوم',ro:'kodum',en:'which (informal)'},
+  {fa:'کدام',ro:'kodām',en:'which (formal)'},
+],
+sentences:[
+  {fa:'اسمت چیه؟',ro:'Esmat chiye?',en:'What is your name?'},
+  {fa:'کجا میری؟',ro:'Kojā miri?',en:'Where are you going?'},
+  {fa:'کِی میای؟',ro:'Key miyāi?',en:'When are you coming?'},
+  {fa:'این چنده؟',ro:'In chande?',en:'How much is this?'},
+  {fa:'چرا دیر کردی؟',ro:'Cherā dir kardi?',en:'Why were you late?'},
+  {fa:'چطوری؟',ro:'Chetouri?',en:'How are you? (informal)'},
+],
+culture:{icon:'❓',tag:'Grammar',title:'Questions in Persian — Word Order',
+fa:'کجا می‌روی؟',ro:'Kojā miravi?',en:'"Where are you going?"',
+body:"In Persian, question words usually appear at the start of the sentence, but the verb still comes last — just like in statements. There is no inversion like English \"Are you...?\" — instead, rising intonation or a question word does the work. چطوری؟ (Chetouri?) is perhaps the most useful phrase you\'ll learn — it means \"How are you?\" and opens every conversation."},
+quiz:[
+  {q:'کجا means:',c:'کجا',opts:['When','Why','Where','Who'],a:2},
+  {q:'چرا means:',c:'چرا',opts:['How','Why','What','Which'],a:1},
+  {q:'How do you ask "How much?" about a price?',c:'',opts:['چرا','کجا','چقدر','کِی'],a:2},
+  {q:'چطوری is commonly used to mean:',c:'چطوری',opts:['Where are you?','How are you?','Who are you?','What is this?'],a:1},
+  {q:'کِی can mean both "when" and:',c:'کِی',opts:['where','why','who','which'],a:2},
+]},
+
+{id:'n2',type:'num',num:'N2',title:'Numbers 11–100 · اعداد ۱۱ تا ۱۰۰',fa:'۱۱ ۲۰ ۵۰ ۱۰۰',level:'intermediate',
 intro:'Persian numbers from 11 onwards are beautifully regular. Teens end in a modified "dah" (ten). Compound numbers simply join with "o" (and).',
 nums11to100:[
   {f:'یازده',a:'۱۱',r:'yāzdah',v:'11'},{f:'دوازده',a:'۱۲',r:'davāzdah',v:'12'},
@@ -320,7 +367,7 @@ quiz:[
   {q:'The word "algebra" comes from:',c:'',opts:['A Greek philosopher','A Persian mathematician\'s book','An Arabic number','A Latin word'],a:1},
 ]},
 
-{id:'n3',type:'num',num:'N3',title:'Numbers 100–1000 & Currency',fa:'۱۰۰ ۵۰۰ ۱۰۰۰',
+{id:'n3',type:'num',num:'N3',title:'Numbers 100–1000 & Currency',fa:'۱۰۰ ۵۰۰ ۱۰۰۰',level:'intermediate',
 intro:'Hundreds and thousands in Persian are straightforward. We also cover Iran\'s currency system here — essential knowledge for shopping, since prices involve very large numbers!',
 nums100s:[
   {f:'صد',a:'۱۰۰',r:'sad',v:'100'},{f:'دویست',a:'۲۰۰',r:'devist',v:'200'},
@@ -358,7 +405,7 @@ quiz:[
 
 // ==================== GRAMMAR ====================
 
-{id:'g1',type:'gram',num:'G1',title:'Verbs I — To Be, To Have, To Go',fa:'بودن · داشتن · رفتن',
+{id:'g1',type:'gram',num:'G1',title:'Verbs I — To Be, To Have, To Go',fa:'بودن · داشتن · رفتن',level:'intermediate',
 intro:'Persian verb conjugation is wonderfully regular. Every verb has two stems: a present stem and a past stem. Almost every tense is built from just these two. We start with the three most essential verbs in the language.',
 verbs:[
   {
@@ -458,7 +505,7 @@ quiz:[
 
 // ==================== CONVERSATIONAL ====================
 
-{id:'c1',type:'conv',num:'C1',title:'Greetings & Introductions',fa:'سلام و آشنایی',
+{id:'c1',type:'conv',num:'C1',title:'Greetings & Introductions',fa:'سلام و آشنایی',level:'beginner',
 intro:'A1 level. Learn to say hello, introduce yourself, ask names, and use basic courtesy phrases. Iranians greet warmly — expect handshakes among acquaintances, sometimes a light cheek kiss among close friends.',
 phrases:[
   {fa:'سلام',ro:'Salām',en:'Hello'},
@@ -521,7 +568,7 @@ quiz:[
   {q:"Ta'arof is:",c:'',opts:['A Persian dish','A type of music','Ritual politeness','A greeting style'],a:2},
 ]},
 
-{id:'c2',type:'conv',num:'C2',title:'Telling the Time & Days of the Week',fa:'ساعت و روزهای هفته',
+{id:'c2',type:'conv',num:'C2',title:'Telling the Time & Days of the Week',fa:'ساعت و روزهای هفته',level:'beginner',
 intro:'A1–A2 level. Learn to ask and tell the time, name the days of the week, and talk about schedules. The Persian week starts on Saturday (شنبه) — Friday (جمعه) is the day off.',
 phrases:[
   {fa:'ساعت چنده؟',ro:"Sā'at chande?",en:'What time is it?'},
@@ -610,7 +657,7 @@ quiz:[
   {q:'Which day starts the Persian week?',c:'',opts:['جمعه Friday','یکشنبه Sunday','شنبه Saturday','دوشنبه Monday'],a:2},
 ]},
 
-{id:'c3',type:'conv',num:'C3',title:'Food, Cafés & Restaurants',fa:'غذا و رستوران',
+{id:'c3',type:'conv',num:'C3',title:'Food, Cafés & Restaurants',fa:'غذا و رستوران',level:'intermediate',
 intro:'A2 level. Order food, express preferences, and navigate a Persian restaurant. Iranian cuisine is one of the world\'s great food traditions — aromatic, subtle, and deeply connected to hospitality.',
 phrases:[
   {fa:'یه چای لطفاً.',ro:'Ye chāy lotfan.',en:'One tea please.'},
@@ -672,7 +719,7 @@ quiz:[
   {q:'خیلی خوشمزه means:',c:'',opts:['Very expensive','Very spicy','Very delicious','Very small'],a:2},
 ]},
 
-{id:'c4',type:'conv',num:'C4',title:'Shopping & Currency',fa:'خرید و پول',
+{id:'c4',type:'conv',num:'C4',title:'Shopping & Currency',fa:'خرید و پول',level:'intermediate',
 intro:'A2 level. Persian bazaars are legendary. Learn to ask prices, bargain politely, and understand Iran\'s currency system — Rials vs Tomans — which confuses even seasoned travellers!',
 phrases:[
   {fa:'این چند تومانه؟',ro:'In chand tomāne?',en:'How much is this? (in Tomans)'},
@@ -734,7 +781,7 @@ quiz:[
   {q:'باشه means:',c:'باشه',opts:['No','Maybe','OK / alright','Never'],a:2},
 ]},
 
-{id:'c5',type:'conv',num:'C5',title:'Family & Friends',fa:'خانواده و دوستان',
+{id:'c5',type:'conv',num:'C5',title:'Family & Friends',fa:'خانواده و دوستان',level:'advanced',
 intro:'A2–B1 level. Talk about your family, describe relationships, and discuss friendship. Family is the cornerstone of Iranian culture — multigenerational homes are common and family loyalty runs deep.',
 phrases:[
   {fa:'خانواده‌ام بزرگه.',ro:"Khānevāde-am bozorge.",en:'My family is large.'},
@@ -797,7 +844,7 @@ quiz:[
   {q:'Using شما instead of تو shows:',c:'',opts:['Anger','Intimacy','Respect/formality','Confusion'],a:2},
 ]},
 
-{id:'c6',type:'conv',num:'C6',title:'Work & Daily Life',fa:'کار و زندگی روزمره',
+{id:'c6',type:'conv',num:'C6',title:'Work & Daily Life',fa:'کار و زندگی روزمره',level:'advanced',
 intro:"B1 level. Talk about jobs, daily routines, and work life. Iran has a young, highly educated population with a vibrant startup scene — especially in Tehran.",
 phrases:[
   {fa:'چیکاره‌ای؟',ro:'Chikāre-i?',en:'What do you do? (informal)'},
@@ -861,7 +908,7 @@ quiz:[
 
 // ==================== CULTURE / TRAVEL ====================
 
-{id:'t1',type:'cult',num:'T1',title:'Persian History — Ancient Roots',fa:'تاریخ ایران',
+{id:'t1',type:'cult',num:'T1',title:'Persian History — Ancient Roots',fa:'تاریخ ایران',level:'beginner',
 intro:'Iran is one of the world\'s oldest continuous civilizations. From Cyrus the Great to the Islamic Republic, Persian history spans 3,000+ recorded years of empire, art, and intellectual brilliance.',
 timeline:[
   {year:'c. 550 BCE',title:'Achaemenid Empire — هخامنشیان',body:'Cyrus the Great (کوروش بزرگ) founded the first Persian Empire. His Cyrus Cylinder is considered the world\'s first human rights declaration. The empire stretched from Greece to India.',fa:'کوروش بزرگ'},
@@ -882,7 +929,7 @@ quiz:[
   {q:'The Islamic Revolution in Iran was in:',c:'',opts:['1953','1963','1979','1989'],a:2},
 ]},
 
-{id:'t2',type:'cult',num:'T2',title:'Famous Cities — Tehran & Isfahan',fa:'تهران و اصفهان',
+{id:'t2',type:'cult',num:'T2',title:'Famous Cities — Tehran & Isfahan',fa:'تهران و اصفهان',level:'intermediate',
 intro:'Iran\'s two most iconic cities: Tehran, the vast modern capital, and Isfahan, the jewel of Safavid architecture. Each has its own unmistakable soul.',
 cities:[
   {name:'Tehran',fa:'تهران',desc:'Capital and megacity of 15+ million. The Alborz mountains frame its northern skyline with ski slopes visible year-round. A city of traffic, culture, incredible food, and palpable energy.',sights:'Milad Tower · Golestan Palace · Grand Bazaar · Darband hiking trail · Tehran Museum of Contemporary Art'},
@@ -905,7 +952,7 @@ quiz:[
   {q:'Which sport was historically played at Naqsh-e Jahan?',c:'',opts:['Wrestling','Archery','Polo','Football'],a:2},
 ]},
 
-{id:'t3',type:'cult',num:'T3',title:'Famous Cities — Shiraz & Persepolis',fa:'شیراز و تخت جمشید',
+{id:'t3',type:'cult',num:'T3',title:'Famous Cities — Shiraz & Persepolis',fa:'شیراز و تخت جمشید',level:'intermediate',
 intro:'Shiraz is the city of poets, roses, and gardens. Nearby lies Persepolis — the greatest surviving monument of ancient Persia. Together they form the essential cultural journey of the south.',
 cities:[
   {name:'Shiraz',fa:'شیراز',desc:'City of Hafez and Saadi — Iran\'s two greatest lyric poets. Famous for its roses, gardens, and the spectacular Pink Mosque. Warm, laid-back, and strikingly beautiful.',sights:'Tomb of Hafez · Tomb of Saadi · Nasir-ol-Molk (Pink) Mosque · Eram Garden · Vakil Bazaar'},
@@ -928,7 +975,7 @@ quiz:[
   {q:'The "Pink Mosque" is in:',c:'',opts:['Tehran','Isfahan','Shiraz','Tabriz'],a:2},
 ]},
 
-{id:'t4',type:'cult',num:'T4',title:'Weather & Seasons in Iran',fa:'آب و هوای ایران',
+{id:'t4',type:'cult',num:'T4',title:'Weather & Seasons in Iran',fa:'آب و هوای ایران',level:'advanced',
 intro:'Iran is a vast country with dramatically different climates — from ski slopes north of Tehran to beach resorts on the Persian Gulf, and vast deserts in between.',
 seasons:[
   {icon:'🌸',s:'Spring — بهار',r:'bahār',temp:'10–25°C',desc:'Best travel season. Nowruz in March. Gardens bloom, waterfalls flow. The whole country is on the move.'},
@@ -955,7 +1002,7 @@ quiz:[
   {q:'زمستان means:',c:'زمستان',opts:['Spring','Summer','Autumn','Winter'],a:3},
 ]},
 
-{id:'t5',type:'cult',num:'T5',title:'Travel Tips & Practical Persian',fa:'راهنمای سفر',
+{id:'t5',type:'cult',num:'T5',title:'Travel Tips & Practical Persian',fa:'راهنمای سفر',level:'advanced',
 intro:'B1 practical Persian for travellers. Get around, stay safe, and connect with locals. Iranians are famously among the warmest hosts in the world.',
 tips:[
   {icon:'🛂',title:'Visa & Entry',body:'Most nationalities need a visa. Tourist visas are often issued on arrival at major airports. Always check current requirements before travelling.'},
