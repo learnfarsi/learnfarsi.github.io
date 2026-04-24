@@ -1,13 +1,17 @@
 // ============ PAGES ============
 let curPage = 'welcome'; // 'welcome' | 'about' | null (lesson active)
+const topbarTitle = document.getElementById('topbarTitle');
+const topbarBadge = document.getElementById('topbarBadge');
 
 function goPage(id) {
   curPage = id;
   qz = {q:0, score:0, answered:false, done:false};
 
   // Update topbar
-  document.getElementById('topbarTitle').textContent = id === 'welcome' ? 'Welcome' : 'About';
-  const badge = document.getElementById('topbarBadge');
+  if (topbarTitle) {
+    topbarTitle.textContent = id === 'welcome' ? 'Welcome' : 'About';
+  }
+  const badge = topbarBadge;
   if (badge) badge.innerHTML = '';
 
   // Hide tabs, show only sec-learn
@@ -183,7 +187,7 @@ function go(i) {
   buildSidebar();
   const l = LESSONS[i];
   document.getElementById('topbarTitle').textContent = l.title;
-  const badge = document.getElementById('topbarBadge');
+  const badge = topbarBadge;
   if (badge) badge.innerHTML = getTagHTML(l.type);
   // restore tabs
   document.querySelector('.tabs').style.display = 'flex';
