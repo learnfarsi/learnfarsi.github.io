@@ -115,7 +115,7 @@ function renderLearn() {
   if (l.phrases && l.type !== 'cult') {
     h += `<div class="label">Key Phrases</div>
     <div class="phrase-list">
-    <div class="phrase-item" style="font-size:11px;font-weight:500;color:var(--text3)">
+    <div class="phrase-item" style="font-size:12px;font-weight:500;color:var(--text3)">
       <span style="text-align:right">Persian</span><span>Pronunciation</span><span>Meaning</span>
     </div>`;
     l.phrases.forEach(p => {
@@ -173,7 +173,7 @@ function renderLearn() {
   if (l.nums100s) {
     h += `<div class="label">Hundreds & Thousands</div><div class="num-box"><div class="num-grid">`;
     l.nums100s.forEach(n => {
-      h += `<div class="num-card"><div class="nf" style="font-size:15px">${n.f}</div><div class="na">${n.a}</div><div class="nr" style="font-size:10px">${n.r}</div><div class="nv">${n.v}</div></div>`;
+      h += `<div class="num-card"><div class="nf" style="font-size:15px">${n.f}</div><div class="na">${n.a}</div><div class="nr" style="font-size:12px">${n.r}</div><div class="nv">${n.v}</div></div>`;
     });
     h += `</div></div>`;
     if (l.numRules) {
@@ -402,7 +402,7 @@ function renderCulture() {
     <div class="cult-card">
       <div class="cult-hdr">
         <span style="font-size:18px">${c.icon}</span>
-        <span style="font-size:11px;padding:2px 8px;border-radius:3px;background:var(--bg3);color:var(--text3)">${c.tag}</span>
+        <span style="font-size:12px;padding:2px 8px;border-radius:3px;background:var(--bg3);color:var(--text3)">${c.tag}</span>
         <h3>${c.title}</h3>
       </div>
       <div class="cult-body">
