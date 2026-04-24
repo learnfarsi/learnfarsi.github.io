@@ -9,6 +9,7 @@
   --border:#3d372e;
   --accent:#c8703a;
   --accent2:#e8a86a;
+  --calligraphy:#e2a15f;
   --gold:#d4a843;
   --blue:#5b9bd5;
   --green:#6baa7a;
@@ -28,6 +29,7 @@ body.light{
   --border:#d8cfc4;
   --accent:#c8703a;
   --accent2:#a85c2a;
+  --calligraphy:#cb8040;
   --gold:#9a7420;
   --blue:#2563ab;
   --green:#3d7a4a;
@@ -103,7 +105,7 @@ body.light .tag-cult{background:#e0f0e0;color:#2a5a2a}
 
 /* ===== CONTENT & TABS ===== */
 .content{padding:2rem;max-width:800px}
-.tabs{display:flex;gap:0;border-bottom:1px solid var(--border);margin-bottom:2rem}
+.tabs{display:flex;gap:0;border-bottom:1px solid var(--border);margin-bottom:1.6rem}
 .tab{padding:.6rem 1.25rem;font-size:13px;cursor:pointer;color:var(--text3);border-bottom:2px solid transparent;margin-bottom:-1px;transition:all .2s}
 .tab:hover{color:var(--text2)}
 .tab.active{color:var(--accent2);border-bottom-color:var(--accent)}
@@ -321,13 +323,10 @@ body.light .q-fb.no{background:#fce8e8}
 .ssh-dot-practice{background:var(--blue)}
 
 /* Hero */
-.pg-hero{text-align:center;padding:4rem 1rem 3rem;border-bottom:1px solid var(--border);margin-bottom:3rem}
+.pg-hero{ text-align:center;padding:3.3rem 1rem 2.8rem;border-bottom:1px solid var(--border);margin-bottom:2.2rem}
 .pg-calligraphy{font-family:'Playfair Display',serif;font-size:clamp(72px,12vw,120px);color:var(--accent);letter-spacing:12px;line-height:1;margin-bottom:1.5rem}
-.pg-tagline{font-family:'DM Sans',sans-serif;font-size:clamp(20px,3vw,28px);font-weight:500;color:var(--text);margin-bottom:.75rem;line-height:1.4}
-.pg-sub{font-size:15px;color:var(--text2);max-width:480px;margin:0 auto 2rem;line-height:1.7}
-.pg-start-btn{display:inline-block;background:var(--accent);color:#fff;border:none;border-radius:30px;padding:12px 32px;font-size:15px;font-family:'DM Sans',sans-serif;font-weight:500;cursor:pointer;letter-spacing:.02em;transition:background .2s,transform .15s}
-.pg-start-btn:hover{background:var(--accent2);transform:translateY(-1px)}
-.pg-start-btn:active{transform:translateY(0)}
+.pg-tagline{font-family:'Playfair Display',serif;font-size:clamp(18px,2.8vw,26px);font-weight:400;color:var(--text);margin-bottom:.75rem;line-height:1.4}
+.pg-sub{font-size:15px;color:var(--text2);max-width:480px;margin:0 auto 1rem;line-height:1.7}
 
 /* Proverb */
 .pg-proverb-wrap{max-width:580px;margin:0 auto 4rem;text-align:center;padding:2.5rem 2rem;border:1px solid var(--border);border-radius:16px;background:var(--bg3)}
@@ -365,10 +364,51 @@ body.light .q-fb.no{background:#fce8e8}
 .pg-personal-note-quote{font-family:'Playfair Display',serif;font-size:64px;color:var(--accent);opacity:.2;line-height:1;position:absolute;top:.25rem;left:1rem}
 .pg-personal-note p{font-size:14px;color:var(--text2);line-height:1.8;position:relative}
 
+/* ===== WELCOME ENHANCEMENTS ===== */
+
+/* Entrance animation */
+.pg-fade-up{
+  opacity:0;
+  animation:pg-fade-up .65s ease forwards;
+}
+@keyframes pg-fade-up{
+  from{opacity:0;transform:translateY(22px)}
+  to  {opacity:1;transform:translateY(0)}
+}
+
+/* SVG calligraphy — draw-itself stroke animation */
+.pg-calligraphy-svg{
+  display:block;
+  width:100%;
+  max-width:520px;
+  margin:0 auto 1.5rem;
+  overflow:visible;
+}
+/* Each path uses pathLength="1" so dasharray/dashoffset values are normalised */
+.pg-calligraphy-path{
+  fill:transparent;
+  stroke:var(--calligraphy);
+  stroke-width:1.5;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  stroke-dasharray:1;
+  stroke-dashoffset:1;
+  animation:
+    draw-calligraphy 2.5s cubic-bezier(.4,0,.2,1) var(--draw-delay,0s)  forwards,
+    fill-calligraphy 1.6s ease                     var(--fill-delay,3.6s) forwards;
+}
+@keyframes draw-calligraphy{
+  to{stroke-dashoffset:0}
+}
+@keyframes fill-calligraphy{
+  from{fill:transparent}
+  to  {fill:var(--calligraphy)}
+}
+
+
 /* Mobile */
 @media(max-width:600px){
-  .pg-hero{padding:2.5rem 1rem 2rem}
-  .pg-calligraphy{letter-spacing:6px}
+  .pg-hero{padding:2.1rem 1rem 1.8rem}
   .pg-about-hero{flex-direction:column;align-items:center;text-align:center}
   .pg-about-grid{grid-template-columns:1fr}
 }
