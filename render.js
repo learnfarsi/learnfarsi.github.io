@@ -1,45 +1,121 @@
-// ============ CAROUSEL HELPERS ============
-var _carIdx = 0;
-
-function buildCarousel(items, renderFn) {
-  if (!items || !items.length) return '';
-  var uid = 'car' + (++_carIdx);
-  var h = `<div class="carousel" id="${uid}">`;
-  items.forEach(function(item, i) {
-    h += `<div class="carousel-slide${i === 0 ? ' active' : ''}">${renderFn(item)}</div>`;
-  });
-  if (items.length > 1) {
-    h += `<div class="carousel-nav">
-      <button class="car-btn" onclick="carMove('${uid}',-1)">← Prev</button>
-      <span class="car-counter" id="${uid}-ct">1 / ${items.length}</span>
-      <button class="car-btn" onclick="carMove('${uid}',1)">Next →</button>
-    </div>`;
-  }
-  h += `</div>`;
-  return h;
-}
-
-function carMove(uid, dir) {
-  var car = document.getElementById(uid);
-  if (!car) return;
-  var slides = car.querySelectorAll('.carousel-slide');
-  var cur = Array.from(slides).findIndex(function(s){ return s.classList.contains('active'); });
-  slides[cur].classList.remove('active');
-  cur = (cur + dir + slides.length) % slides.length;
-  slides[cur].classList.add('active');
-  var ct = document.getElementById(uid + '-ct');
-  if (ct) ct.textContent = (cur + 1) + ' / ' + slides.length;
-}
-
 // ============ RENDER WELCOME ============
 function renderWelcome() {
   document.getElementById('sec-learn').innerHTML = `
 
     <div class="pg-hero">
-      <div class="pg-calligraphy">فارسی</div>
-      <h1 class="pg-tagline">Learn to read, write and speak Persian</h1>
-      <p class="pg-sub">From the alphabet to real conversations — structured lessons, beautiful script, and the culture woven through every word.</p>
-      <button class="pg-start-btn" onclick="go(0)">Start Learning →</button>
+      <svg class="pg-calligraphy-svg pg-fade-up" style="animation-delay:.05s"
+           viewBox="0 0 558 234" xmlns="http://www.w3.org/2000/svg" aria-label="فارسی">
+
+        <!-- ف body (rightmost — drawn first in RTL order) -->
+        <path class="pg-calligraphy-path" pathLength="1"
+              style="--draw-delay:.1s;--fill-delay:3.6s;fill-rule:evenodd"
+              d="M428.977448,118.049347
+C433.960541,110.613342 438.041168,102.779770 443.930267,96.697174
+C450.992554,89.402817 459.150238,91.373245 463.799255,100.533806
+C469.975861,112.704201 470.947052,126.080666 471.644684,139.393143
+C471.948181,145.185318 471.424530,151.027176 471.152954,156.840698
+C470.993561,160.252930 469.057037,161.850739 465.611206,161.844528
+C443.304993,161.804337 420.993011,162.103973 398.694672,161.677963
+C386.432587,161.443695 380.717529,155.514420 380.566956,143.136627
+C380.236725,115.986839 380.416260,88.830841 380.394592,61.677372
+C380.394043,61.013451 380.221771,60.159622 380.555908,59.714348
+C384.678192,54.221413 388.879944,48.788124 393.061188,43.339424
+C393.588989,43.545307 394.116791,43.751190 394.644592,43.957073
+C394.727661,45.643776 394.882263,47.330437 394.883148,49.017181
+C394.898163,78.336639 394.887939,107.656105 394.899414,136.975571
+C394.902069,143.712830 395.281189,144.087814 401.945282,144.094849
+C415.357635,144.108994 428.769958,144.099060 442.500702,143.680450
+C431.783508,138.383682 423.819183,131.839569 428.977448,118.049347
+M458.191162,124.429756
+C457.472900,122.940323 456.986298,121.269432 455.990204,119.997574
+C453.603943,116.950729 450.978027,114.091560 448.448883,111.156616
+C445.393463,114.026520 442.331116,116.889175 439.304321,119.788979
+C439.161621,119.925735 439.335541,120.392998 439.398071,121.133858
+C446.026611,124.714897 452.845215,128.398636 459.663849,132.082382
+C459.939056,131.763138 460.214264,131.443909 460.489471,131.124664
+C459.843903,129.120560 459.198334,127.116455 458.191162,124.429756 z"/>
+
+        <!-- dot on ف -->
+        <path class="pg-calligraphy-path" pathLength="1"
+              style="--draw-delay:.4s;--fill-delay:3.6s"
+              d="M443.917542,72.035606
+C441.476074,70.578636 439.354980,69.299088 436.609741,67.643021
+C439.244263,62.880074 441.759613,58.332550 444.642639,53.120281
+C451.020782,56.786362 457.069824,60.165878 462.967102,63.792225
+C463.610718,64.188004 463.903595,66.279716 463.465454,67.117317
+C461.395020,71.075455 459.013763,74.870995 456.426666,79.261871
+C452.180695,76.806396 448.209320,74.509712 443.917542,72.035606 z"/>
+
+        <!-- flourish / ر curve -->
+        <path class="pg-calligraphy-path" pathLength="1"
+              style="--draw-delay:.7s;--fill-delay:3.6s"
+              d="M295.541016,195.477219
+C291.237152,190.828049 287.203613,186.409592 283.170044,181.991150
+C283.561127,181.590302 283.952209,181.189453 284.343292,180.788620
+C288.603638,182.296524 292.796539,184.042389 297.135559,185.272873
+C321.301880,192.126114 338.063721,180.187317 347.802277,160.806076
+C349.096191,158.230942 348.616760,153.518204 347.032806,151.013031
+C344.084503,146.349976 339.953156,142.328232 335.845612,138.548935
+C333.725830,136.598557 333.157471,135.184723 334.427277,132.687134
+C336.586853,128.439560 338.556427,124.095375 340.839325,119.301445
+C349.299683,124.182137 353.849731,131.371613 356.654846,139.638672
+C366.296051,168.052460 351.508606,190.464584 329.156586,201.128952
+C316.915253,206.969421 305.861115,204.074966 295.541016,195.477219 z"/>
+
+        <!-- main letter body (ی س ر ا — leftmost, drawn last) -->
+        <path class="pg-calligraphy-path" pathLength="1"
+              style="--draw-delay:1s;--fill-delay:3.6s"
+              d="M121.746414,197.717636
+C107.367401,202.089706 93.395538,203.893631 79.470161,197.488022
+C66.253990,191.408676 59.690159,180.110550 61.465218,165.641296
+C62.947895,153.555374 67.642769,142.542648 73.797508,132.144241
+C74.690186,130.636078 76.336075,129.573746 77.633415,128.305115
+C78.116600,128.572830 78.599785,128.840561 79.082962,129.108292
+C78.655563,131.037262 78.248817,132.971100 77.797195,134.894379
+C75.789597,143.443924 72.871246,151.898636 71.985512,160.561783
+C70.929916,170.886322 75.992989,176.446640 86.133347,179.209045
+C96.867798,182.133255 107.284821,179.585831 117.730247,177.582443
+C122.087959,176.746628 126.382164,175.579681 130.913300,173.285782
+C127.170349,171.510971 123.402916,169.785706 119.688950,167.952164
+C107.891090,162.127762 107.303337,160.280945 111.985809,147.876389
+C116.485657,135.955658 124.434608,127.601112 136.360092,123.031616
+C143.167160,120.423355 147.037994,121.218132 152.037567,126.530067
+C155.918503,130.653458 159.468124,135.135651 163.672607,138.889847
+C166.160141,141.110977 169.569336,143.448425 172.676880,143.613785
+C182.451935,144.133987 192.280884,143.687256 202.087814,143.539169
+C206.013199,143.479904 208.307724,141.180023 207.417603,137.457520
+C204.870834,126.806763 214.487991,123.720177 219.177841,116.111710
+C222.887863,125.833946 219.512833,133.981583 218.564392,142.857651
+C222.797256,143.553253 226.809128,144.602524 230.861023,144.790955
+C237.677490,145.107971 244.520432,144.806580 251.350204,144.905228
+C255.423416,144.964035 257.966736,143.531555 257.054626,139.091431
+C254.828293,128.253525 263.655914,124.440681 269.128448,118.478539
+C269.718536,118.608986 270.308594,118.739426 270.898682,118.869873
+C270.250946,127.124138 269.603180,135.378403 268.913330,144.168823
+C274.770447,145.850357 281.103088,146.443985 287.025879,144.015945
+C292.610260,141.726593 290.271423,136.298233 288.560059,133.203033
+C286.063690,128.687943 287.751740,126.711067 290.926727,124.236755
+C293.908630,121.912949 296.626068,119.249794 300.555481,115.764008
+C301.796936,121.248383 303.342163,125.608383 303.661987,130.056488
+C304.161926,137.010681 304.112335,144.037842 303.780243,151.009552
+C303.404541,158.895584 299.664978,162.524170 291.698334,162.972961
+C281.959351,163.521591 272.478546,162.123383 263.258301,158.726379
+C261.139771,157.945847 258.228668,157.667984 256.225952,158.487427
+C242.531342,164.090698 228.870056,162.714493 215.057098,159.198975
+C213.058914,158.690399 210.680176,159.065018 208.606277,159.564957
+C194.853638,162.880157 181.034409,163.995132 167.231888,160.319916
+C164.358429,159.554794 161.591278,157.411926 159.401123,155.265305
+C155.008911,150.960373 151.320938,145.914810 146.781006,141.793213
+C144.875320,140.063126 141.121964,138.585281 138.941452,139.283020
+C132.961929,141.196365 127.516418,144.515060 123.244301,150.977310
+C129.354813,153.412613 134.981415,155.637772 140.594147,157.897339
+C145.234375,159.765411 151.405579,160.304626 151.288925,167.168610
+C151.169815,174.177704 151.970688,181.876648 144.153137,186.057938
+C136.843277,189.967682 129.468765,193.756516 121.746414,197.717636 z"/>
+
+      </svg>
+      <h1 class="pg-tagline pg-fade-up" style="animation-delay:.25s">Learn to read, write and speak Persian</h1>
+      <p class="pg-sub pg-fade-up" style="animation-delay:.38s">From the alphabet to real conversations — structured lessons, beautiful script, and the culture woven through every word.</p>
     </div>
 
     <div class="pg-proverb-wrap">
@@ -366,97 +442,6 @@ function renderLearn() {
       });
       h += `</div>`;
     }
-  }
-
-  // ---- DISH GROUPS ----
-  if (l.dishGroups) {
-    h += `<div class="label">Persian Cuisine Overview</div><div class="info-grid">`;
-    l.dishGroups.forEach(function(g) {
-      h += `<div class="info-box"><h4>${g.icon} ${g.title}</h4><p>${g.body}</p></div>`;
-    });
-    h += `</div>`;
-  }
-
-  // ---- RECIPES CAROUSEL ----
-  if (l.recipes) {
-    h += `<div class="label">Step-by-Step Recipes</div>`;
-    h += buildCarousel(l.recipes, function(r) {
-      return `<div class="carousel-recipe">
-        <div class="cr-header">
-          <span class="cr-emoji">${r.emoji}</span>
-          <div>
-            <div class="cr-fa">${r.fa}</div>
-            <div class="cr-en">${r.en}</div>
-            <div class="cr-ro">${r.ro}</div>
-          </div>
-          <div class="cr-meta">
-            <span class="cr-badge">${r.difficulty}</span>
-            <span class="cr-badge">⏱ ${r.time}</span>
-          </div>
-        </div>
-        <p class="cr-desc">${r.desc}</p>
-        <div class="cr-cols">
-          <div>
-            <div class="cr-section-title">Ingredients</div>
-            <ul class="cr-list">${r.ingredients.map(function(i){ return '<li>'+i+'</li>'; }).join('')}</ul>
-          </div>
-          <div>
-            <div class="cr-section-title">Method</div>
-            <ol class="cr-steps">${r.steps.map(function(s){ return '<li>'+s+'</li>'; }).join('')}</ol>
-          </div>
-        </div>
-        <div class="cr-tip">💡 ${r.tip}</div>
-      </div>`;
-    });
-  }
-
-  // ---- COOKING PHRASES ----
-  if (l.cookingPhrases) {
-    h += `<div class="label">Kitchen & Food Phrases</div><div class="phrase-list">`;
-    l.cookingPhrases.forEach(function(p) {
-      h += `<div class="phrase-item"><span class="p-fa">${p.fa}</span><span class="p-ro">${p.ro}</span><span class="p-en">${p.en}</span></div>`;
-    });
-    h += `</div>`;
-  }
-
-  // ---- POETS CAROUSEL ----
-  if (l.poets) {
-    h += `<div class="label">The Poets</div>`;
-    h += buildCarousel(l.poets, function(p) {
-      var themesHtml = p.themes.map(function(t){ return '<span class="cp-theme">'+t+'</span>'; }).join('');
-      var poemsHtml = p.poems.map(function(v){
-        return `<div class="cp-poem">
-          <div class="cp-poem-fa">${v.title}</div>
-          <div class="cp-poem-ro">${v.ro}</div>
-          <div class="cp-poem-en">${v.en}</div>
-          <div class="cp-poem-note">${v.note}</div>
-        </div>`;
-      }).join('');
-      return `<div class="carousel-poet">
-        <div class="cp-header">
-          <div class="cp-fa">${p.fa}</div>
-          <div>
-            <div class="cp-name">${p.name}</div>
-            <div class="cp-years">${p.years} · ${p.city}</div>
-            <div class="cp-title">${p.title}</div>
-          </div>
-        </div>
-        <p class="cp-bio">${p.bio}</p>
-        <div class="cp-themes-label">Themes</div>
-        <div class="cp-themes">${themesHtml}</div>
-        <div class="cp-poems-label">Famous Verses</div>
-        ${poemsHtml}
-      </div>`;
-    });
-  }
-
-  // ---- POETRY PHRASES ----
-  if (l.poetryPhrases) {
-    h += `<div class="label">Poetry Vocabulary & Phrases</div><div class="phrase-list">`;
-    l.poetryPhrases.forEach(function(p) {
-      h += `<div class="phrase-item"><span class="p-fa">${p.fa}</span><span class="p-ro">${p.ro}</span><span class="p-en">${p.en}</span></div>`;
-    });
-    h += `</div>`;
   }
 
   document.getElementById('sec-learn').innerHTML = h;
