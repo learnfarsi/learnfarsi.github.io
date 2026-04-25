@@ -444,6 +444,95 @@ function renderLearn() {
     }
   }
 
+  // ---- POETS (T4 Persian Poetry) ----
+  if (l.poets) {
+    l.poets.forEach(poet => {
+      h += `<div class="gram-box">
+        <h3>
+          <span style="font-size:22px;margin-right:8px">${poet.fa}</span>${poet.name}
+          <span style="font-size:13px;color:var(--text3);font-weight:400">&nbsp;${poet.years} · ${poet.city}</span>
+        </h3>
+        <div class="gram-note" style="font-style:italic;color:var(--text2);font-size:13px">${poet.title}</div>
+        <p style="font-size:14px;line-height:1.7;color:var(--text2);margin:1rem 0">${poet.bio}</p>
+        <div class="label" style="margin-bottom:.5rem">Themes</div>
+        <div style="display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.25rem">
+          ${poet.themes.map(t => `<span style="background:var(--bg3);color:var(--text2);padding:3px 10px;border-radius:12px;font-size:12px">${t}</span>`).join('')}
+        </div>
+        <div class="label" style="margin-bottom:.75rem">Selected Poems</div>
+        ${poet.poems.map(p => `<div style="border-left:3px solid var(--accent2);padding:.75rem 1rem;margin-bottom:.9rem;background:var(--bg2);border-radius:0 6px 6px 0">
+          <div style="font-size:18px;color:var(--gold);text-align:right;line-height:1.6;margin-bottom:.4rem;white-space:pre-line">${p.title}</div>
+          <div style="font-size:12px;color:var(--text3);font-style:italic;margin-bottom:.25rem;white-space:pre-line">${p.ro}</div>
+          <div style="font-size:13px;color:var(--accent2);margin-bottom:.5rem">${p.en}</div>
+          <div style="font-size:12px;color:var(--text2);line-height:1.6">${p.note}</div>
+        </div>`).join('')}
+      </div>`;
+    });
+  }
+
+  // ---- POETRY PHRASES (T4) ----
+  if (l.poetryPhrases) {
+    h += `<div class="label">Key Phrases</div>
+    <div class="phrase-list">
+    <div class="phrase-item" style="font-size:12px;font-weight:500;color:var(--text3)">
+      <span style="text-align:right">Persian</span><span>Pronunciation</span><span>Meaning</span>
+    </div>`;
+    l.poetryPhrases.forEach(p => {
+      h += `<div class="phrase-item"><span class="p-fa">${p.fa}</span><span class="p-ro">${p.ro}</span><span class="p-en">${p.en}</span></div>`;
+    });
+    h += `</div>`;
+  }
+
+  // ---- DISH GROUPS (T6 Persian Cuisine) ----
+  if (l.dishGroups) {
+    h += `<div class="label">Persian Food Categories</div><div class="info-grid">`;
+    l.dishGroups.forEach(g => {
+      h += `<div class="info-box"><h4>${g.icon} ${g.title}</h4><p>${g.body}</p></div>`;
+    });
+    h += `</div>`;
+  }
+
+  // ---- RECIPES (T6) ----
+  if (l.recipes) {
+    h += `<div class="label">Recipes</div>`;
+    l.recipes.forEach(r => {
+      h += `<div class="gram-box">
+        <h3>${r.emoji} ${r.fa} <span style="font-size:14px;font-weight:400;color:var(--text2)">${r.en}</span></h3>
+        <div class="gram-note" style="font-size:12px">${r.ro} &nbsp;·&nbsp; ⏱ ${r.time} &nbsp;·&nbsp; ${r.difficulty}</div>
+        <p style="font-size:13px;color:var(--text2);margin:.75rem 0">${r.desc}</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-top:1rem">
+          <div>
+            <div class="label" style="margin-bottom:.5rem">Ingredients</div>
+            <ul style="font-size:13px;color:var(--text2);line-height:2;padding-left:1.2rem;margin:0">
+              ${r.ingredients.map(i => `<li>${i}</li>`).join('')}
+            </ul>
+          </div>
+          <div>
+            <div class="label" style="margin-bottom:.5rem">Method</div>
+            <ol style="font-size:13px;color:var(--text2);line-height:1.8;padding-left:1.2rem;margin:0">
+              ${r.steps.map(s => `<li style="margin-bottom:.4rem">${s}</li>`).join('')}
+            </ol>
+          </div>
+        </div>
+        <div style="margin-top:1rem;padding:.75rem 1rem;background:var(--bg2);border-radius:6px;font-size:12px;color:var(--text2);border-left:3px solid var(--gold)">
+          💡 <strong>Tip:</strong> ${r.tip}
+        </div>
+      </div>`;
+    });
+  }
+
+  // ---- COOKING PHRASES (T6) ----
+  if (l.cookingPhrases) {
+    h += `<div class="label">Key Phrases</div>
+    <div class="phrase-list">
+    <div class="phrase-item" style="font-size:12px;font-weight:500;color:var(--text3)">
+      <span style="text-align:right">Persian</span><span>Pronunciation</span><span>Meaning</span>
+    </div>`;
+    l.cookingPhrases.forEach(p => {
+      h += `<div class="phrase-item"><span class="p-fa">${p.fa}</span><span class="p-ro">${p.ro}</span><span class="p-en">${p.en}</span></div>`;
+    });
+    h += `</div>`;
+  }
+
   document.getElementById('sec-learn').innerHTML = h;
 }
 
