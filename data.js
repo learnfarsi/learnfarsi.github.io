@@ -252,8 +252,8 @@ quiz:[
 
 // ==================== NUMBERS ====================
 
-{id:'n1',type:'num',num:'N1',title:'Numbers 1–10 · اعداد ۱ تا ۱۰',fa:'۱ ۲ ۳ ۴ ۵',level:'beginner',
-intro:'Persian has its own numeral shapes (Eastern Arabic numerals: ۰۱۲۳...) widely used alongside Western numerals. Note that ۴ ۵ ۶ look quite different from 4 5 6 — pay special attention to those three!',
+{id:'n1',type:'num',num:'N1',title:'Numbers 1–10',fa:'۱ ۲ ۳ ۴ ۵',level:'beginner',
+intro:'Persian has its own numeral shapes (Eastern Arabic numerals: ۰۱۲۳...) widely used alongside Western numerals.',
 nums1to10:[
   {f:'یک',a:'۱',r:'yek',v:'1'},{f:'دو',a:'۲',r:'do',v:'2'},{f:'سه',a:'۳',r:'se',v:'3'},
   {f:'چهار',a:'۴',r:'chahār',v:'4'},{f:'پنج',a:'۵',r:'panj',v:'5'},
@@ -282,7 +282,7 @@ quiz:[
 {q:'"Algorithm" comes from:',c:'',opts:['A Greek word',"A Persian mathematician's name",'A Latin term','An Arabic phrase'],a:1},
 ]},
 
-{id:'q1',type:'gram',num:'Q1',title:'Question Words — کلمات پرسشی',fa:'چی · کجا · کِی · چرا · چند',level:'beginner',
+{id:'q1',type:'gram',num:'Q1',title:'Question Words',fa:'چی · کجا · کِی · چرا · چند',level:'beginner',
 intro:'Question words are the skeleton of conversation — you can ask almost anything with just these. Persian question words are short, expressive, and essential from day one.',
 phrases:[
   {fa:'چی؟ / چه؟',ro:'chi? / che?',en:'What?'},
@@ -311,7 +311,7 @@ vocab:[
   {fa:'کدام',ro:'kodām',en:'which (formal)'},
 ],
 sentences:[
-  {fa:'اسمت چیه؟',ro:'Esmat chiye?',en:'What is your name?'},
+  {fa:'اسمت چیه؟',ro:'Esmet chiye?',en:'What is your name?'},
   {fa:'کجا میری؟',ro:'Kojā miri?',en:'Where are you going?'},
   {fa:'کِی میای؟',ro:'Key miyāi?',en:'When are you coming?'},
   {fa:'این چنده؟',ro:'In chande?',en:'How much is this?'},
@@ -1104,7 +1104,7 @@ quiz:[
 ]},
 
 
-{id:'c7',type:'conv',num:'C7',title:'Colors — رنگ‌ها',fa:'رنگ‌ها',level:'beginner',
+{id:'c7',type:'conv',num:'C7',title:'Asking about Colors',fa:'رنگ‌ها',level:'beginner',
 intro:'A1 level. Colors are essential building blocks for describing the world around you. In Persian, color adjectives come after the noun they describe.',
 phrases:[
   {fa:'این چه رنگیه؟',ro:'In che rangihe?',en:'What color is this?'},
@@ -1135,7 +1135,7 @@ vocabSections:[
     {fa:'قهوه‌ای',ro:"ghahve-i",en:'brown'},
     {fa:'مشکی / سیاه',ro:'meshki / siyāh',en:'black'},
     {fa:'سفید',ro:'sefid',en:'white'},
-    {fa:'خاکستری',ro:'khāksteri',en:'grey'},
+    {fa:'خاکستری',ro:'khākestari',en:'grey'},
   ]},
   {title:'Describing Colors',items:[
     {fa:'رنگ',ro:'rang',en:'color'},
