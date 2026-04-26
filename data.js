@@ -762,7 +762,7 @@ quiz:[
 ]},
 
 
-{id:'gp',type:'gram',num:'G4b',title:'Prepositions — از · به · در · با · برای',fa:'حروف اضافه',level:'intermediate',
+{id:'gp',type:'gram',num:'G4b',title:'Prepositions',fa:'حروف اضافه',level:'intermediate',
 intro:'Persian prepositions are short, powerful words that glue sentences together. Unlike English, they are always placed before the noun (just like in English) — but Persian ones often contract with pronouns in speech. Master these five and you can express location, direction, accompaniment, origin, and purpose.',
 preps:[
   {fa:'از',ro:'az',en:'from / of / since / out of',
@@ -904,7 +904,7 @@ quiz:[
   {q:"Ta'arof is:",c:'',opts:['A Persian dish','A type of music','Ritual politeness','A greeting style'],a:2},
 ]},
 
-{id:'c2',type:'conv',num:'C2',title:'Telling the Time & Days of the Week',fa:'ساعت و روزهای هفته',level:'beginner',
+{id:'c2',type:'conv',num:'C2',title:'Time & Days of the Week',fa:'ساعت و روزهای هفته',level:'beginner',
 intro:'A1–A2 level. Learn to ask and tell the time, name the days of the week, and talk about schedules. The Persian week starts on Saturday (شنبه) — Friday (جمعه) is the day off.',
 phrases:[
   {fa:'ساعَت چَنده؟',ro:"Sā'at chande?",en:'What time is it?'},
@@ -1243,7 +1243,7 @@ quiz:[
 ]},
 
 
-{id:'c7',type:'conv',num:'C7',title:'Asking about Colors',fa:'رنگ‌ها',level:'beginner',
+{id:'c7',type:'conv',num:'C7',title:'Colors',fa:'رنگ‌ها',level:'beginner',
 intro:'A1 level. Colors are essential building blocks for describing the world around you. In Persian, color adjectives come after the noun they describe.',
 phrases:[
   {fa:'این چه رنگیه؟',ro:'In che rangihe?',en:'What color is this?'},
@@ -1297,7 +1297,7 @@ quiz:[
   {q:'The English word "orange" comes from which Persian-origin word?',c:'',opts:['نارنجی','رنگارنگ','خوشرنگ','نارنج'],a:3},
 ]},
 
-{id:'c8',type:'conv',num:'C8',title:'Talking About the Weather',fa:'صحبت درباره آب و هوا',level:'beginner',
+{id:'c8',type:'conv',num:'C8',title:'Weather',fa:'صحبت درباره آب و هوا',level:'beginner',
 intro:'A1 level. Talking about the weather is one of the most natural conversation starters in any language. Iran has an incredibly diverse climate — from desert heat to Caspian humidity to mountain snow — so these phrases come up constantly.',
 phrases:[
   {fa:'هوا چطوره؟',ro:'Havā chetore?',en:"How's the weather?"},
