@@ -610,7 +610,7 @@ quiz:[
   {q:'کمک کردن means:',c:'',opts:['to play','to work','to start','to help'],a:3},
 ]},
 
-{id:'g4',type:'gram',num:'G4',title:'خواستن — To Want',fa:'خواستن',level:'intermediate',
+{id:'g4',type:'gram',num:'G4',title:'[Verb] Khāstan — To Want',fa:'خواستن',level:'intermediate',
 intro:'خواستن (khāstan) is one of the most used verbs in everyday Persian — for expressing desire, asking for things, and forming the future tense. Its irregular present stem خواه- shortens to خوا- in speech.',
 verbs:[{
   inf:'خواستن', ro:'khāstan', en:'to want',
