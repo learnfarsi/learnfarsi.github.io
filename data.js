@@ -762,6 +762,83 @@ quiz:[
 ]},
 
 
+{id:'gp',type:'gram',num:'G4b',title:'Prepositions — از · به · در · با · برای',fa:'حروف اضافه',level:'intermediate',
+intro:'Persian prepositions are short, powerful words that glue sentences together. Unlike English, they are always placed before the noun (just like in English) — but Persian ones often contract with pronouns in speech. Master these five and you can express location, direction, accompaniment, origin, and purpose.',
+preps:[
+  {fa:'از',ro:'az',en:'from / of / since / out of',
+   note:'Expresses origin, starting point, or material. Also used for making comparisons.',
+   examples:[
+    {fa:'از تهران آمدم.',ro:'Az Tehrān āmadam.',en:'I came from Tehran.'},
+    {fa:'از چی درست شده؟',ro:'Az chi dorost shode?',en:'What is it made of?'},
+    {fa:'او از من بزرگ‌تر است.',ro:'U az man bozorgtar ast.',en:'He/she is older than me.'},
+    {fa:'از دیروز اینجام.',ro:'Az diruz injām.',en:"I've been here since yesterday."},
+   ]},
+  {fa:'به',ro:'be',en:'to / towards / at / in (direction)',
+   note:'Marks the destination or indirect object. In spoken Persian often softens to "be" or even drops to a suffix.',
+   examples:[
+    {fa:'به مدرسه می‌روم.',ro:'Be madrase miravam.',en:'I am going to school.'},
+    {fa:'به او گفتم.',ro:'Be u goftam.',en:'I told him/her.'},
+    {fa:'به فارسی صحبت کن.',ro:'Be Fārsi sohbat kon.',en:'Speak in Persian.'},
+    {fa:'نگاه به آسمان کن.',ro:'Negāh be āsamān kon.',en:'Look towards the sky.'},
+   ]},
+  {fa:'در',ro:'dar',en:'in / at / inside (location)',
+   note:'Marks location — where something is or takes place. In everyday spoken Persian, توی (tuy) is used more often.',
+   examples:[
+    {fa:'در خانه هستم.',ro:'Dar khāne hastam.',en:'I am at home.'},
+    {fa:'در ایران زندگی می‌کنم.',ro:'Dar Irān zendegi mikonam.',en:'I live in Iran.'},
+    {fa:'توی کیفمه.',ro:'Tuy-e kiyfame.',en:"It's inside my bag. (spoken)"},
+    {fa:'در سال ۱۴۰۰.',ro:'Dar sāl-e 1400.',en:'In the year 1400 (Persian calendar).'},
+   ]},
+  {fa:'با',ro:'bā',en:'with / by means of / together with',
+   note:'Expresses accompaniment or the instrument/means of an action.',
+   examples:[
+    {fa:'با دوستم رفتم.',ro:'Bā dustam raftam.',en:'I went with my friend.'},
+    {fa:'با اتوبوس می‌روم.',ro:'Bā otobus miravam.',en:'I am going by bus.'},
+    {fa:'با قاشق بخور.',ro:'Bā qāshoq bokhor.',en:'Eat with a spoon.'},
+    {fa:'با تو موافقم.',ro:'Bā to movāfeqam.',en:'I agree with you.'},
+   ]},
+  {fa:'برای',ro:'barāy-e',en:'for / for the sake of / in order to',
+   note:'Expresses purpose or the beneficiary of an action. Often contracted to برا (barā) in speech.',
+   examples:[
+    {fa:'این برای توست.',ro:'In barāy-e tost.',en:'This is for you.'},
+    {fa:'برای چی اومدی؟',ro:'Barā-ye chi umadi?',en:'Why did you come? (lit. for what?)'},
+    {fa:'برای سلامتی‌ات.',ro:"Barāy-e salāmati-at.",en:'For your health / Cheers!'},
+    {fa:'برای یاد گرفتن فارسی تلاش می‌کنم.',ro:'Barāy-e yād gereftan-e Fārsi talāsh mikonam.',en:'I am trying in order to learn Persian.'},
+   ]},
+],
+gramRules:[
+  {title:'از (az) for comparisons',body:'Persian comparatives use از instead of "than": بزرگ‌تر از من (bigger than me) · بهتر از تو (better than you). The pattern is: [adjective + ‌تر] + از + [noun/pronoun].'},
+  {title:'به (be) + indirect objects',body:'The indirect object in Persian is always marked with به: به او گفتم = "I told him" (lit. "to him I said"). This is essential for verbs like گفتن (to say), دادن (to give), and نوشتن (to write).'},
+  {title:'در vs توی (dar vs tuyi)',body:'در is formal/written; توی is the everyday spoken equivalent. Both mean "in/inside". You will hear توی کیفم (tuy-e kiyfam = in my bag) far more often than در کیفم in conversation.'},
+  {title:'با (bā) for transport',body:'Persian uses با for means of transport — like "by" in English: با ماشین (by car) · با هواپیما (by plane) · با قطار (by train). Never drop با in these phrases.'},
+  {title:'برای → برا in speech',body:'In fast spoken Persian, برای (barāy-e) contracts to برا (barā): برا تو = for you · برا چی = for what / why. This contraction is extremely common and natural.'},
+],
+vocab:[
+  {fa:'از',ro:'az',en:'from / of'},{fa:'به',ro:'be',en:'to / towards'},
+  {fa:'در',ro:'dar',en:'in / at'},{fa:'با',ro:'bā',en:'with / by'},
+  {fa:'برای',ro:'barāy-e',en:'for / in order to'},{fa:'توی',ro:'tuy-e',en:'inside / in (spoken)'},
+  {fa:'از کجا؟',ro:'az kojā?',en:'from where?'},{fa:'برا چی؟',ro:"barā chi?",en:'why? / for what? (spoken)'},
+],
+sentences:[
+  {fa:'از کجا اومدی؟',ro:'Az kojā umadi?',en:'Where did you come from?'},
+  {fa:'با اتوبوس به بازار رفتیم.',ro:'Bā otobus be bāzār raftim.',en:'We went to the bazaar by bus.'},
+  {fa:'این کتاب برای توست.',ro:'In ketāb barāy-e tost.',en:'This book is for you.'},
+  {fa:'در تهران با دوستم زندگی می‌کنم.',ro:'Dar Tehrān bā dustam zendegi mikonam.',en:'I live in Tehran with my friend.'},
+  {fa:'از شیرینی بیشتر از نمک دوست دارم.',ro:'Az shirini bishtar az namak dust dāram.',en:'I like sweets more than salt.'},
+  {fa:'برای سلامتی! با هم بخوریم.',ro:"Barāy-e salāmati! Bā ham bokhorim.",en:"To health! Let's eat together."},
+],
+culture:{icon:'🧭',tag:'Grammar',title:'از کجایی؟ — The Preposition That Opens Every Conversation',
+fa:'از کجایی؟',ro:'Az kojāyi?',en:'"Where are you from?" — the most-asked question in Persian',
+body:'از (az) is the first preposition every Persian learner hears: از کجایی؟ — "Where are you from?" It appears in the very first real conversation you will have with an Iranian. Prepositions in Persian are few but mighty — five core prepositions cover the vast majority of everyday needs. Notice that با (bā — with/by) doubles as both accompaniment ("with a friend") and means of transport ("by bus"), which makes it doubly useful to master early.'},
+quiz:[
+  {q:'از means:',c:'از',opts:['to / towards','with / by','from / of','in / at'],a:2},
+  {q:'به مدرسه می‌روم means:',c:'به مدرسه می‌روم',opts:['I am at school','I am going to school','I came from school','I study at school'],a:1},
+  {q:'Which preposition is used for means of transport?',c:'',opts:['از az','به be','در dar','با bā'],a:3},
+  {q:'The spoken contraction of برای is:',c:'',opts:['بی','بره','برا','بِه'],a:2},
+  {q:'در vs توی — which is more common in everyday speech?',c:'',opts:['در dar','توی tuy-e','Both equally','Neither — Persians drop it'],a:1},
+  {q:'برای سلامتی means:',c:'برای سلامتی',opts:['Good morning','Thank you very much','To your health / Cheers','From the heart'],a:2},
+]},
+
 // ==================== CONVERSATIONAL ====================
 
 {id:'c1',type:'conv',num:'C1',title:'Greetings & Introductions',fa:'سلام و آشنایی',level:'beginner',
