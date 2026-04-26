@@ -386,6 +386,42 @@ function renderLearn() {
     h += `</table></div></div>`;
   }
 
+  // ---- PREPOSITIONS TABLE ----
+  if (l.preps) {
+    h += `<div class="gram-box">
+      <h3>Core Prepositions — حروف اضافه</h3>
+      <div class="gram-note">
+        These five prepositions cover the vast majority of everyday Persian. Each one is placed <strong>before</strong> the noun, just like English.
+      </div>`;
+    l.preps.forEach(p => {
+      h += `<div style="margin-bottom:1.5rem;border-left:3px solid var(--accent2);padding-left:.9rem">
+        <div style="margin-bottom:.4rem">
+          <span class="ct-fa" style="font-size:1.4rem;color:var(--gold)">${p.fa}</span>
+          &nbsp;<span style="font-size:.85rem;color:var(--accent2);font-weight:600">${p.ro}</span>
+          &nbsp;—&nbsp;<span style="font-size:.85rem;color:var(--text2)">${p.en}</span>
+        </div>
+        <div class="gram-note" style="margin-bottom:.6rem;font-size:12px">${p.note}</div>
+        <div class="forms-wrap">`;
+      p.examples.forEach(ex => {
+        h += `<div class="phrase-item" style="margin:.2rem 0">
+          <span class="p-fa">${ex.fa}</span>
+          <span class="p-ro">${ex.ro}</span>
+          <span class="p-en">${ex.en}</span>
+        </div>`;
+      });
+      h += `</div></div>`;
+    });
+    h += `</div>`;
+  }
+
+  // ---- GRAMMAR RULES ----
+  if (l.gramRules) {
+    h += `<div class="label">Usage Rules & Patterns</div>`;
+    l.gramRules.forEach(r => {
+      h += `<div class="num-rule"><strong>${r.title}</strong><br>${r.body}</div>`;
+    });
+  }
+
   // ---- DIALOGUE ----
   if (l.dialogue) {
     h += `<div class="label">Sample Conversation</div>
