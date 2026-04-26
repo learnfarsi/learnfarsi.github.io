@@ -11,8 +11,12 @@
 
 <div class="sidebar" id="sidebar">
   <div class="sidebar-header">
-    <span class="logo-fa">فارسی</span>
-    <div class="logo-en">Learn Persian</div>
+    <a class="sidebar-logo-link" id="sidebar-logo" href="index.html" onclick="goPage('welcome'); return false;">
+      <span class="logo-fa" data-cursor-element-id="cursor-el-1">
+        <img class="logo-image" src="images/Ketab%20transparent.png" alt="فارسی" />
+      </span>
+      <div class="logo-en" data-cursor-element-id="cursor-el-5">LEARN PERSIAN</div>
+    </a>
   </div>
   <div class="sidebar-search">
     <input type="text" id="searchInput" placeholder="Search lessons..." oninput="filterLessons(this.value)">
