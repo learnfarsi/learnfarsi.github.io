@@ -352,6 +352,40 @@ function renderLearn() {
     });
   }
 
+  // ---- COMPOUND VERBS ----
+  if (l.compounds) {
+    h += `<div class="gram-box">
+      <h3>Compound Verbs — فعل‌های مرکب</h3>
+      <div class="gram-note">
+        Pattern: <span style="color:var(--accent2)">NOUN + کردن</span> — attach any noun to کردن to create a new verb.
+        The noun stays fixed; only کردن conjugates. Present: <span style="color:var(--gold)">کار می‌کنم</span> · Past: <span style="color:var(--gold)">کار کردم</span>
+      </div>
+      <div class="forms-wrap"><table class="conj-table">
+        <tr>
+          <th>Noun / Prefix</th>
+          <th>Compound Verb</th>
+          <th>Meaning</th>
+          <th>Example</th>
+        </tr>`;
+    l.compounds.forEach(c => {
+      h += `<tr>
+        <td class="ct-fa" style="color:var(--gold)">${c.noun}
+          <br><span class="ct-ro">${c.nRo}</span>
+          <span style="font-size:11px;color:var(--text3)"> · ${c.en}</span>
+        </td>
+        <td class="ct-fa" style="color:var(--accent2)">${c.verb}
+          <br><span class="ct-ro" style="font-size:11px">${c.vRo}</span>
+        </td>
+        <td style="font-size:12px;color:var(--text2)">${c.vEn}</td>
+        <td class="ct-fa">${c.ex}
+          <br><span class="ct-ro" style="font-size:11px">${c.exRo}</span>
+          <br><span style="font-size:11px;color:var(--text3)">${c.exEn}</span>
+        </td>
+      </tr>`;
+    });
+    h += `</table></div></div>`;
+  }
+
   // ---- DIALOGUE ----
   if (l.dialogue) {
     h += `<div class="label">Sample Conversation</div>
