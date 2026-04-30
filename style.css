@@ -103,13 +103,6 @@ body.light .tag-gram{background:#f0e0f0;color:#5a3a8a}
 body.light .tag-conv{background:#e0f0ff;color:#1a4a8a}
 body.light .tag-cult{background:#e0f0e0;color:#2a5a2a}
 
-/* Light mode tag overrides */
-body.light .tag-alpha{background:#f0e0d0;color:#a05020}
-body.light .tag-num{background:#fff8d0;color:#8a6a10}
-body.light .tag-gram{background:#f0e0f0;color:#5a3a8a}
-body.light .tag-conv{background:#e0f0ff;color:#1a4a8a}
-body.light .tag-cult{background:#e0f0e0;color:#2a5a2a}
-
 /* ===== TOPBAR ===== */
 .main{margin-left:325px;min-height:100vh}
 .topbar{position:sticky;top:0;background:var(--bg2);border-bottom:1px solid var(--border);padding:.75rem 2rem;display:flex;align-items:center;gap:1rem;z-index:50}
@@ -119,6 +112,33 @@ body.light .tag-cult{background:#e0f0e0;color:#2a5a2a}
 /* theme toggle button */
 .theme-toggle{margin-left:auto;padding:6px 14px;border-radius:20px;font-size:12px;cursor:pointer;font-family:'DM Sans',sans-serif;border:1px solid var(--border);background:var(--bg3);color:var(--text2);transition:all .2s;display:flex;align-items:center;gap:5px}
 .theme-toggle:hover{border-color:var(--accent);color:var(--accent)}
+.menu-btn{
+  display:none;
+  margin:0;
+  padding:6px 14px;
+  border-radius:20px;
+  font-size:12px;
+  cursor:pointer;
+  font-family:'DM Sans',sans-serif;
+  border:1px solid var(--border);
+  background:var(--bg3);
+  color:var(--text2);
+  transition:all .2s;
+  align-items:center;
+  gap:5px;
+}
+
+/* ===== MOBILE OVERLAY ===== */
+.sidebar-overlay{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.45);
+  z-index:150;
+}
+body.sidebar-open{
+  overflow:hidden;
+}
 
 /* ===== CONTENT & TABS ===== */
 .content{padding:2rem;max-width:800px}
@@ -311,7 +331,20 @@ body.light .q-fb.no{background:#fce8e8}
 
 /* ===== MOBILE ===== */
 @media(max-width:700px){
-  .sidebar{width:100%;height:auto;position:relative;border-right:none;border-bottom:1px solid var(--border)}
+  .menu-btn{display:flex}
+  .sidebar{
+    width:min(300px,82vw);
+    height:100vh;
+    position:fixed;
+    left:0;
+    top:0;
+    transform:translateX(-100%);
+    transition:transform .3s ease;
+    z-index:200;
+    overflow-y:auto;
+  }
+  .sidebar.open{transform:translateX(0)}
+  .sidebar-overlay.show{display:block}
   .main{margin-left:0}
   .char-grid{grid-template-columns:repeat(3,1fr)}
   .num-grid{grid-template-columns:repeat(3,1fr)}

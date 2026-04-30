@@ -2,6 +2,7 @@
 let curPage = 'welcome'; // 'welcome' | 'about' | null (lesson active)
 
 function goPage(id) {
+  closeSidebar();
   curPage = id;
   qz = {q:0, score:0, answered:false, done:false};
 
@@ -21,6 +22,18 @@ function goPage(id) {
   if (id === 'about')   renderAbout();
 
   window.scrollTo(0, 0);
+}
+
+function openSidebar() {
+  document.getElementById('sidebar').classList.add('open');
+  document.getElementById('sidebarOverlay').classList.add('show');
+  document.body.classList.add('sidebar-open');
+}
+
+function closeSidebar() {
+  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('sidebarOverlay').classList.remove('show');
+  document.body.classList.remove('sidebar-open');
 }
 
 // ============ SIDEBAR TAGS ============
@@ -177,6 +190,7 @@ function buildSidebar() {
 
 // ============ NAVIGATION ============
 function go(i) {
+  closeSidebar();
   curPage = null; // leaving a page, entering a lesson
   curLesson = i;
   qz = {q:0, score:0, answered:false, done:false};
