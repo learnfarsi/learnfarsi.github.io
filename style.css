@@ -332,6 +332,11 @@ body.light .q-fb.no{background:#fce8e8}
 /* ===== MOBILE ===== */
 @media(max-width:700px){
   .menu-btn{display:flex}
+  .topbar{padding:.75rem 1rem}
+  .topbar-title{display:none}
+  .topbar-badge{display:none}
+  .theme-toggle{margin-left:auto}
+  .menu-btn{flex-shrink:0}
   .sidebar{
     width:min(300px,82vw);
     height:100vh;
